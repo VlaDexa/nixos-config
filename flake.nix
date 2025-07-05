@@ -1,0 +1,55 @@
+{
+  inputs = {
+    nixpkgs.url = "flake:nixpkgs/nixpkgs-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      nixos-hardware,
+    }:
+    {
+      # replace 'joes-desktop' with your hostname here.
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./hardware-configuration.nix
+          ./cachix.nix
+          nixos-hardware.nixosModules.common-pc-laptop
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-hidpi
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-cpu-amd-zenpower
+          nixos-hardware.nixosModules.common-gpu-amd
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.sharedModules = [
+              plasma-manager.homeManagerModules.plasma-manager
+              ./modules/programs/bitwarden-desktop.nix
+            ];
+            home-manager.backupFileExtension = "backup";
+
+            # This should point to your home.nix path of course. For an example
+            # of this see ./home.nix in this directory.
+            home-manager.users.vladexa = ./home/vladexa.nix;
+          }
+        ];
+      };
+    };
+}
