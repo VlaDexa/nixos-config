@@ -5,6 +5,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	disko = {
+		url = "github:nix-community/disko/latest";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +23,7 @@
       home-manager,
       plasma-manager,
       nixos-hardware,
+      disko,
     }:
     {
       # replace 'joes-desktop' with your hostname here.
@@ -49,6 +54,8 @@
             # of this see ./home.nix in this directory.
             home-manager.users.vladexa = ./home/vladexa.nix;
           }
+          disko.nixosModules.disko
+          ./disko-config.nix
         ];
       };
     };
