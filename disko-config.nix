@@ -4,13 +4,12 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
-{ disko, config, ... }:
 {
   disko.devices = {
     bcachefs_filesystems = {
       main_bcachefs = {
         type = "bcachefs_filesystem";
-        passwordFile = config.sops.secrets.password.path;
+        passwordFile = "/tmp/bcachefs_password";
         subvolumes = {
           "subvolumes/rootfs" = {
             mountpoint = "/";
