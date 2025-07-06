@@ -38,6 +38,11 @@
     # KDE Virtual Desktop
     kdePackages.krfb
     kdePackages.krdc
+
+    # Spellcheck
+    hunspell
+    hunspellDicts.ru_RU
+    hunspellDicts.en_US
   ];
 
   accounts.email.accounts = {
