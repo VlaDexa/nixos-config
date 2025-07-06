@@ -37,11 +37,19 @@
     loader.timeout = 0;
   };
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16*1024; # 16 GB
-  }];
+  sops = {
+    age.keyFile = "/home/vladexa/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets.yaml;
 
+    secrets.password.neededForUsers = true;
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16 GB
+    }
+  ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -109,6 +117,7 @@
       "wheel"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
+    hashedPasswordFile = config.sops.secrets.password.path;
   };
   users.users.root.initialHashedPassword = "";
 
