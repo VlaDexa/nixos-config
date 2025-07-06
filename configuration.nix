@@ -17,7 +17,7 @@
     supportedFilesystems = [ "bcachefs" ];
 
     plymouth = {
-      enable = true;
+      enable = false; # Doesn't work with bcachefs encryption
       theme = "loader";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
