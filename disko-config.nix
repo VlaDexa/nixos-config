@@ -4,8 +4,26 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
+{ disko, config, ... }:
 {
   disko.devices = {
+    bcachefs_filesystems = {
+      main_bcachefs = {
+        type = "bcachefs_filesystem";
+        passwordFile = config.sops.secrets.password.path;
+        subvolumes = {
+          "subvolumes/rootfs" = {
+            mountpoint = "/";
+          };
+          "subvolumes/home" = {
+            mountpoint = "/home";
+          };
+          "subvolumes/nix" = {
+            mountpoint = "/nix";
+          };
+        };
+      };
+    };
     disk = {
       main = {
         device = "/dev/sda";
@@ -26,25 +44,8 @@
             root = {
               size = "100%";
               content = {
-                type = "btrfs";
-                subvolumes = {
-                  "/rootfs" = {
-                    mountpoint = "/";
-                  };
-                  "/home" = {
-                    mountOptions = [
-                      "compress=zstd"
-                    ];
-                    mountpoint = "/home";
-                  };
-                  "/nix" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
-                    mountpoint = "/nix";
-                  };
-                };
+                type = "bcachefs";
+                filesystem = "main_bcachefs";
               };
             };
           };
