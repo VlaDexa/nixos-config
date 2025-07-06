@@ -47,7 +47,7 @@
               size = "8G";
               content = {
                 type = "swap";
-                discordPolicy = "once";
+                discardPolicy = "once";
                 resumeDevice = true;
                 randomEncryption = false;
               };
