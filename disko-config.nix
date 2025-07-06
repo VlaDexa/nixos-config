@@ -28,7 +28,7 @@
     };
     disk = {
       main = {
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
@@ -41,6 +41,15 @@
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [ "umask=0077" ];
+              };
+            };
+            swap = {
+              size = "8G";
+              content = {
+                type = "swap";
+                discordPolicy = "once";
+                resumeDevice = true;
+                randomEncryption = false;
               };
             };
             root = {
