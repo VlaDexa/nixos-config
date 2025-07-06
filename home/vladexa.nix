@@ -39,6 +39,9 @@
     kdePackages.krfb
     kdePackages.krdc
 
+    #KDE Theme
+    nur.repos.shadowrz.klassy-qt6
+
     # Spellcheck
     hunspell
     hunspellDicts.ru_RU
@@ -90,6 +93,15 @@
         clipboardGroup = "PostScreenshotCopyImage";
       };
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
+
+      workspace = {
+        theme = "default";
+        colorScheme = "KlassyDark";
+        windowDecorations = {
+          library = "org.kde.klassy";
+          theme = "Klassy";
+        };
+      };
       # desktop.widgets = [
       #   {
       #     config = {

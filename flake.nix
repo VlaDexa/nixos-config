@@ -18,23 +18,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      plasma-manager,
-      nixos-hardware,
-      disko,
-      sops-nix,
+    { self
+    , nixpkgs
+    , home-manager
+    , plasma-manager
+    , nixos-hardware
+    , disko
+    , sops-nix
+    , nur
     }:
     {
       # replace 'joes-desktop' with your hostname here.
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nur.modules.nixos.default
           ./configuration.nix
           ./hardware-configuration.nix
           ./cachix.nix
