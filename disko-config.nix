@@ -20,6 +20,9 @@
           };
           "subvolumes/nix" = {
             mountpoint = "/nix";
+            mountOptions = [
+              "noatime"
+            ];
           };
         };
       };
