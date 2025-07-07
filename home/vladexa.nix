@@ -94,11 +94,10 @@
       };
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
 
-      hotkeys.commands = {
-        "Launch-Kitty" = {
-	  key = "Ctrl+Alt+T";
-	  command = "${pkgs.kitty}/bin/kitty";
-	};
+      shortcuts = {
+        "services/kitty.desktop" = {
+          "_launch" = "Ctrl+Alt+T";
+        };
       };
 
       workspace = {
