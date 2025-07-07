@@ -94,6 +94,13 @@
       };
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
 
+      hotkeys.commands = {
+        "Launch-Kitty" = {
+	  key = "Ctrl+Alt+T";
+	  command = "${pkgs.kitty}/bin/kitty";
+	};
+      };
+
       workspace = {
         theme = "default";
         colorScheme = "KlassyDark";
