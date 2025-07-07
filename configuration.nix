@@ -45,13 +45,6 @@
     secrets.password.neededForUsers = true;
   };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024; # 16 GB
-    }
-  ];
-
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
