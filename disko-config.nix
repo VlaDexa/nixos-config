@@ -27,7 +27,7 @@
       };
     };
     disk = {
-      main = {
+      main = rec {
         device = "/dev/nvme0n1";
         type = "disk";
         content = {
@@ -57,6 +57,7 @@
               content = {
                 type = "bcachefs";
                 filesystem = "main_bcachefs";
+                extraFormatArgs = [ "--discard" ];
               };
             };
           };
