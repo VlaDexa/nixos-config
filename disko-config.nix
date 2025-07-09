@@ -10,6 +10,9 @@
       main_bcachefs = {
         type = "bcachefs_filesystem";
         passwordFile = "/tmp/bcachefs_password";
+        extraFormatArgs = [
+          "--compression=zstd"
+        ];
         subvolumes = {
           "subvolumes/rootfs" = {
             mountpoint = "/";
