@@ -77,12 +77,34 @@
             ./disko-config.nix
             disko.nixosModules.disko
             (
-              { config, lib, ... }:
+              {
+                config,
+                lib,
+                pkgs,
+                ...
+              }:
               {
                 system.stateVersion = "25.11";
-                disko.imageBuilder = {
-                  imageFormat = "qcow2";
+
+                boot = {
+                  kernelParams = [ "console=ttyS0" ];
+                  supportedFilesystems = [ "bcachefs" ];
+                  loader = {
+                    systemd-boot.enable = true;
+                    efi.canTouchEfiVariables = true;
+                  };
                 };
+
+                users.users.vladexa = {
+                  initialPassword = "yeahvmpass";
+                  isNormalUser = true;
+                  shell = pkgs.zsh;
+                  extraGroups = [ "wheel" ];
+                };
+
+                programs.zsh.enable = true;
+
+                disko.imageBuilder.imageFormat = "qcow2";
                 disko.devices.disk.main.imageSize = "50G";
                 disko.devices.bcachefs_filesystems.main_bcachefs.passwordFile = lib.mkForce null;
               }
@@ -90,5 +112,7 @@
           ];
         };
       };
+
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
     };
 }
