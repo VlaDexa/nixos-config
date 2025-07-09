@@ -23,6 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    flake-utils.url = "github:numtide/flake-utils";
   };
   outputs =
     {
@@ -34,11 +35,11 @@
       disko,
       sops-nix,
       nur,
+      flake-utils,
     }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             nur.modules.nixos.default
             ./configuration.nix
@@ -61,8 +62,6 @@
               ];
               home-manager.backupFileExtension = "backup";
 
-              # This should point to your home.nix path of course. For an example
-              # of this see ./home.nix in this directory.
               home-manager.users.vladexa = ./home/vladexa.nix;
             }
             disko.nixosModules.disko
@@ -72,7 +71,6 @@
         };
 
         vm = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             ./disko-config.nix
             disko.nixosModules.disko
@@ -112,7 +110,8 @@
           ];
         };
       };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
-    };
+    }
+    // flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+    });
 }
