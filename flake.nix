@@ -25,6 +25,8 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
+      # Only used during lanzaboote development
+      inputs.pre-commit-hooks-nix.follows = "";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
