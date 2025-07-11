@@ -22,6 +22,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -36,6 +40,7 @@
       sops-nix,
       nur,
       flake-utils,
+      lanzaboote,
     }:
     {
       nixosConfigurations = {
@@ -67,6 +72,8 @@
             disko.nixosModules.disko
             ./disko-config.nix
             sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
+            ./secure-boot.nix
           ];
         };
 

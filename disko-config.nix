@@ -5,7 +5,7 @@
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
 {
-  disko.devices = {
+  disko.devices = rec {
     bcachefs_filesystems = {
       main_bcachefs = {
         type = "bcachefs_filesystem";
@@ -13,6 +13,9 @@
         extraFormatArgs = [
           "--compression=zstd"
         ];
+        preMountHook = ''
+            systemd-ask-password | bcachefs unlock "${disk.main.device}"
+          '';
         subvolumes = {
           "subvolumes/rootfs" = {
             mountpoint = "/";
@@ -30,7 +33,7 @@
       };
     };
     disk = {
-      main = rec {
+      main = {
         device = "/dev/nvme0n1";
         type = "disk";
         content = {
