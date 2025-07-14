@@ -74,7 +74,7 @@
     enable = true;
     configFile.nvim.source = builtins.fetchGit {
       url = "https://github.com/VlaDexa/nvim-config.git";
-      rev = "fd38c09ebc656c46d9b4fd4ad848192934a45586";
+      rev = "6d0e00d5999efc8048daa339604ae452885427af";
     };
     mimeApps.enable = true;
   };
