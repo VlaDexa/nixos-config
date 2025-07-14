@@ -167,6 +167,7 @@
       profiles.vladexa = {
         isDefault = true;
         search.default = "ddg";
+        settings."extensions.autoDisableScopes" = 0;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           privacy-badger
