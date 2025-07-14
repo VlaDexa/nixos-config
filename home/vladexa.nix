@@ -217,7 +217,7 @@
         enable = true;
         extraArgs = "--keep 3";
       };
-      flake = /etc/nixos;
+      flake = "github:VlaDexa/nixos-config";
     };
 
     bitwarden-desktop = {
