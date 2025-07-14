@@ -96,6 +96,15 @@
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
         };
+        kxkbrc.Layout = {
+          DisplayNames = ",";
+          LayoutDefaultGlobal = 1;
+          LayoutList = "us,ru";
+          Options = "compose:ralt";
+          ResetOldOptions = true;
+          Use = true;
+          VariantList = ",";
+        };
       };
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
 
