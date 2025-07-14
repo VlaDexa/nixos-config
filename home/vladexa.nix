@@ -113,17 +113,43 @@
           theme = "Klassy";
         };
       };
-      # desktop.widgets = [
-      #   {
-      #     config = {
-      #       Appearance = {
-      #         showSeconds = "always";
-      #       };
-      #     };
-      #     name = "org.kde.plasma.digitalclock";
-      #     position = "adaptive";
-      #   }
-      # ];
+
+      panels = [
+        {
+          location = "bottom";
+          widgets = [
+            "org.kde.plasma.kickoff"
+            "org.kde.plasma.pager"
+            {
+              iconTasks = {
+                launchers = [
+                  "applications:org.kde.systemsettings.desktop"
+                  "applications:org.kde.dolphin.desktop"
+                  "preferred://browser"
+                ];
+              };
+            }
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.systemtray"
+            {
+              name = "org.kde.plasma.weather";
+              config = {
+                WeatherStation.source = "bbcukmet|weather|Maribor, Slovenia, SI|3195506";
+                Units = {
+                  pressureUnit = 5008;
+                  speedUnit = 9000;
+                  temperatureUnit = 6001;
+                  visibilityUnit = 2007;
+                };
+              };
+            }
+            {
+              digitalClock.time.showSeconds = "always";
+            }
+            "org.kde.plasma.showdesktop"
+          ];
+        }
+      ];
     };
 
     firefox.enable = true;
