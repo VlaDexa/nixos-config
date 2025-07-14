@@ -112,6 +112,7 @@
         "services/kitty.desktop" = {
           "_launch" = "Ctrl+Alt+T";
         };
+        "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Alt+Shift,Switch to Next Keyboard Layout";
       };
 
       workspace = {
