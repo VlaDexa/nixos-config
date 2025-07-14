@@ -50,8 +50,17 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.timeServers = options.networking.timeServers.default ++ [ "time.cloudflare.com" ];
+  networking = {
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    timeServers = options.networking.timeServers.default ++ [ "time.cloudflare.com" ];
+
+    # DoH
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
+    networkmanager.dns = "none";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Ljubljana";
@@ -169,6 +178,33 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # DoH
+  services.dnscrypt-proxy2 = {
+    enable = true;
+    # Settings reference:
+    # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
+    settings = {
+      ipv6_servers = true;
+      require_dnssec = true;
+      # Add this to test if dnscrypt-proxy is actually used to resolve DNS requests
+      # query_log.file = "/var/log/dnscrypt-proxy/query.log";
+      sources.public-resolvers = {
+        urls = [
+          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+        ];
+        cache_file = "/var/cache/dnscrypt-proxy/public-resolvers.md";
+        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+      };
+
+      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
+      server_names = [
+        "cloudflare"
+        "cloudflare-ipv6"
+      ];
+    };
+  };
 
   # Open ports in the firewall.
   networking.firewall =
