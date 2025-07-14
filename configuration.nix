@@ -40,6 +40,12 @@
     loader.timeout = 0;
   };
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+    priority = 100;
+  };
+
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     defaultSopsFile = ./secrets.yaml;

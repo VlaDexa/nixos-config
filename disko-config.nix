@@ -51,6 +51,7 @@
                 discardPolicy = "once";
                 resumeDevice = true;
                 randomEncryption = false;
+                priority = 50;
               };
             };
             root = {
