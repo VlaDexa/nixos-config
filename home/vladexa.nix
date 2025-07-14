@@ -89,8 +89,13 @@
       enable = true;
 
       spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
-      configFile."spectaclerc"."General" = {
-        clipboardGroup = "PostScreenshotCopyImage";
+      configFile = {
+        kdeglobals.General = {
+          BrowserApplication = "chromium.desktop";
+        };
+        spectaclerc.General = {
+          clipboardGroup = "PostScreenshotCopyImage";
+        };
       };
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
 
