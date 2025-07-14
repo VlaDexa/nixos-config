@@ -162,7 +162,20 @@
       ];
     };
 
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      profiles.vladexa = {
+        isDefault = true;
+        search.default = "ddg";
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          privacy-badger
+          react-devtools
+          bitwarden
+        ];
+      };
+    };
+
     chromium = {
       enable = true;
       extensions = [
