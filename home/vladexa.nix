@@ -224,6 +224,8 @@
         pinentry = pkgs.pinentry-qt;
       };
     };
+
+    command-not-found.enable = true;
   };
 
   services = {
