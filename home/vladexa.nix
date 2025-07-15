@@ -91,7 +91,7 @@
       spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
       configFile = {
         kdeglobals.General = {
-          BrowserApplication = "chromium.desktop";
+          "BrowserApplication[$e]" = "chromium.desktop";
         };
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
