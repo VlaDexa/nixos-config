@@ -133,7 +133,7 @@
             {
               iconTasks = {
                 launchers = [
-                  "applications:org.kde.systemsettings.desktop"
+                  "applications:systemsettings.desktop"
                   "applications:org.kde.dolphin.desktop"
                   "preferred://browser"
                 ];
