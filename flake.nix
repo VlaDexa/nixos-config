@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "flake:nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:VlaDexa/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
-      url = "github:nix-community/disko/latest";
+      url = "github:nix-community/disko/pull/1058/head";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
