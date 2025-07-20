@@ -1,4 +1,7 @@
-{ backup, ... }:
+{
+  backup ? "/dev/disk/by-id/ata-ST4000DM004-2U9104_ZFN5KX49",
+  ...
+}:
 {
   disko.devices = {
     disk = {
