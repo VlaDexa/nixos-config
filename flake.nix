@@ -125,7 +125,11 @@
           system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-cpu-amd-zenpower
             nixos-hardware.nixosModules.common-gpu-amd
+            nixos-hardware.nixosModules.common-hidpi
+            nixos-hardware.nixosModules.common-pc-ssd
             disko.nixosModules.disko
             ./disk-configs/backup-config.nix
             ./disk-configs/workstation-config.nix
