@@ -66,6 +66,7 @@
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [
                 plasma-manager.homeManagerModules.plasma-manager
+                sops-nix.homeManagerModules.sops
                 ./modules/programs/bitwarden-desktop.nix
               ];
               home-manager.backupFileExtension = "backup";
@@ -135,6 +136,7 @@
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [
                 plasma-manager.homeManagerModules.plasma-manager
+                sops-nix.homeManagerModules.sops
                 ./modules/programs/bitwarden-desktop.nix
               ];
               home-manager.backupFileExtension = "backup";

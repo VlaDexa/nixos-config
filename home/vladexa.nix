@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     cachix
@@ -47,6 +47,13 @@
     hunspellDicts.ru_RU
     hunspellDicts.en_US
   ];
+
+  sops = {
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+    defaultSopsFile = ../secrets.yaml;
+
+    secrets.ssh_key = { };
+  };
 
   accounts.email.accounts = {
     selfGmail = {
@@ -220,6 +227,7 @@
         rerere.enabled = true;
       };
       signing = {
+        key = config.sops.secrets.ssh_key.path;
         format = "ssh";
         signByDefault = true;
       };
