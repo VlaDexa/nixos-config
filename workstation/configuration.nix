@@ -77,8 +77,11 @@
     pulse.enable = true;
   };
 
+  services.power-profiles-daemon.enable = true;
+
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
+
   services.fwupd.enable = true;
 
   services.ananicy = {
