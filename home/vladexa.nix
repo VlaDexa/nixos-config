@@ -180,7 +180,7 @@
     chromium = {
       enable = true;
       extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+        "ddkjiahejlhfcafbddmgiahcphecmpfh"
         "fmkadmapgofadopljbjfkapdkoienihi"
       ];
       dictionaries = with pkgs; [
