@@ -2,12 +2,14 @@
   config,
   lib,
   pkgs,
+  options,
   ...
 }:
 {
   system.stateVersion = "25.11";
 
   networking = {
+    hostName = "workstation";
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
     timeServers = options.networking.timeServers.default ++ [ "time.cloudflare.com" ];
 
