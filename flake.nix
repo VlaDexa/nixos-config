@@ -47,6 +47,7 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
             nur.modules.nixos.default
             ./laptop/configuration.nix
@@ -120,6 +121,7 @@
         };
 
         workstation = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-gpu-amd
