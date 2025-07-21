@@ -139,6 +139,7 @@
 
               home-manager.users.vladexa = ./home/vladexa.nix;
             }
+            nur.modules.nixos.default
             ./workstation/configuration.nix
             ./workstation/hardware-configuration.nix
           ];
