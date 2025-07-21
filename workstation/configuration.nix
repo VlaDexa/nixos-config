@@ -7,6 +7,18 @@
 {
   system.stateVersion = "25.11";
 
+  networking = {
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    timeServers = options.networking.timeServers.default ++ [ "time.cloudflare.com" ];
+
+    # DoH
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
+    networkmanager.dns = "none";
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Ljubljana";
 
