@@ -25,8 +25,6 @@
     fd
     ripgrep
 
-    gh
-
     # Webdev
     nodePackages_latest.nodejs
     pnpm
@@ -231,6 +229,12 @@
         format = "ssh";
         signByDefault = true;
       };
+    };
+
+    gh = {
+      enable = true;
+      settings.git_protocol = "ssh";
+      hosts."github.com".user = "VlaDexa";
     };
 
     ssh = {
