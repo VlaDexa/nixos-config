@@ -19,6 +19,8 @@
     secrets.password.neededForUsers = true;
   };
 
+  programs.fish.enable = true;
+
   users.users.vladexa = {
     isNormalUser = true;
     extraGroups = [
