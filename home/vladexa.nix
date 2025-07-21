@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     cachix
@@ -96,16 +96,19 @@
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
         };
-        kxkbrc.Layout = {
-          DisplayNames = ",";
-          LayoutDefaultGlobal = 1;
-          LayoutList = "us,ru";
-          Options = "compose:ralt";
-          ResetOldOptions = true;
-          Use = true;
-          VariantList = ",";
-        };
       };
+
+      input.keyboard = {
+        layouts = [
+          { layout = "us"; }
+          { layout = "ru"; }
+        ];
+        numlockOnStartup = "on";
+        options = [
+          "compose:ralt"
+        ];
+      };
+
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
 
       shortcuts = {
@@ -182,6 +185,7 @@
       extensions = [
         "ddkjiahejlhfcafbddmgiahcphecmpfh"
         "fmkadmapgofadopljbjfkapdkoienihi"
+        "mnjggcdmjocbbbhaepdhchncahnbgone"
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
@@ -260,5 +264,5 @@
     SSH_ASKPASS_REQUIRE = "prefer";
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 }
