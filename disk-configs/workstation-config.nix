@@ -48,12 +48,12 @@
           partitions = {
             main = {
               size = "100%";
-              content = {
-                type = "bcachefs";
-                filesystem = "main_bcachefs";
-                label = "ssd.big";
-                extraFormatArgs = [ "--discard" ];
-              };
+              # content = {
+              #   type = "bcachefs";
+              #   filesystem = "main_bcachefs";
+              #   label = "ssd.big";
+              #   extraFormatArgs = [ "--discard" ];
+              # };
             };
           };
         };
@@ -66,12 +66,12 @@
           partitions = {
             main = {
               size = "100%";
-              content = {
-                type = "bcachefs";
-                filesystem = "main_bcachefs";
-                label = "ssd.small";
-                extraFormatArgs = [ "--discard" ];
-              };
+              # content = {
+              #   type = "bcachefs";
+              #   filesystem = "main_bcachefs";
+              #   label = "ssd.small";
+              #   extraFormatArgs = [ "--discard" ];
+              # };
             };
           };
         };
@@ -84,11 +84,11 @@
           partitions = {
             main = {
               size = "100%";
-              content = {
-                type = "bcachefs";
-                filesystem = "main_bcachefs";
-                label = "hdd.backup";
-              };
+              # content = {
+              #   type = "bcachefs";
+              #   filesystem = "main_bcachefs";
+              #   label = "hdd.backup";
+              # };
             };
           };
         };
@@ -100,12 +100,12 @@
         type = "bcachefs_filesystem";
         extraFormatArgs = [
           "--compression=zstd"
-          "--background_compression=zstd:15"
-          "--replicas=2"
-          "--background_target=hdd"
-          "--foreground_target=ssd"
-          "--promote_target=ssd"
-          "--metadata_target=nvme"
+          # "--background_compression=zstd:15"
+          # "--replicas=2"
+          # "--background_target=hdd"
+          # "--foreground_target=ssd"
+          # "--promote_target=ssd"
+          # "--metadata_target=nvme"
         ];
         subvolumes = {
           "subvolumes/root" = {
