@@ -122,6 +122,32 @@
           };
         };
       };
+      next_bcachefs = {
+        type = "bcachefs_filesystem";
+        extraFormatArgs = [
+          "--compression=zstd"
+          "--background_compression=zstd:15"
+          "--replicas=2"
+          "--background_target=hdd"
+          "--foreground_target=ssd"
+          "--promote_target=ssd"
+          # "--metadata_target=nvme"
+        ];
+        subvolumes = {
+          "subvolumes/root" = {
+            mountpoint = "/";
+          };
+          "subvolumes/home" = {
+            mountpoint = "/home";
+          };
+          "subvolumes/nix" = {
+            mountpoint = "/nix";
+            mountOptions = [
+              "noatime"
+            ];
+          };
+        };
+      }
     };
   };
 }
