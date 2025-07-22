@@ -195,7 +195,6 @@
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
       ];
-      package = pkgs.ungoogled-chromium;
     };
 
     fish.enable = true;
