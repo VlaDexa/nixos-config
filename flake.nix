@@ -101,7 +101,7 @@
 
           vm = nixpkgs-patched.lib.nixosSystem {
             modules = [
-              ./disko-config.nix
+              ./disk-configs/disko-config.nix
               disko.nixosModules.disko
               (
                 {
