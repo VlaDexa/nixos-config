@@ -37,7 +37,7 @@
   };
 
   boot = {
-    boot.kernelModules = [ "nbd" ];
+    kernelModules = [ "nbd" ];
     kernelPackages = pkgs.linuxPackages_latest;
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
