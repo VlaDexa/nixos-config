@@ -1,5 +1,5 @@
 {
-  programs.yt-dlp = {
+  programs.yt-dlp.config = {
     sponsorblock-remove = "sponsor";
     cookies-from-browser = "firefox";
     mark-watched = true;
