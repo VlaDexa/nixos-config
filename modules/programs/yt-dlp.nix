@@ -6,7 +6,7 @@
 }:
 {
   config = lib.mkIf config.programs.yt-dlp.enable {
-    programs.yt-dlp.config = {
+    programs.yt-dlp.settings = {
       sponsorblock-remove = "sponsor";
       cookies-from-browser = "firefox";
       mark-watched = true;
