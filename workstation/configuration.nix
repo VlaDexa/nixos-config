@@ -169,6 +169,18 @@
 
   hardware.bluetooth.enable = true;
 
+  nix.registry.nixpkgs = {
+    from = {
+      id = "nixpkgs";
+      type = "indirect";
+    };
+    to = {
+      owner = "NixOS";
+      repo = "nixpkgs";
+      type = "github";
+      ref = "nixos-unstable";
+    };
+  };
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
