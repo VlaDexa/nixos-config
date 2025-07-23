@@ -17,7 +17,7 @@
 
     xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = fetchzip {
       url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/1.1.0/bgutil-ytdlp-pot-provider.zip";
-      hash = "sha256-e9e4f3afc56fe8e774950ee4f863f7767480b64819f358c7d536fad241fd5359=";
+      sha256 = "e9e4f3afc56fe8e774950ee4f863f7767480b64819f358c7d536fad241fd5359=";
     };
   };
 }
