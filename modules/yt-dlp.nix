@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  
   ...
 }:
 {
@@ -14,5 +15,7 @@
       embed-thumbnail = true;
       concurrent-fragments = 4;
     };
+
+		xdg.configFile.yt-dlp.plugins = 
   };
 }
