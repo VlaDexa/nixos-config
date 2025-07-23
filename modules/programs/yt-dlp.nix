@@ -1,7 +1,7 @@
 {
   lib,
+  pkgs,
   config,
-  fetchzip,
   ...
 }:
 {
@@ -15,7 +15,7 @@
       concurrent-fragments = 4;
     };
 
-    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = fetchzip {
+    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = pkgs.fetchzip {
       pname = "bgutil-ytdlp-pot-provider";
       version = "1.1.0";
       url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${version}/bgutil-ytdlp-pot-provider.zip";
