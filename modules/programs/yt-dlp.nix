@@ -20,6 +20,7 @@
       version = "1.1.0";
       url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${version}/bgutil-ytdlp-pot-provider.zip";
       hash = "sha256-dC4QT6g7re5bYlhwLFu5liu9VOTmAPC39NUK/8qE3DM=";
+      stripRoot = false;
     };
   };
 }

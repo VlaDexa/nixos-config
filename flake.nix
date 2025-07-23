@@ -85,9 +85,8 @@
                 home-manager.sharedModules = [
                   plasma-manager.homeManagerModules.plasma-manager
                   sops-nix.homeManagerModules.sops
-                  ./modules/programs/bitwarden-desktop.nix
-                  ./modules/programs/yt-dlp.nix
-                ];
+                ]
+                ++ (builtins.attrValues (import ./modules/programs));
                 home-manager.backupFileExtension = "backup";
 
                 home-manager.users.vladexa = ./home/vladexa.nix;
@@ -160,9 +159,8 @@
                 home-manager.sharedModules = [
                   plasma-manager.homeManagerModules.plasma-manager
                   sops-nix.homeManagerModules.sops
-                  ./modules/programs/bitwarden-desktop.nix
-                  ./modules/programs/yt-dlp.nix
-                ];
+                ]
+                ++ (builtins.attrValues (import ./modules/programs));
                 home-manager.backupFileExtension = "backup";
 
                 home-manager.users.vladexa = ./home/vladexa.nix;

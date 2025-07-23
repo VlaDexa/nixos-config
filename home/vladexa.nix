@@ -10,8 +10,6 @@
     jq
     bat
 
-    mpv
-
     spotify
 
     wl-clipboard
@@ -272,6 +270,8 @@
 
     command-not-found.enable = false;
     nix-index.enable = true;
+
+    mpv.enable = true;
   };
 
   fonts.fontconfig.enable = true;
