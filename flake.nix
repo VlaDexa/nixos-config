@@ -167,6 +167,9 @@
 
                 home-manager.users.vladexa = ./home/vladexa.nix;
               }
+              {
+                home-manager.users.vladexa.programs.yt-dlp.enable = true;
+              }
               nur.modules.nixos.default
               ./workstation/configuration.nix
               ./workstation/hardware-configuration.nix
