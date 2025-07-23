@@ -11,6 +11,7 @@
   networking.hostName = "workstation";
 
   boot.plymouth.enable = true; # Doesn't work with bcachefs encryption
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_testing;
 
   # Define a user account.
   users.users.vladexa = {
