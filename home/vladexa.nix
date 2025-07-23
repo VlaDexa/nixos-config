@@ -204,7 +204,10 @@
       settings = {
         shell = ''${pkgs.fish}/bin/fish'';
       };
-      # shellIntegration.enableFishIntegration = true;
+      font = {
+        package = pkgs.nerd-fonts.fira-code;
+        name = "Fira Code";
+      };
     };
 
     thunderbird = {
@@ -268,6 +271,8 @@
     command-not-found.enable = false;
     nix-index.enable = true;
   };
+
+  fonts.fontconfig.enable = true;
 
   services = {
     kdeconnect.enable = true;
