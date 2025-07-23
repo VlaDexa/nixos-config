@@ -1,4 +1,10 @@
 {
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   config = { 
 		programs.yt-dlp.config = {
     sponsorblock-remove = "sponsor";
