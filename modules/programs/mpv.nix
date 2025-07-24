@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  hasYtdlp = config.programs.yt-dlp.enable;
+in
 {
   config = lib.mkIf config.programs.mpv.enable {
     programs.mpv = {
@@ -25,7 +28,7 @@
         save-position-on-quit = true;
         # By default mpv tries to use youtube-dl and then chooses yt-dlp
         # Saves some time by saying that it needs only yt-dlp
-        script-opts = "ytdl_hook-ytdl_path=/usr/bin/yt-dlp";
+        script-opts = lib.mkIf hasYtdlp "ytdl_hook-ytdl_path=${config.programs.yt-dlp.package}/bin/yt-dlp";
         # Use better scaling algorithm by default
         scale = "ewa_lanczos4sharpest";
         scale-blur = "0.981251";
@@ -50,6 +53,34 @@
         # Look for subs in some folders
         sub-auto = "fuzzy";
         sub-file-paths = "Subs:subs:Subtitles:subtitles";
+      };
+      profiles = {
+        stream = {
+          profile = "low-latency";
+          cache = "no";
+        };
+        music = {
+          profile-cond = "path:find('[Mm]usic')";
+          no-resume-playback = true;
+          shuffle = true;
+          no-video = true;
+        };
+      };
+
+      package = pkgs.mpv-unwrapped.wrapper {
+        scripts =
+          with pkgs.mpvScripts;
+          (
+            [
+              mpris
+              thumbfast
+            ]
+            ++ lib.optionals hasYtdlp [ sponsorblock ]
+          );
+
+        mpv = pkgs.mpv-unwrapped;
+
+        youtubeSupport = hasYtdlp;
       };
     };
   };
