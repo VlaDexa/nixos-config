@@ -66,6 +66,8 @@
     loader.timeout = 0;
   };
 
+  virtualisation.docker.enable = true;
+
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     defaultSopsFile = ../secrets.yaml;
