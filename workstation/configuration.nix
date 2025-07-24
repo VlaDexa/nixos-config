@@ -109,6 +109,20 @@
     enableAskPassword = true;
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    package = pkgs.steam.override {
+      extraEnv = {
+        PROTON_ENABLE_WAYLAND = true;
+        PROTON_ENABLE_HDR = true;
+      };
+    };
+  };
+
   services.displayManager = {
     sddm = {
       enable = true;
