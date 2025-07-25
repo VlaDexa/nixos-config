@@ -70,10 +70,7 @@
     defaultSopsFile = ../secrets.yaml;
 
     secrets.password.neededForUsers = true;
-    secrets.mssql_password.neededForUsers = true;
-    templates."sql-password.env".content = ''
-      MSSQL_SA_PASSWORD = "${config.sops.placeholder.mssql_password}"
-    '';
+    secrets.mssql_password = { };
   };
 
   location.provider = "geoclue2";

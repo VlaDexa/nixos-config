@@ -1,5 +1,9 @@
 { config, ... }:
 {
+  sops.templates."sql-password.env".content = ''
+    MSSQL_SA_PASSWORD = "${config.sops.placeholder.mssql_password}"
+  '';
+
   virtualisation.oci-containers.backend = "podman";
   virtualisation.oci-containers.containers = {
     sqlserver = {
