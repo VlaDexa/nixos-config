@@ -39,6 +39,8 @@
     };
   };
 
+  virtualisation.oci-containers.containers.sqlserver.autoStart = false;
+
   nix.registry.nixpkgs = {
     from = {
       id = "nixpkgs";
