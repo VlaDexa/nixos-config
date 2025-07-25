@@ -47,132 +47,65 @@
     {
       nixosConfigurations =
         let
-          system = "x86_64-linux";
-          pkgs = (import nixpkgs { inherit system; });
-          nixpkgs-patched' = (
-            pkgs.applyPatches {
-              name = "nixpkgs-patched-414391";
-              src = nixpkgs;
-              patches = [
-                (pkgs.fetchpatch {
-                  url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
-                  sha256 = "sha256-DPy3yViEIO/e/Skr0gnMFqeFq77uOdJPWiXCSeKVxdQ=";
-                })
-              ];
+          nixpkgs-patched = import ./shared/nixpkgs-patched.nix { inherit nixpkgs self; };
+          shared_home_modules = [
+            plasma-manager.homeManagerModules.plasma-manager
+            sops-nix.homeManagerModules.sops
+          ]
+          ++ (builtins.attrValues (import ./modules/programs));
+          shared_modules = [
+            nur.modules.nixos.default
+            home-manager.nixosModules.home-manager
+            disko.nixosModules.disko
+            sops-nix.nixosModules.sops
+            ./cachix.nix
+            lanzaboote.nixosModules.lanzaboote
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.sharedModules = shared_home_modules;
+              home-manager.backupFileExtension = "backup";
             }
-          );
-          nixpkgs-patched = (import "${nixpkgs-patched'}/flake.nix").outputs { inherit self; };
+            ./shared/configuration.nix
+            ./modules/plymouth.nix
+            ./modules/podman.nix
+            ./modules/containers/sql-server.nix
+          ];
+          vladexa = {
+            home-manager.users.vladexa = ./home/vladexa.nix;
+          };
         in
         {
           nixos = nixpkgs-patched.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              nur.modules.nixos.default
-              ./laptop/configuration.nix
-              ./laptop/hardware-configuration.nix
-              ./cachix.nix
-              nixos-hardware.nixosModules.common-pc-laptop
-              nixos-hardware.nixosModules.common-pc-ssd
-              nixos-hardware.nixosModules.common-hidpi
-              nixos-hardware.nixosModules.common-cpu-amd
-              nixos-hardware.nixosModules.common-cpu-amd-pstate
-              nixos-hardware.nixosModules.common-cpu-amd-zenpower
-              nixos-hardware.nixosModules.common-gpu-amd
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.sharedModules = [
-                  plasma-manager.homeManagerModules.plasma-manager
-                  sops-nix.homeManagerModules.sops
-                ]
-                ++ (builtins.attrValues (import ./modules/programs));
-                home-manager.backupFileExtension = "backup";
-
-                home-manager.users.vladexa = ./home/vladexa.nix;
-              }
-              disko.nixosModules.disko
-              ./disk-configs/disko-config.nix
-              sops-nix.nixosModules.sops
-              lanzaboote.nixosModules.lanzaboote
-              ./secure-boot.nix
-            ];
-          };
-
-          vm = nixpkgs-patched.lib.nixosSystem {
-            modules = [
-              ./disk-configs/disko-config.nix
-              disko.nixosModules.disko
-              (
-                {
-                  config,
-                  lib,
-                  pkgs,
-                  ...
-                }:
-                {
-                  system.stateVersion = "25.11";
-
-                  boot = {
-                    kernelParams = [ "console=ttyS0" ];
-                    supportedFilesystems = [ "bcachefs" ];
-                    loader = {
-                      systemd-boot.enable = true;
-                      efi.canTouchEfiVariables = true;
-                    };
-                  };
-
-                  users.users.vladexa = {
-                    initialPassword = "yeahvmpass";
-                    isNormalUser = true;
-                    shell = pkgs.zsh;
-                    extraGroups = [ "wheel" ];
-                  };
-
-                  programs.zsh.enable = true;
-
-                  disko.imageBuilder.imageFormat = "qcow2";
-                  disko.devices.disk.main.imageSize = "50G";
-                  disko.devices.bcachefs_filesystems.main_bcachefs.passwordFile = lib.mkForce null;
-                }
-              )
-            ];
+            modules =
+              shared_modules
+              ++ [
+                nixos-hardware.nixosModules.common-pc-laptop
+                nixos-hardware.nixosModules.common-pc-ssd
+                nixos-hardware.nixosModules.common-hidpi
+                nixos-hardware.nixosModules.common-cpu-amd
+                nixos-hardware.nixosModules.common-cpu-amd-pstate
+                nixos-hardware.nixosModules.common-cpu-amd-zenpower
+                nixos-hardware.nixosModules.common-gpu-amd
+                vladexa
+                ./secure-boot.nix
+              ]
+              ++ builtins.attrValues (import ./laptop);
           };
 
           workstation = nixpkgs-patched.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              nixos-hardware.nixosModules.common-cpu-amd
-              nixos-hardware.nixosModules.common-cpu-amd-pstate
-              nixos-hardware.nixosModules.common-cpu-amd-zenpower
-              nixos-hardware.nixosModules.common-gpu-amd
-              nixos-hardware.nixosModules.common-hidpi
-              nixos-hardware.nixosModules.common-pc-ssd
-              disko.nixosModules.disko
-              ./disk-configs/backup-config.nix
-              ./disk-configs/workstation-config.nix
-              sops-nix.nixosModules.sops
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.sharedModules = [
-                  plasma-manager.homeManagerModules.plasma-manager
-                  sops-nix.homeManagerModules.sops
-                ]
-                ++ (builtins.attrValues (import ./modules/programs));
-                home-manager.backupFileExtension = "backup";
-
-                home-manager.users.vladexa = ./home/vladexa.nix;
-              }
-              {
-                home-manager.users.vladexa.programs.yt-dlp.enable = true;
-              }
-              nur.modules.nixos.default
-              ./workstation/configuration.nix
-              ./workstation/hardware-configuration.nix
-              ./cachix.nix
-            ];
+            modules =
+              shared_modules
+              ++ [
+                nixos-hardware.nixosModules.common-cpu-amd
+                nixos-hardware.nixosModules.common-cpu-amd-pstate
+                nixos-hardware.nixosModules.common-cpu-amd-zenpower
+                nixos-hardware.nixosModules.common-gpu-amd
+                nixos-hardware.nixosModules.common-hidpi
+                nixos-hardware.nixosModules.common-pc-ssd
+                vladexa
+              ]
+              ++ builtins.attrValues (import ./workstation);
           };
         };
     }
