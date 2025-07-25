@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   sops.templates."sql-password.env".content = ''
     MSSQL_SA_PASSWORD = "${config.sops.placeholder.mssql_password}"
@@ -8,7 +8,7 @@
   virtualisation.oci-containers.containers = {
     sqlserver = {
       image = "mcr.microsoft.com/mssql/server:2025-latest";
-      autoStart = true;
+      autoStart = lib.mkDefault true;
       ports = [ "1433:1433" ];
       environment = {
         ACCEPT_EULA = "Y";
