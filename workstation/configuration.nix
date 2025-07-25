@@ -40,17 +40,4 @@
   };
 
   virtualisation.oci-containers.containers.sqlserver.autoStart = false;
-
-  nix.registry.nixpkgs = {
-    from = {
-      id = "nixpkgs";
-      type = "indirect";
-    };
-    to = {
-      owner = "NixOS";
-      repo = "nixpkgs";
-      type = "github";
-      ref = "nixos-unstable";
-    };
-  };
 }
