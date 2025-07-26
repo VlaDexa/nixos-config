@@ -40,7 +40,7 @@ in
         tscale = "oversample";
         # Don't allow new windows be larger than the screen
         autofit-larger = "100%x100%";
-        keepaspect-window = "no";
+        keepaspect-window = false;
         # Use more than 2 channels for audio
         #ao="alsa";
         #audio-channels="auto";
@@ -57,13 +57,13 @@ in
       profiles = {
         stream = {
           profile = "low-latency";
-          cache = "no";
+          cache = false;
         };
         music = {
           profile-cond = "path:find('[Mm]usic')";
-          no-resume-playback = true;
+          resume-playback = false;
           shuffle = true;
-          no-video = true;
+          video = false;
         };
       };
 
