@@ -193,6 +193,12 @@
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
       ];
+      # Stolen from https://wiki.cachyos.org/configuration/enabling_hardware_acceleration_in_google_chrome/
+      commandLineArgs = [
+        "--use-gl=angle"
+        "--use-angle=vulkan"
+        "--enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo"
+      ];
     };
 
     fish.enable = true;
