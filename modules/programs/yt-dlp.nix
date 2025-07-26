@@ -22,5 +22,14 @@
       hash = "sha256-dC4QT6g7re5bYlhwLFu5liu9VOTmAPC39NUK/8qE3DM=";
       stripRoot = false;
     };
+
+    # TODO: run it natively like a normal human being
+    services.podman = {
+      enable = lib.mkForce true;
+      containers.bgutil-ytdlp-pot-provider = {
+        image = "brainicism/bgutil-ytdlp-pot-provider";
+        ports = [ "4416:4416" ];
+      };
+    };
   };
 }
