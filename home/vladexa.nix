@@ -75,10 +75,6 @@
 
   xdg = {
     enable = true;
-    configFile.nvim.source = builtins.fetchGit {
-      url = "https://github.com/VlaDexa/nvim-config.git";
-      rev = "6d0e00d5999efc8048daa339604ae452885427af";
-    };
     mimeApps.enable = true;
   };
 
@@ -285,6 +281,14 @@
 
   services = {
     kdeconnect.enable = true;
+
+    git-sync = {
+      enable = true;
+      repositories."nvim-config" = {
+        path = "${config.xdg.configHome}/nvim";
+        uri = "git@github.com:VlaDexa/nvim-config.git";
+      };
+    };
   };
 
   home.sessionVariables = {
