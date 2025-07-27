@@ -136,6 +136,8 @@
     };
   };
 
+  xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
+
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
     konsole
