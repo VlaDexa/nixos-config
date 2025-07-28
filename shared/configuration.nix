@@ -132,7 +132,6 @@
         enable = true;
         wayland.enable = true;
         autoNumlock = true;
-        extraPackages = with pkgs; [ kdePackages.sddm-kcm ];
       };
       defaultSession = "plasma";
     };
@@ -162,6 +161,7 @@
     curl
     openssl
     git
+    kdePackages.sddm-kcm
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
