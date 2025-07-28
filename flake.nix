@@ -62,6 +62,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
       flake = false;
     };
+    nixpkgs-patch-429126 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
+      flake = false;
+    };
   };
   outputs =
     {

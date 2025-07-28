@@ -311,7 +311,7 @@
         enable = true;
         extraArgs = "--keep 3";
       };
-      flake = "github:VlaDexa/nixos-config";
+      flake = "github:VlaDexa/nixos-config/bcachefs_dedup";
     };
 
     bitwarden = {
