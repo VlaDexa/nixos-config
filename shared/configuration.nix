@@ -131,6 +131,8 @@
       sddm = {
         enable = true;
         wayland.enable = true;
+        autoNumlock = true;
+        extraPackages = with pkgs; [ kdePackages.sddm-kcm ];
       };
       defaultSession = "plasma";
     };
