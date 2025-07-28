@@ -15,16 +15,13 @@
       concurrent-fragments = 4;
     };
 
-    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins".source =
-      pkgs.fetchzip
-        rec {
-          pname = "bgutil-ytdlp-pot-provider";
-          version = "1.1.0";
-          url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${version}/bgutil-ytdlp-pot-provider.zip";
-          hash = "sha256-dC4QT6g7re5bYlhwLFu5liu9VOTmAPC39NUK/8qE3DM=";
-          # Change to stripRoot = true after https://github.com/NixOS/nixpkgs/issues/428567 gets fixed
-          stripRoot = true;
-        };
+    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = pkgs.fetchzip rec {
+      pname = "bgutil-ytdlp-pot-provider";
+      version = "1.1.0";
+      url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${version}/bgutil-ytdlp-pot-provider.zip";
+      hash = "sha256-9PErBYSViEiIcfw2g3ZfiObPMM8tgOsH3Ue0zwlBYBQ=";
+      stripRoot = false;
+    };
 
     # TODO: run it natively like a normal human being
     services.podman = {
