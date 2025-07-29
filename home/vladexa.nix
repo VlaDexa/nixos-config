@@ -87,6 +87,7 @@
 
     plasma = {
       enable = true;
+      overrideConfig = true;
 
       spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
       configFile = {
