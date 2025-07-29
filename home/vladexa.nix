@@ -75,7 +75,12 @@
 
   xdg = {
     enable = true;
-    mimeApps.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/http" = "chromium-browser.desktop";
+      };
+    };
   };
 
   programs = {
@@ -92,7 +97,7 @@
       spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
       configFile = {
         kdeglobals.General = {
-          "BrowserApplication[$e]" = "chromium.desktop";
+          "BrowserApplication[$e]" = "chromium-browser.desktop";
         };
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
