@@ -54,6 +54,7 @@
     defaultSopsFile = ../secrets.yaml;
 
     secrets.ssh_key = { };
+    secrets.mssql_password = { };
   };
 
   accounts.email.accounts = {

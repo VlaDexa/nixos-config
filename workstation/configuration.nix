@@ -43,6 +43,4 @@
     enable = true;
     enableExcludeWrapper = false;
   };
-
-  virtualisation.oci-containers.containers.sqlserver.autoStart = false;
 }

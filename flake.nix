@@ -51,6 +51,7 @@
           shared_home_modules = [
             plasma-manager.homeManagerModules.plasma-manager
             sops-nix.homeManagerModules.sops
+            ./modules/containers/sql-server.nix
           ]
           ++ (builtins.attrValues (import ./modules/programs));
           shared_modules = [
@@ -68,8 +69,6 @@
             }
             ./shared/configuration.nix
             ./modules/plymouth.nix
-            ./modules/podman.nix
-            ./modules/containers/sql-server.nix
           ];
           vladexa = {
             home-manager.users.vladexa = ./home/vladexa.nix;

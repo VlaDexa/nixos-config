@@ -70,7 +70,6 @@
     defaultSopsFile = ../secrets.yaml;
 
     secrets.password.neededForUsers = true;
-    secrets.mssql_password = { };
   };
 
   location.provider = "geoclue2";

@@ -1,19 +1,18 @@
 { config, lib, ... }:
 {
   sops.templates."sql-password.env".content = ''
-    MSSQL_SA_PASSWORD = "${config.sops.placeholder.mssql_password}"
+    MSSQL_SA_PASSWORD=${config.sops.placeholder.mssql_password}
   '';
 
-  virtualisation.oci-containers.backend = "podman";
-  virtualisation.oci-containers.containers = {
-    sqlserver = {
+  services.podman = {
+    enable = lib.mkForce true;
+    containers.sqlserver = {
       image = "mcr.microsoft.com/mssql/server:2025-latest";
-      autoStart = lib.mkDefault true;
       ports = [ "1433:1433" ];
       environment = {
         ACCEPT_EULA = "Y";
       };
-      environmentFiles = [
+      environmentFile = [
         config.sops.templates."sql-password.env".path
       ];
     };
