@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home.packages = with pkgs; [
     cachix
@@ -101,6 +106,24 @@
         };
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
+        };
+        plasmashellrc = lib.mkIf config.programs.yt-dlp.enable {
+          Action_0 = {
+            Automatic = true;
+            Description = "Plays the youtube/twitch video";
+            "Number of commands" = 1;
+            Regexp = "^http.+(youtu|twitch)";
+          };
+          "Action_0/Command_0" = {
+            "Commandline[$e]" = "mpv --script-opts=ytdl_hook-try_ytdl_first=yes %s";
+            Description = "Opens mpv";
+            Enabled = true;
+            Icon = "mpv";
+            Output = 0;
+          };
+          General = {
+            "Number of Actions" = 1;
+          };
         };
       };
 
