@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  bgutilVersion = "1.1.0";
+in
 {
   config = lib.mkIf config.programs.yt-dlp.enable {
     programs.yt-dlp.settings = {
@@ -15,10 +18,10 @@
       concurrent-fragments = 4;
     };
 
-    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = pkgs.fetchzip rec {
+    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = pkgs.fetchzip {
       pname = "bgutil-ytdlp-pot-provider";
-      version = "1.1.0";
-      url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${version}/bgutil-ytdlp-pot-provider.zip";
+      version = bgutilVersion;
+      url = "https://github.com/Brainicism/bgutil-ytdlp-pot-provider/releases/download/${bgutilVersion}/bgutil-ytdlp-pot-provider.zip";
       hash = "sha256-9PErBYSViEiIcfw2g3ZfiObPMM8tgOsH3Ue0zwlBYBQ=";
       stripRoot = false;
     };
@@ -27,7 +30,7 @@
     services.podman = {
       enable = lib.mkForce true;
       containers.bgutil-ytdlp-pot-provider = {
-        image = "brainicism/bgutil-ytdlp-pot-provider";
+        image = "docker.io/brainicism/bgutil-ytdlp-pot-provider:${bgutilVersion}";
         ports = [ "4416:4416" ];
       };
     };
