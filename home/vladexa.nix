@@ -103,7 +103,10 @@
       spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
       configFile = {
         kdeglobals.General = {
-          "BrowserApplication[$e]" = "chromium-browser.desktop";
+          BrowserApplication = {
+            value = "chromium-browser.desktop";
+            shellExpand = true;
+          };
         };
         spectaclerc.General = {
           clipboardGroup = "PostScreenshotCopyImage";
@@ -115,8 +118,11 @@
             "Number of commands" = 1;
             Regexp = "^http.+(youtu|twitch)";
           };
-          "Action_0/Command_0" = {
-            "Commandline[$e]" = "mpv --script-opts=ytdl_hook-try_ytdl_first=yes %s";
+          "Action_0\\/Command_0" = {
+            Commandline = {
+              value = "mpv --script-opts=ytdl_hook-try_ytdl_first=yes %s";
+              shellExpand = true;
+            };
             Description = "Opens mpv";
             Enabled = true;
             Icon = "mpv";
@@ -124,6 +130,12 @@
           };
           General = {
             "Number of Actions" = 1;
+          };
+          EditActionDialog = {
+            ColumnState = {
+              value = "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAADAAEAAQAAAAAAAAAAAAAAAGT/////AAAAAQAAAAAAAAADAAAAZAAAAAEAAAAAAAAAZAAAAAEAAAAAAAABPAAAAAEAAAAAAAAD6AAAAABkAAAAAAAAAAAAAAAAAAAAAQ==";
+              escapeValue = false;
+            };
           };
         };
       };
