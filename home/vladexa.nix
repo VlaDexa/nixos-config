@@ -22,19 +22,11 @@
     # Work
     teams-for-linux
     clickup
-    sqlcmd
+    devenv
 
     telegram-desktop
     fd
     ripgrep
-
-    # Webdev
-    nodePackages_latest.nodejs
-    pnpm
-    bun
-
-    # Rust
-    cargo
 
     # KDE Virtual Desktop
     kdePackages.krfb
@@ -280,6 +272,12 @@
         format = "ssh";
         signByDefault = true;
       };
+      ignores = [
+        "devenv.nix"
+        "devenv.lock"
+        ".devenv.flake.nix"
+        ".devenv"
+      ];
     };
 
     gh = {
