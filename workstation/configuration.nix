@@ -35,6 +35,7 @@
       extraEnv = {
         PROTON_ENABLE_WAYLAND = true;
         PROTON_ENABLE_HDR = true;
+        SDL_DYNAMIC_API = "${pkgs.SDL2}/lib/libSDL2-2.0.so";
       };
     };
   };
