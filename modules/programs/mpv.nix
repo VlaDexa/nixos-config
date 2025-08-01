@@ -8,7 +8,7 @@ let
   hasYtdlp = config.programs.yt-dlp.enable;
 in
 {
-  config = lib.mkIf config.programs.mpv.enable {
+  config = {
     programs.mpv = {
       defaultProfiles = [ "gpu-hq" ];
       config = {
