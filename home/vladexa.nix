@@ -202,7 +202,6 @@
 
     firefox = {
       enable = true;
-      nativeMessagingHosts = with pkgs; [ firefoxpwa ];
       profiles.vladexa = {
         isDefault = true;
         search = {
@@ -215,7 +214,6 @@
           privacy-badger
           react-devtools
           bitwarden
-          pwas-for-firefox
         ];
       };
     };
