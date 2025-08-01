@@ -277,6 +277,8 @@
         "devenv.lock"
         ".devenv.flake.nix"
         ".devenv"
+        ".pre-commit-config.yaml"
+        ".direnv/"
       ];
     };
 
