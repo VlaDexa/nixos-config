@@ -273,6 +273,7 @@
         signByDefault = true;
       };
       ignores = [
+        "devenv.yaml"
         "devenv.nix"
         "devenv.lock"
         ".devenv.flake.nix"
@@ -318,6 +319,8 @@
     nix-index.enable = true;
 
     mpv.enable = true;
+
+    direnv.enable = true;
   };
 
   fonts.fontconfig.enable = true;
