@@ -74,6 +74,7 @@ in
             [
               mpris
               thumbfast
+              modernz
             ]
             ++ lib.optionals hasYtdlp [ sponsorblock ]
           );
