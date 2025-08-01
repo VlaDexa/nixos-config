@@ -6,6 +6,9 @@
       qbittorrent
     ];
     programs.yt-dlp.enable = true;
+    services.easyeffects.enable = true;
+    programs.vesktop.enable = true;
+
     services.podman.containers.sqlserver.autoStart = false;
   };
 }

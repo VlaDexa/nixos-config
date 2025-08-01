@@ -38,6 +38,8 @@
       };
     };
   };
+  # For easyeffects
+  programs.dconf.enable = true;
 
   services.mullvad-vpn = {
     enable = true;
