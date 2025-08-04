@@ -95,6 +95,7 @@
             }
             ./shared/configuration.nix
             ./modules/plymouth.nix
+            ./secure-boot.nix
           ];
           vladexa = {
             home-manager.users.vladexa = ./home/vladexa.nix;
@@ -113,7 +114,6 @@
                 nixos-hardware.nixosModules.common-cpu-amd-zenpower
                 nixos-hardware.nixosModules.common-gpu-amd
                 vladexa
-                ./secure-boot.nix
               ]
               ++ builtins.attrValues (import ./laptop);
           };
