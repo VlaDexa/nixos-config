@@ -39,6 +39,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -52,6 +56,7 @@
       nur,
       lanzaboote,
       pre-commit-hooks,
+      nix-index-database,
       ...
     }:
     let
@@ -71,6 +76,7 @@
           shared_home_modules = [
             plasma-manager.homeManagerModules.plasma-manager
             sops-nix.homeManagerModules.sops
+            nix-index-database.homeModules.nix-index
             ./modules/containers/sql-server.nix
           ]
           ++ (builtins.attrValues (import ./modules/programs));
