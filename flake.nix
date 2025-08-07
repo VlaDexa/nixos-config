@@ -43,6 +43,19 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    nixvim-config = {
+      url = "github:VlaDexa/nixvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixvim.follows = "nixvim";
+    };
   };
   outputs =
     {
@@ -57,6 +70,8 @@
       lanzaboote,
       pre-commit-hooks,
       nix-index-database,
+      nixvim,
+      nixvim-config,
       ...
     }:
     let
@@ -77,7 +92,11 @@
             plasma-manager.homeManagerModules.plasma-manager
             sops-nix.homeManagerModules.sops
             nix-index-database.homeModules.nix-index
+            nixvim.homeModules.nixvim
             ./modules/containers/sql-server.nix
+            {
+              programs.nixvim = nixvim-config.modules.config;
+            }
           ]
           ++ (builtins.attrValues (import ./modules/programs));
           shared_modules = [

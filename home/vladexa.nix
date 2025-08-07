@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 {
@@ -83,10 +84,9 @@
   };
 
   programs = {
-    neovim = {
+    nixvim = {
       enable = true;
       defaultEditor = true;
-      extraPackages = with pkgs; [ gcc ];
     };
 
     plasma = {
@@ -328,14 +328,6 @@
 
   services = {
     kdeconnect.enable = true;
-
-    git-sync = {
-      enable = true;
-      repositories."nvim-config" = {
-        path = "${config.xdg.configHome}/nvim";
-        uri = "git@github.com:VlaDexa/nvim-config.git";
-      };
-    };
   };
 
   home.sessionVariables = {
