@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   options,
   ...
@@ -131,6 +129,7 @@
         enable = true;
         wayland.enable = true;
         autoNumlock = true;
+        theme = "sddm-astronaut-theme";
       };
       defaultSession = "plasma";
     };
@@ -161,6 +160,8 @@
     openssl
     git
     kdePackages.sddm-kcm
+    sddm-astronaut
+    kdePackages.qtmultimedia
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
