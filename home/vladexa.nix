@@ -304,13 +304,13 @@
     bitwarden-desktop = {
       enable = true;
 
-      selfHostedUrl = "http://vpn.vladexa.xyz:6060";
+      selfHostedUrl = "https://vaultwarden.vladexa.xyz";
     };
 
     rbw = {
       enable = true;
       settings = {
-        base_url = "http://vpn.vladexa.xyz:6060";
+        base_url = "https://vaultwarden.vladexa.xyz";
         email = "vgrechannik@gmail.com";
         pinentry = pkgs.pinentry-qt;
       };

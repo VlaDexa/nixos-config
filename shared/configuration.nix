@@ -150,6 +150,12 @@
     ssh = {
       startAgent = true;
       enableAskPassword = true;
+      extraConfig = ''
+        Host vpn.vladexa.xyz
+            Port 5555
+        Host ssh-vps.vladexa.xyz
+            ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+      '';
     };
   };
 
