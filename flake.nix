@@ -87,23 +87,29 @@
     {
       nixosConfigurations =
         let
-          nixpkgs-patched = import ./shared/nixpkgs-patched.nix { inherit nixpkgs self; };
+          nixpkgs-patched = import ./nixosConfigs/shared/nixpkgs-patched.nix { inherit nixpkgs self; };
           shared_home_modules = [
             plasma-manager.homeManagerModules.plasma-manager
             sops-nix.homeManagerModules.sops
+            {
+              sops.defaultSopsFile = ./secrets.yaml;
+            }
             nix-index-database.homeModules.nix-index
             nixvim.homeModules.nixvim
             ./modules/containers/sql-server.nix
             {
               programs.nixvim = nixvim-config.modules.config;
             }
-          ]
-          ++ (builtins.attrValues (import ./modules/programs));
+            ./modules/programs
+          ];
           shared_modules = [
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
+            {
+              sops.defaultSopsFile = ./secrets.yaml;
+            }
             ./cachix.nix
             lanzaboote.nixosModules.lanzaboote
             {
@@ -112,44 +118,40 @@
               home-manager.sharedModules = shared_home_modules;
               home-manager.backupFileExtension = "backup";
             }
-            ./shared/configuration.nix
+            ./nixosConfigs/shared/configuration.nix
             ./modules/plymouth.nix
             ./secure-boot.nix
           ];
           vladexa = {
-            home-manager.users.vladexa = ./home/vladexa.nix;
+            home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
           };
         in
         {
           nixos = nixpkgs-patched.lib.nixosSystem {
-            modules =
-              shared_modules
-              ++ [
-                nixos-hardware.nixosModules.common-pc-laptop
-                nixos-hardware.nixosModules.common-pc-ssd
-                nixos-hardware.nixosModules.common-hidpi
-                nixos-hardware.nixosModules.common-cpu-amd
-                nixos-hardware.nixosModules.common-cpu-amd-pstate
-                nixos-hardware.nixosModules.common-cpu-amd-zenpower
-                nixos-hardware.nixosModules.common-gpu-amd
-                vladexa
-              ]
-              ++ builtins.attrValues (import ./laptop);
+            modules = shared_modules ++ [
+              nixos-hardware.nixosModules.common-pc-laptop
+              nixos-hardware.nixosModules.common-pc-ssd
+              nixos-hardware.nixosModules.common-hidpi
+              nixos-hardware.nixosModules.common-cpu-amd
+              nixos-hardware.nixosModules.common-cpu-amd-pstate
+              nixos-hardware.nixosModules.common-cpu-amd-zenpower
+              nixos-hardware.nixosModules.common-gpu-amd
+              vladexa
+              ./nixosConfigs/laptop
+            ];
           };
 
           workstation = nixpkgs-patched.lib.nixosSystem {
-            modules =
-              shared_modules
-              ++ [
-                nixos-hardware.nixosModules.common-cpu-amd
-                nixos-hardware.nixosModules.common-cpu-amd-pstate
-                nixos-hardware.nixosModules.common-cpu-amd-zenpower
-                nixos-hardware.nixosModules.common-gpu-amd
-                nixos-hardware.nixosModules.common-hidpi
-                nixos-hardware.nixosModules.common-pc-ssd
-                vladexa
-              ]
-              ++ builtins.attrValues (import ./workstation);
+            modules = shared_modules ++ [
+              nixos-hardware.nixosModules.common-cpu-amd
+              nixos-hardware.nixosModules.common-cpu-amd-pstate
+              nixos-hardware.nixosModules.common-cpu-amd-zenpower
+              nixos-hardware.nixosModules.common-gpu-amd
+              nixos-hardware.nixosModules.common-hidpi
+              nixos-hardware.nixosModules.common-pc-ssd
+              vladexa
+              ./nixosConfigs/workstation
+            ];
           };
         };
 
