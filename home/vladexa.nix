@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  inputs,
   ...
 }:
 {
@@ -333,6 +332,12 @@
   home.sessionVariables = {
     SSH_ASKPASS_REQUIRE = "prefer";
   };
+
+  xdg.configFile."nixpkgs/config.nix".text = ''
+    {
+      allowUnfree = true;
+    }
+  '';
 
   home.stateVersion = "25.11";
 }
