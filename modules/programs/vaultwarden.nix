@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.programs.bitwarden-desktop;
+  cfg = config.programs.bitwarden;
 in
 {
   options.programs.bitwarden = {
-    enable = lib.mkEnableOption "Bitwarden Desktop";
+    enable = lib.mkEnableOption "Bitwarden";
 
     enableExtensions = lib.mkOption {
       type = lib.types.bool;
@@ -19,7 +19,7 @@ in
     };
 
     selfHostedUrl = lib.mkOption {
-      type = lib.nullOr lib.types.str;
+      type = lib.types.nullOr lib.types.str;
       example = "https://vw.example.com";
       description = "Self-hosted Bitwarden server URL.";
     };
@@ -29,18 +29,25 @@ in
       example = "you@example.com";
       description = "The email address for your bitwarden account.";
     };
+
+    enableRbw = lib.mkOption {
+      default = true;
+      example = false;
+      description = "Whether to enable rbw.";
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = [ pkgs.bitwarden-desktop ];
 
     programs.chromium.extensions = lib.mkIf cfg.enableExtensions [ "nngceckbapebfimnlniiiahkandclblb" ];
-    programs.firefox.extensions.packages = lib.mkIf cfg.enableExtensions [
-      pkgs.nur.repos.rycee.firefox-addons.bitwarden
-    ];
+    # programs.firefox.extensions.packages = lib.mkIf cfg.enableExtensions [
+    #   pkgs.nur.repos.rycee.firefox-addons.bitwarden
+    # ];
 
-    rbw = {
-      enable = true;
+    programs.rbw = {
+      enable = cfg.enableRbw;
       settings = {
         base_url = cfg.selfHostedUrl;
         email = cfg.email;
