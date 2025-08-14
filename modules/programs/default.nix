@@ -1,6 +1,6 @@
 {
   imports = [
-    ./bitwarden-desktop.nix
+    ./vaultwarden.nix
     ./yt-dlp.nix
     ./mpv.nix
     ./vesktop.nix

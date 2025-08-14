@@ -9,7 +9,7 @@ let
   cfg = config.programs.bitwarden-desktop;
 in
 {
-  options.programs.bitwarden-desktop = {
+  options.programs.bitwarden = {
     enable = lib.mkEnableOption "Bitwarden Desktop";
 
     enableExtensions = lib.mkOption {
@@ -23,6 +23,12 @@ in
       example = "https://vw.example.com";
       description = "Self-hosted Bitwarden server URL.";
     };
+
+    email = lib.mkOption {
+      type = lib.types.str;
+      example = "you@example.com";
+      description = "The email address for your bitwarden account.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -32,5 +38,14 @@ in
     programs.firefox.extensions.packages = lib.mkIf cfg.enableExtensions [
       pkgs.nur.repos.rycee.firefox-addons.bitwarden
     ];
+
+    rbw = {
+      enable = true;
+      settings = {
+        base_url = cfg.selfHostedUrl;
+        email = cfg.email;
+        pinentry = pkgs.pinentry-qt;
+      };
+    };
   };
 }

@@ -305,19 +305,11 @@
       flake = "github:VlaDexa/nixos-config";
     };
 
-    bitwarden-desktop = {
+    bitwarden = {
       enable = true;
 
       selfHostedUrl = "https://vaultwarden.vladexa.xyz";
-    };
-
-    rbw = {
-      enable = true;
-      settings = {
-        base_url = "https://vaultwarden.vladexa.xyz";
-        email = "vgrechannik@gmail.com";
-        pinentry = pkgs.pinentry-qt;
-      };
+      email = "vgrechannik@gmail.com";
     };
 
     command-not-found.enable = false;
