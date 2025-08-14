@@ -132,6 +132,10 @@
       };
       defaultSession = "plasma";
     };
+
+    arangodb = {
+      enable = true;
+    };
   };
 
   xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];

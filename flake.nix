@@ -120,6 +120,7 @@
             }
             ./nixosConfigs/shared/configuration.nix
             ./modules/plymouth.nix
+            ./modules/services/arangodb.nix
             ./secure-boot.nix
           ];
           vladexa = {
