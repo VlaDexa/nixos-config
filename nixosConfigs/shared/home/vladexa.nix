@@ -292,9 +292,7 @@
       hosts."github.com".user = "VlaDexa";
     };
 
-    ssh = {
-      compression = true;
-    };
+    ssh.compression = true;
 
     nh = {
       enable = true;
@@ -322,9 +320,7 @@
 
   fonts.fontconfig.enable = true;
 
-  services = {
-    kdeconnect.enable = true;
-  };
+  services.kdeconnect.enable = true;
 
   home.sessionVariables = {
     SSH_ASKPASS_REQUIRE = "prefer";
