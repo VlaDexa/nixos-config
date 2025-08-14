@@ -210,19 +210,27 @@
         settings."extensions.autoDisableScopes" = 0;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          privacy-badger
           react-devtools
+          sponsorblock
+          privacy-badger
           bitwarden
         ];
       };
+      languagePacks = [
+        "en-US"
+        "ru"
+        "sl"
+      ];
     };
 
     chromium = {
       enable = true;
       extensions = [
-        "ddkjiahejlhfcafbddmgiahcphecmpfh"
-        "fmkadmapgofadopljbjfkapdkoienihi"
-        "mnjggcdmjocbbbhaepdhchncahnbgone"
+        "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
+        "fmkadmapgofadopljbjfkapdkoienihi" # React DevTools
+        "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
+        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
+        "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
