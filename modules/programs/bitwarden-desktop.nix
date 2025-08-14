@@ -29,5 +29,8 @@ in
     home.packages = [ pkgs.bitwarden-desktop ];
 
     programs.chromium.extensions = lib.mkIf cfg.enableExtensions [ "nngceckbapebfimnlniiiahkandclblb" ];
+    programs.firefox.extensions.packages = lib.mkIf cfg.enableExtensions [
+      pkgs.nur.repos.rycee.firefox-addons.bitwarden
+    ];
   };
 }

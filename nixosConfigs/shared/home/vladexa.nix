@@ -212,7 +212,6 @@
           react-devtools
           sponsorblock
           privacy-badger
-          bitwarden
         ];
       };
       languagePacks = [
@@ -229,7 +228,6 @@
         "fmkadmapgofadopljbjfkapdkoienihi" # React DevTools
         "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
         "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
-        "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
