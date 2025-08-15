@@ -1,8 +1,6 @@
 {
   config,
-  lib,
   pkgs,
-  options,
   ...
 }:
 {
@@ -11,6 +9,7 @@
   networking.hostName = "workstation";
 
   boot.plymouth.enable = true; # Doesn't work with bcachefs encryption
+  boot.initrd.systemd.enable = true; # Systemd boot
 
   # Define a user account.
   users.users.vladexa = {
