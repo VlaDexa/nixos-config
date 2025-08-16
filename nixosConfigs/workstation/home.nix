@@ -5,10 +5,23 @@
       mullvad-vpn
       qbittorrent
     ];
-    programs.yt-dlp.enable = true;
-    services.easyeffects.enable = true;
-    programs.vesktop.enable = true;
+    programs = {
+      yt-dlp.enable = true;
+
+      vesktop.enable = true;
+
+      distrobox = {
+        enable = true;
+        containers = {
+          aur-archlinux = {
+            image = "archlinux:latest";
+            additional_packages = "git pacman-contrib base-devel";
+          };
+        };
+      };
+    };
 
     services.podman.containers.sqlserver.autoStart = false;
+    services.easyeffects.enable = true;
   };
 }
