@@ -228,6 +228,7 @@
         "fmkadmapgofadopljbjfkapdkoienihi" # React DevTools
         "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
         "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
+        "kcpfnbjlimolkcjllfooaipdpdjmjigg" # Linkumori
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
