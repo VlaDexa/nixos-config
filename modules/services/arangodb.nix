@@ -2,13 +2,13 @@
   config,
   lib,
   pkgs,
+  my-nur,
   ...
 }:
 let
   cfg = config.services.arangodb;
   user = config.users.users.arangodb.name;
   group = config.users.groups.arangodb.name;
-
 in
 {
   options.services.arangodb = {
@@ -44,7 +44,7 @@ in
       description = "Log destination.";
     };
 
-    package = lib.mkPackageOption pkgs "arangodb" { };
+    package = lib.mkPackageOption my-nur.packages.${pkgs.stdenv.hostPlatform.system} "arangodb" { };
   };
 
   config = lib.mkIf cfg.enable {

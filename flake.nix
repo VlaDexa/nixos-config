@@ -56,6 +56,10 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixvim.follows = "nixvim";
     };
+    my-nur = {
+      url = "github:VlaDexa/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs-yt-dlp.url = "github:NixOS/nixpkgs/pull/435167/head";
   };
   outputs =
@@ -73,9 +77,10 @@
       nix-index-database,
       nixvim,
       nixvim-config,
+      my-nur,
       nixpkgs-yt-dlp,
       ...
-    }:
+    }@inputs:
     let
       supportedSystems = [
         "x86_64-linux"
@@ -136,6 +141,7 @@
         in
         {
           nixos = nixpkgs-patched.lib.nixosSystem {
+            specialArgs = inputs;
             modules = shared_modules ++ [
               ./nixosConfigs/laptop
               nixos-hardware.nixosModules.common-cpu-amd
@@ -150,6 +156,7 @@
           };
 
           workstation = nixpkgs-patched.lib.nixosSystem {
+            specialArgs = inputs;
             modules = shared_modules ++ [
               ./nixosConfigs/workstation
               nixos-hardware.nixosModules.common-cpu-amd

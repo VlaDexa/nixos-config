@@ -224,6 +224,26 @@
         "type": "github"
       }
     },
+    "my-nur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755753430,
+        "narHash": "sha256-wIOi8xOu7HTz1z65FAAB3Dlf6X/+NwaM/s6pZXKxhg4=",
+        "owner": "VlaDexa",
+        "repo": "nur-packages",
+        "rev": "2c39492bc00702324b73d9cfc78148bd210a08e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VlaDexa",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -482,6 +502,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
+        "my-nur": "my-nur",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
