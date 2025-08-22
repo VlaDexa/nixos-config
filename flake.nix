@@ -113,7 +113,6 @@
               sops.defaultSopsFile = ./secrets.yaml;
             }
             ./cachix.nix
-            lanzaboote.nixosModules.lanzaboote
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -123,6 +122,7 @@
             ./nixosConfigs/shared/configuration.nix
             ./modules/plymouth.nix
             ./modules/services/arangodb.nix
+            lanzaboote.nixosModules.lanzaboote
             ./secure-boot.nix
             {
               nixpkgs.overlays = [
@@ -137,20 +137,21 @@
         {
           nixos = nixpkgs-patched.lib.nixosSystem {
             modules = shared_modules ++ [
-              nixos-hardware.nixosModules.common-pc-laptop
-              nixos-hardware.nixosModules.common-pc-ssd
-              nixos-hardware.nixosModules.common-hidpi
+              ./nixosConfigs/laptop
               nixos-hardware.nixosModules.common-cpu-amd
               nixos-hardware.nixosModules.common-cpu-amd-pstate
               nixos-hardware.nixosModules.common-cpu-amd-zenpower
               nixos-hardware.nixosModules.common-gpu-amd
+              nixos-hardware.nixosModules.common-hidpi
+              nixos-hardware.nixosModules.common-pc-laptop
+              nixos-hardware.nixosModules.common-pc-ssd
               vladexa
-              ./nixosConfigs/laptop
             ];
           };
 
           workstation = nixpkgs-patched.lib.nixosSystem {
             modules = shared_modules ++ [
+              ./nixosConfigs/workstation
               nixos-hardware.nixosModules.common-cpu-amd
               nixos-hardware.nixosModules.common-cpu-amd-pstate
               nixos-hardware.nixosModules.common-cpu-amd-zenpower
@@ -158,7 +159,6 @@
               nixos-hardware.nixosModules.common-hidpi
               nixos-hardware.nixosModules.common-pc-ssd
               vladexa
-              ./nixosConfigs/workstation
             ];
           };
         };
