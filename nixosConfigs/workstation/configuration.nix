@@ -44,4 +44,6 @@
     enable = true;
     enableExcludeWrapper = false;
   };
+
+  nixpkgs.config.chromium.enableWideVine = true;
 }
