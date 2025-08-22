@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home-manager.users.vladexa = {
+    imports = [ ./hyprland/home.nix ];
     home.packages = with pkgs; [
       mullvad-vpn
       qbittorrent
