@@ -291,6 +291,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-yt-dlp": {
+      "locked": {
+        "lastModified": 1755661437,
+        "narHash": "sha256-PtjjuOqqafq5FZNXZXXIW3u5nyijml/X/HO4qgEcvos=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b9f347a76499ba544484e0fb6ec425fa0de42816",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/435167/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": [
@@ -469,6 +485,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-yt-dlp": "nixpkgs-yt-dlp",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
         "nur": "nur",

@@ -56,6 +56,7 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixvim.follows = "nixvim";
     };
+    nixpkgs-yt-dlp.url = "github:NixOS/nixpkgs/pull/435167/head";
   };
   outputs =
     {
@@ -72,6 +73,7 @@
       nix-index-database,
       nixvim,
       nixvim-config,
+      nixpkgs-yt-dlp,
       ...
     }:
     let
@@ -122,6 +124,11 @@
             ./modules/plymouth.nix
             ./modules/services/arangodb.nix
             ./secure-boot.nix
+            {
+              nixpkgs.overlays = [
+                (final: prev: { inherit (nixpkgs-yt-dlp.legacyPackages.${prev.system}) yt-dlp; })
+              ];
+            }
           ];
           vladexa = {
             home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
