@@ -116,8 +116,12 @@
 
         # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
         server_names = [
+          "quad9-doh-ip4-port443-filter-ecs-pri"
+          "quad9-doh-ip6-port443-filter-ecs-pri"
           "cloudflare"
           "cloudflare-ipv6"
+          "google"
+          "google-ipv6"
         ];
       };
     };
