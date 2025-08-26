@@ -231,11 +231,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755753430,
-        "narHash": "sha256-wIOi8xOu7HTz1z65FAAB3Dlf6X/+NwaM/s6pZXKxhg4=",
+        "lastModified": 1756208544,
+        "narHash": "sha256-RzleEAtUsGv7PasesD1klVFGOViaiyOuxe6DU5cnFlE=",
         "owner": "VlaDexa",
         "repo": "nur-packages",
-        "rev": "2c39492bc00702324b73d9cfc78148bd210a08e0",
+        "rev": "8ebe105a072f9c1b2707814735b06909d09d83f3",
         "type": "github"
       },
       "original": {
