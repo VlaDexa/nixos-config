@@ -60,7 +60,6 @@
       url = "github:VlaDexa/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-yt-dlp.url = "github:NixOS/nixpkgs/pull/435167/head";
   };
   outputs =
     {
@@ -78,7 +77,6 @@
       nixvim,
       nixvim-config,
       my-nur,
-      nixpkgs-yt-dlp,
       ...
     }@inputs:
     let
@@ -129,11 +127,6 @@
             ./modules/services/arangodb.nix
             lanzaboote.nixosModules.lanzaboote
             ./secure-boot.nix
-            {
-              nixpkgs.overlays = [
-                (final: prev: { inherit (nixpkgs-yt-dlp.legacyPackages.${prev.system}) yt-dlp; })
-              ];
-            }
           ];
           vladexa = {
             home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
