@@ -4,6 +4,7 @@
   ...
 }:
 {
+  imports = [ ./hyprland/system.nix ];
   system.stateVersion = "25.11";
 
   networking.hostName = "workstation";
