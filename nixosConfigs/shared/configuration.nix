@@ -133,10 +133,6 @@
         wayland.enable = true;
         autoNumlock = true;
         theme = "sddm-astronaut-theme";
-        extraPackages = with pkgs; [
-          sddm-astronaut
-          kdePackages.qtmultimedia
-        ];
       };
       defaultSession = "plasma";
     };
@@ -174,6 +170,8 @@
     curlHTTP3
     git
     kdePackages.sddm-kcm
+    sddm-astronaut
+    kdePackages.qtmultimedia
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
