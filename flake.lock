@@ -350,11 +350,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1755585912,
-        "narHash": "sha256-VFvTx+XgvaUWA3GN32ucSrnbf+s7MdkITOFqHSg/+E8=",
+        "lastModified": 1756428693,
+        "narHash": "sha256-QNvRw/30MmfEEFxLJRkVO15VWR/V6hU1k/puEsq0YrE=",
         "owner": "VlaDexa",
         "repo": "nixvim-config",
-        "rev": "8414069c9edb4c5c0b8d11ab0e44817d4dfdbc32",
+        "rev": "7ee598475372c76b4aed43d7cdd9a6a574029e15",
         "type": "github"
       },
       "original": {
