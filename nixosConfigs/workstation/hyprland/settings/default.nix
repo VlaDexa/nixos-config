@@ -29,8 +29,9 @@
     ];
 
     exec = [
-      "gsettings set org.gnome.desktop.interface Adwaita-dark"
-      "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
+      (lib.getExe' pkgs.kdePackages.kwallet "kwalletd6")
+      "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
+      "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme prefer-dark"
     ];
 
     general = {
