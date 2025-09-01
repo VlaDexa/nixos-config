@@ -252,6 +252,9 @@
         package = pkgs.nerd-fonts.fira-code;
         name = "Fira Code";
       };
+      keybindings = {
+        "kitty_mod+t" = "new_tab_with_cwd";
+      };
     };
 
     thunderbird = {
