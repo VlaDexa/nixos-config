@@ -4,6 +4,7 @@
   ...
 }:
 {
+  imports = [ ./arangodb.nix ];
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     # Use the systemd-boot EFI boot loader.
@@ -67,6 +68,7 @@
     age.keyFile = "/var/lib/sops-nix/key.txt";
 
     secrets.password.neededForUsers = true;
+    secrets.arangodb_password = { };
   };
 
   location.provider = "geoclue2";
@@ -135,10 +137,6 @@
         theme = "sddm-astronaut-theme";
       };
       defaultSession = "plasma";
-    };
-
-    arangodb = {
-      enable = true;
     };
   };
 

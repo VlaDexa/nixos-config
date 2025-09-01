@@ -44,6 +44,17 @@ in
       description = "Log destination.";
     };
 
+    password = lib.mkOption {
+      type = lib.types.str;
+      description = "The initial password of the root user. Can be an [environment variable as parameter](https://docs.arangodb.com/3.12/operations/administration/configuration/#environment-variables-as-parameters). Warning: this string will be world-readable in /nix/store.";
+    };
+
+    environmentFiles = lib.mkOption {
+      type = lib.types.listOf lib.types.path;
+      default = [ ];
+      description = "Files containing extra environment variables.";
+    };
+
     package = lib.mkPackageOption my-nur.packages.${pkgs.stdenv.hostPlatform.system} "arangodb" { };
   };
 
@@ -64,13 +75,14 @@ in
           "ICU_DATA=${cfg.package}/share/arangodb3"
           "TZ_DATA=${cfg.package}/share/arangodb3/tzdata"
         ];
+        EnvironmentFile = cfg.environmentFiles;
         ExecStart =
           let
             format = pkgs.formats.ini { };
             arangd-conf = format.generate "arangod.conf" {
               database = {
                 directory = cfg.databaseDir;
-                password = "RootPassword";
+                password = cfg.password;
               };
 
               server = {
