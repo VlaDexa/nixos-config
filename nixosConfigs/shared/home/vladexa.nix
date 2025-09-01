@@ -255,6 +255,7 @@
       keybindings = {
         "kitty_mod+t" = "new_tab_with_cwd";
       };
+      enableGitIntegration = true;
     };
 
     thunderbird = {
