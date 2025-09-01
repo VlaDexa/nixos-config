@@ -56,6 +56,7 @@ in
 
     systemd.services.arangodb = {
       after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         User = user;
         Group = group;
