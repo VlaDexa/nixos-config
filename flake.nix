@@ -186,6 +186,13 @@
           };
         }
       );
+
+      packages = forAllSystems (system: {
+        nixos-options-doc =
+          (nixpkgs.legacyPackages.${system}.nixosOptionsDoc {
+            inherit (self.nixosConfigurations.workstation) options;
+          }).optionsCommonMark;
+      });
     };
 }
 
