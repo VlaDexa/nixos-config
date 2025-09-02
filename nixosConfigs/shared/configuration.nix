@@ -189,6 +189,7 @@
       "nix-command"
       "flakes"
     ];
+    settings.trusted-users = [ "@wheel" ];
 
     channel.enable = false;
   };
