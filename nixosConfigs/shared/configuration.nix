@@ -172,6 +172,14 @@
     kdePackages.qtmultimedia
   ];
 
+  security = {
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
+    };
+  };
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   hardware.bluetooth.enable = true;
