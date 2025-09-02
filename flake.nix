@@ -94,7 +94,7 @@
         let
           nixpkgs-patched = import ./nixosConfigs/shared/nixpkgs-patched.nix { inherit nixpkgs self; };
           shared_home_modules = [
-            plasma-manager.homeManagerModules.plasma-manager
+            plasma-manager.homeModules.plasma-manager
             sops-nix.homeManagerModules.sops
             {
               sops.defaultSopsFile = ./secrets.yaml;
