@@ -297,7 +297,10 @@
       hosts."github.com".user = "VlaDexa";
     };
 
-    ssh.compression = true;
+    ssh = {
+      enable = true;
+      matchBlocks."*".compression = true;
+    };
 
     nh = {
       enable = true;
