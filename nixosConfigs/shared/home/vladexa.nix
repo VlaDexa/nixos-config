@@ -65,7 +65,15 @@
       realName = "Vladislav Grechannik";
       thunderbird = {
         enable = true;
-        profiles = [ "work" ];
+        profiles = [ "personal" ];
+      };
+    };
+    selfMail = {
+      address = "vgrechannik@mail.ru";
+      realName = "Vladislav Grechannik";
+      thunderbird = {
+        enable = true;
+        profiles = [ "personal" ];
       };
     };
   };
@@ -261,10 +269,9 @@
     thunderbird = {
       enable = true;
       profiles = {
-        work = {
+        personal = {
           isDefault = true;
         };
-        personal = { };
       };
     };
 
