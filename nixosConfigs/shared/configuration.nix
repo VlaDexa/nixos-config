@@ -1,6 +1,7 @@
 {
   pkgs,
   options,
+  lib,
   ...
 }:
 {
@@ -170,6 +171,7 @@
     kdePackages.sddm-kcm
     sddm-astronaut
     kdePackages.qtmultimedia
+    (lib.hiPrio uutils-coreutils-noprefix)
   ];
 
   security = {
