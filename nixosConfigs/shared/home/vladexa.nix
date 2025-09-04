@@ -237,6 +237,7 @@
         "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
         "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
         "kcpfnbjlimolkcjllfooaipdpdjmjigg" # Linkumori
+        "kdbmhfkmnlmbkgbabkdealhhbfhlmmon" # SteamDB
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
