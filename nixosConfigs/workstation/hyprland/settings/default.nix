@@ -23,6 +23,7 @@
     "$terminal" = lib.getExe pkgs.kitty;
     "$fileManager" = lib.getExe' pkgs.kdePackages.dolphin "dolphin";
     "$menu" = "${lib.getExe config.programs.wofi.package} --show drun";
+    "$browser" = "${lib.getExe config.programs.chromium.package}";
 
     env = [
       "QT_QPA_PLATFORMTHEME,qt6ct"

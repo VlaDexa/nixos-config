@@ -2,14 +2,16 @@
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$mainMod, Q, exec, $terminal"
       "$mainMod, C, killactive,"
-      "$mainMod, M, exit,"
-      "$mainMod, E, exec, $fileManager"
-      "$mainMod, V, togglefloating,"
-      "$mainMod, R, exec, $menu"
-      "$mainMod, P, pseudo, # dwindle"
       "$mainMod, J, togglesplit, # dwindle"
+      "$mainMod, M, exit,"
+      "$mainMod, P, pseudo, # dwindle"
+      "$mainMod, V, togglefloating,"
+
+      "$mainMod, B, exec, $browser"
+      "$mainMod, E, exec, $fileManager"
+      "$mainMod, Q, exec, $terminal"
+      "$mainMod, R, exec, $menu"
 
       # Move focus with mainMod + arrow keys
       "$mainMod, left, movefocus, l"
