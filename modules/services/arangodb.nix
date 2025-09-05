@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  my-nur,
   ...
 }:
 let
@@ -55,7 +54,7 @@ in
       description = "Files containing extra environment variables.";
     };
 
-    package = lib.mkPackageOption my-nur.packages.${pkgs.stdenv.hostPlatform.system} "arangodb" { };
+    package = lib.mkPackageOption pkgs.nur.repos.vladexa "arangodb" { };
   };
 
   config = lib.mkIf cfg.enable {

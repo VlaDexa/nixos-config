@@ -56,10 +56,6 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixvim.follows = "nixvim";
     };
-    my-nur = {
-      url = "github:VlaDexa/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     {
@@ -76,7 +72,6 @@
       nix-index-database,
       nixvim,
       nixvim-config,
-      my-nur,
       ...
     }@inputs:
     let
