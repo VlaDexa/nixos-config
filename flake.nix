@@ -56,6 +56,12 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixvim.follows = "nixvim";
     };
+    # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+    nixpkgs-patch-414391 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
+      flake = false;
+    };
   };
   outputs =
     {
@@ -72,22 +78,15 @@
       nix-index-database,
       nixvim,
       nixvim-config,
+      nixpkgs-patcher,
       ...
     }@inputs:
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in
     {
       nixosConfigurations =
         let
-          nixpkgs-patched = import ./nixosConfigs/shared/nixpkgs-patched.nix { inherit nixpkgs self; };
           shared_home_modules = [
             plasma-manager.homeModules.plasma-manager
             sops-nix.homeManagerModules.sops
@@ -128,7 +127,7 @@
           };
         in
         {
-          nixos = nixpkgs-patched.lib.nixosSystem {
+          nixos = nixpkgs-patcher.lib.nixosSystem {
             specialArgs = inputs;
             modules = shared_modules ++ [
               ./nixosConfigs/laptop
@@ -143,7 +142,7 @@
             ];
           };
 
-          workstation = nixpkgs-patched.lib.nixosSystem {
+          workstation = nixpkgs-patcher.lib.nixosSystem {
             specialArgs = inputs;
             modules = shared_modules ++ [
               ./nixosConfigs/workstation
