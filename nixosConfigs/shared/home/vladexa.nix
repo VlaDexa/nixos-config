@@ -331,7 +331,10 @@
 
     mpv.enable = true;
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   fonts.fontconfig.enable = true;
