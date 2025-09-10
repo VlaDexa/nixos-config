@@ -220,6 +220,7 @@
           react-devtools
           sponsorblock
           privacy-badger
+          bitwarden
         ];
       };
       languagePacks = [
