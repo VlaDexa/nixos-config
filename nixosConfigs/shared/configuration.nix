@@ -23,6 +23,10 @@
       "rd.systemd.show_status=auto"
     ];
     loader.timeout = 0;
+    kernel.sysctl = {
+      "net.core.rmem_max" = 7500000;
+      "net.core.wmem_max" = 7500000;
+    };
   };
 
   networking = {
