@@ -95,7 +95,6 @@
             }
             nix-index-database.homeModules.nix-index
             nixvim.homeModules.nixvim
-            ./modules/containers/sql-server.nix
             {
               programs.nixvim = nixvim-config.modules.config;
             }

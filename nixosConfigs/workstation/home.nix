@@ -22,7 +22,6 @@
       };
     };
 
-    services.podman.containers.sqlserver.autoStart = false;
     services.easyeffects.enable = true;
   };
 }
