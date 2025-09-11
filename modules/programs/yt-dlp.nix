@@ -25,7 +25,9 @@
       };
       Service = {
         ExecStart = lib.getExe pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.server;
+        PartOf = [ "graphical-session.target" ];
       };
+      Install.WantedBy = [ "graphical-session.target" ];
     };
   };
 }
