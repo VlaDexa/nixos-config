@@ -145,9 +145,7 @@
           { layout = "ru"; }
         ];
         numlockOnStartup = "on";
-        options = [
-          "compose:ralt"
-        ];
+        options = [ "compose:ralt" ];
       };
 
       session.sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
@@ -197,9 +195,7 @@
                 };
               };
             }
-            {
-              digitalClock.time.showSeconds = "always";
-            }
+            { digitalClock.time.showSeconds = "always"; }
             "org.kde.plasma.showdesktop"
           ];
         }
@@ -255,9 +251,7 @@
 
     kitty = {
       enable = true;
-      settings = {
-        shell = ''${pkgs.fish}/bin/fish'';
-      };
+      settings.shell = lib.getExe pkgs.fish;
       font = {
         package = pkgs.nerd-fonts.fira-code;
         name = "Fira Code";
@@ -351,8 +345,6 @@
       allowUnfree = true;
     }
   '';
-
-  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "25.11";
 }
