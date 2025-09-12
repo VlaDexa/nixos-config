@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
@@ -10,6 +10,7 @@
 
       "$mainMod, B, exec, $browser"
       "$mainMod, E, exec, $fileManager"
+      "$mainMod, Escape, exec, ${lib.getExe pkgs.mission-center}"
       "$mainMod, Q, exec, $terminal"
       "$mainMod, R, exec, $menu"
 
