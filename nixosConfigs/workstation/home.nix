@@ -22,6 +22,10 @@
       };
     };
 
-    services.easyeffects.enable = true;
+    services = {
+      easyeffects.enable = true;
+
+      podman.enable = true;
+    };
   };
 }
