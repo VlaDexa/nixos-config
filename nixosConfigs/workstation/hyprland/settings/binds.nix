@@ -13,6 +13,7 @@
       "$mainMod, Escape, exec, ${lib.getExe pkgs.mission-center}"
       "$mainMod, Q, exec, $terminal"
       "$mainMod, R, exec, $menu"
+      "$mainMod, S, exec, ${lib.getExe pkgs.pavucontrol}"
 
       # Move focus with mainMod + arrow keys
       "$mainMod, left, movefocus, l"
