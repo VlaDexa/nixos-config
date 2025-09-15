@@ -38,6 +38,7 @@
       };
     };
   };
+  systemd.user.services.dunst.Unit.ConditionEnvironment = "XDG_CURRENT_DESKTOP=Hyprland";
 
   programs.wofi.enable = true;
 }
