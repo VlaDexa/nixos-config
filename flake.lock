@@ -294,7 +294,7 @@
     "nixpkgs-patch-414391": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-dzSG3Zp4+BOsWW2/USfY92hh0knkHJYMf2lurjkVQd8=",
+        "narHash": "sha256-l+lH90hWHBCvoJL1B9YP/CQxA0b7F/bxPXaeh98ccjs=",
         "type": "file",
         "url": "https://github.com/NixOS/nixpkgs/pull/414391.patch"
       },
