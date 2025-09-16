@@ -20,6 +20,10 @@
           };
         };
       };
+
+      chromium.extensions = [
+        "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+      ];
     };
 
     services = {
