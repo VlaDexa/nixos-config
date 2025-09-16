@@ -66,6 +66,10 @@
       thunderbird = {
         enable = true;
         profiles = [ "personal" ];
+        settings = id: {
+          "mail.server.server_${id}.authMethod" = 10;
+          "mail.smtpserver.smtp_${id}.authMethod" = 10;
+        };
       };
     };
     selfMail = {
@@ -74,6 +78,19 @@
       thunderbird = {
         enable = true;
         profiles = [ "personal" ];
+      };
+    };
+    edu = {
+      flavor = "outlook.office365.com";
+      address = "vladislav.grechannik@almamater.si";
+      realName = "Vladislav Grechannik";
+      thunderbird = {
+        enable = true;
+        profiles = [ "personal" ];
+        settings = id: {
+          "mail.server.server_${id}.authMethod" = 10;
+          "mail.smtpserver.smtp_${id}.authMethod" = 10;
+        };
       };
     };
   };
