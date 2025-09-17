@@ -48,7 +48,7 @@
       "$mainMod SHIFT, 9, movetoworkspace, 9"
       "$mainMod SHIFT, 0, movetoworkspace, 10"
       # Screenshots
-      "SUPER SHIFT, s, exec, grimblast copy area"
+      "SUPER SHIFT, s, exec, ${lib.getExe pkgs.grimblast} copy area"
     ];
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = [
@@ -66,15 +66,10 @@
     ];
     # Requires playerctl
     bindl = [
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPause, exec, playerctl play-pause"
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioPrev, exec, playerctl previous"
+      ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+      ", XF86AudioPause, exec, ${lib.getExe pkgs.playerctl} play-pause"
+      ", XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+      ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
     ];
   };
-
-  home.packages = with pkgs; [
-    playerctl
-    grimblast
-  ];
 }
