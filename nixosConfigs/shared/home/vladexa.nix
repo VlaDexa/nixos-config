@@ -6,6 +6,7 @@
 }:
 {
   home.packages = with pkgs; [
+    hydra-check
     cachix
     nixfmt-rfc-style
 
@@ -14,6 +15,7 @@
     file
     jq
     bat
+    killall
 
     spotify
 
