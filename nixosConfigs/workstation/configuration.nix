@@ -19,6 +19,7 @@
     ];
     dns = [ "1.1.1.1" ];
     privateKeyFile = config.sops.secrets.private-key.path;
+    autostart = false;
 
     peers = [
       {
