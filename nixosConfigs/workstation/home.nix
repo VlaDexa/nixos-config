@@ -1,35 +1,47 @@
-{ pkgs, ... }:
 {
-  home-manager.users.vladexa = {
-    imports = [ ./hyprland/home.nix ];
-    home.packages = with pkgs; [
-      mullvad-vpn
-      qbittorrent
-    ];
-    programs = {
-      yt-dlp.enable = true;
+  home-manager.users.vladexa =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      imports = [ ./hyprland/home.nix ];
 
-      vesktop.enable = true;
+      home.packages = with pkgs; [
+        mullvad-vpn
+        qbittorrent
+      ];
 
-      distrobox = {
-        enable = true;
-        containers = {
-          aur-archlinux = {
-            image = "archlinux:latest";
-            additional_packages = "git pacman-contrib base-devel";
+      programs = {
+        yt-dlp.enable = true;
+
+        vesktop.enable = true;
+
+        distrobox = {
+          enable = true;
+          containers = {
+            aur-archlinux = {
+              image = "archlinux:latest";
+              additional_packages = "git pacman-contrib base-devel";
+            };
           };
         };
+
+        chromium.extensions = [
+          "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+        ];
       };
 
-      chromium.extensions = [
-        "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
-      ];
-    };
+      services = {
+        easyeffects.enable = true;
 
-    services = {
-      easyeffects.enable = true;
+        podman.enable = config.programs.distrobox.enable;
+      };
 
-      podman.enable = true;
+      home.sessionVariables = {
+        TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
+      };
     };
-  };
 }
