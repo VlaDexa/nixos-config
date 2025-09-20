@@ -1,7 +1,8 @@
 {
-  pkgs,
-  options,
+  config,
   lib,
+  options,
+  pkgs,
   ...
 }:
 {
@@ -133,15 +134,15 @@
       };
     };
 
-    desktopManager.plasma6.enable = true;
+    desktopManager.plasma6.enable = lib.mkDefault true;
     displayManager = {
       sddm = {
-        enable = true;
-        wayland.enable = true;
-        autoNumlock = true;
-        theme = "sddm-astronaut-theme";
+        enable = lib.mkDefault true;
+        wayland.enable = lib.mkDefault true;
+        autoNumlock = lib.mkDefault true;
+        theme = lib.mkDefault "sddm-astronaut-theme";
       };
-      defaultSession = "plasma";
+      defaultSession = lib.mkDefault "plasma";
     };
   };
 
@@ -169,14 +170,24 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    curlHTTP3
-    git
-    kdePackages.sddm-kcm
-    sddm-astronaut
-    kdePackages.qtmultimedia
-    (lib.hiPrio uutils-coreutils-noprefix)
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      curlHTTP3
+      git
+      (lib.hiPrio uutils-coreutils-noprefix)
+    ]
+    ++ lib.optionals config.services.desktopManager.plasma6.enable [ kdePackages.sddm-kcm ]
+    ++
+      lib.optionals
+        (
+          config.services.displayManager.sddm.enable
+          && config.services.displayManager.sddm.theme == "sddm-astronaut-theme"
+        )
+        [
+          sddm-astronaut
+          kdePackages.qtmultimedia
+        ];
 
   security = {
     sudo.enable = false;

@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -69,6 +70,12 @@
   services.mullvad-vpn = {
     enable = true;
     enableExcludeWrapper = false;
+  };
+
+  # Disable all the plasma stuff
+  services = {
+    desktopManager.plasma6.enable = false;
+    displayManager.defaultSession = "hyprland";
   };
 
   nixpkgs.config.chromium.enableWideVine = true;
