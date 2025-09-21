@@ -7,4 +7,6 @@
   programs.hyprlock.enable = true;
 
   services.blueman.enable = true;
+
+  security.pam.services.hyprland.kwallet.enable = true;
 }
