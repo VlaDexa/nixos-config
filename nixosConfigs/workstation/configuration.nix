@@ -76,6 +76,18 @@
   services = {
     desktopManager.plasma6.enable = false;
     displayManager.defaultSession = "hyprland";
+    displayManager.ly = {
+      enable = true;
+      x11Support = false;
+      settings = {
+        animation = "colormix";
+        bigclock = "en";
+        bigclock_seconds = true;
+        numlock = true;
+      };
+    };
+
+    displayManager.sddm.enable = false;
   };
 
   nixpkgs.config.chromium.enableWideVine = true;
