@@ -142,6 +142,7 @@
         autoNumlock = lib.mkDefault true;
         theme = lib.mkDefault "sddm-astronaut-theme";
       };
+      enable = lib.mkDefault true;
       defaultSession = lib.mkDefault "plasma";
     };
   };
@@ -177,17 +178,17 @@
       git
       (lib.hiPrio uutils-coreutils-noprefix)
     ]
-    ++ lib.optionals config.services.desktopManager.plasma6.enable [ kdePackages.sddm-kcm ]
-    ++
-      lib.optionals
-        (
-          config.services.displayManager.sddm.enable
-          && config.services.displayManager.sddm.theme == "sddm-astronaut-theme"
-        )
-        [
-          sddm-astronaut
-          kdePackages.qtmultimedia
-        ];
+    ++ (lib.optionals config.services.desktopManager.plasma6.enable [ kdePackages.sddm-kcm ])
+    ++ (lib.optionals
+      (
+        config.services.displayManager.sddm.enable
+        && (config.services.displayManager.sddm.theme == "sddm-astronaut-theme")
+      )
+      [
+        sddm-astronaut
+        kdePackages.qtmultimedia
+      ]
+    );
 
   security = {
     sudo.enable = false;
