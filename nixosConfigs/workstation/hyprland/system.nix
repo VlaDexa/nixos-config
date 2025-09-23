@@ -9,7 +9,5 @@
 
   services.blueman.enable = true;
 
-  security.pam.services.hyprland.kwallet.enable = true;
-
-  environment.systemPackages = [ pkgs.kdePackages.kwallet ];
+  services.dbus.packages = [ pkgs.kdePackages.kwallet ];
 }
