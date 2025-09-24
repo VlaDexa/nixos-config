@@ -54,7 +54,15 @@ in
       description = "Files containing extra environment variables.";
     };
 
+    enableUnixSocket = lib.mkEnableOption "Listen on a unix socket `/run/arangodb/arangodb.sock`.";
+
     package = lib.mkPackageOption pkgs.nur.repos.vladexa "arangodb" { };
+
+    exitIdleTime = lib.mkOption {
+      type = lib.types.nullOr lib.types.int;
+      default = null;
+      description = "Number of seconds the server will wait in idle state before shutting down.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -64,56 +72,122 @@ in
     };
     users.groups.arangodb = { };
 
-    systemd.services.arangodb = {
-      after = [ "network.target" ];
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        User = user;
-        Group = group;
-        Environment = [
-          "ICU_DATA=${cfg.package}/share/arangodb3"
-          "TZ_DATA=${cfg.package}/share/arangodb3/tzdata"
-        ];
-        EnvironmentFile = cfg.environmentFiles;
-        ExecStart =
-          let
-            format = pkgs.formats.ini { };
-            arangd-conf = format.generate "arangod.conf" {
-              database = {
-                directory = cfg.databaseDir;
-                password = cfg.password;
-              };
+    systemd =
+      let
+        systemdSocket = "/run/arangodb/systemd.sock";
+      in
+      {
+        sockets.proxy-to-arangodb = {
+          socketConfig.ListenStream = [
+            cfg.port
+            "/run/arangodb/arangodb.sock"
+          ];
 
-              server = {
-                endpoint = "tcp://0.0.0.0:${toString cfg.port}";
-                storage-engine = "auto";
-              };
+          wantedBy = [ "sockets.target" ];
+        };
 
-              javascript = {
-                startup-directory = "${cfg.package}/share/arangodb3/js";
-                app-path = cfg.appsDir;
-              };
+        services.proxy-to-arangodb = {
+          unitConfig = {
+            Requires = [
+              "arangodb.service"
+              "proxy-to-arangodb.socket"
+              # "proxy-to-arangodb.path"
+            ];
+            After = [
+              "arangodb.service"
+              "proxy-to-arangodb.socket"
+              # "proxy-to-arangodb.path"
+            ];
+          };
 
-              log = {
-                level = "info";
-                file = cfg.logFile;
-              };
+          serviceConfig =
+            let
+              exitIdleTime = lib.optionalString (
+                cfg.exitIdleTime != null
+              ) "--exit-idle-time=${toString cfg.exitIdleTime}";
+            in
+            {
+              Type = "notify";
+              ExecStart = "${pkgs.systemd}/lib/systemd/systemd-socket-proxyd ${exitIdleTime} ${systemdSocket}";
+              PrivateTmp = true;
+              PrivateNetwork = true;
+              Restart = "on-failure";
+              RestartSec = 5;
+              AssertPathExists = [ systemdSocket ];
             };
-          in
-          "${cfg.package}/bin/arangod --configuration ${arangd-conf}";
-        StateDirectory =
+        };
+
+        # paths.proxy-to-arangodb = {
+        #   pathConfig.PathExists = [ systemdSocket ];
+        #
+        #   wantedBy = [ "multi-user.target" ];
+        # };
+        #
+        services.arangodb =
           let
-            statePath = "/var/lib/";
+            pidFile = "/run/arangodb/arangod.pid";
           in
-          lib.optional (lib.hasPrefix statePath cfg.databaseDir) (lib.removePrefix statePath cfg.databaseDir)
-          ++ lib.optional (lib.hasPrefix statePath cfg.appsDir) (lib.removePrefix statePath cfg.appsDir);
-        LogsDirectory =
-          let
-            logPath = "/var/log";
-          in
-          lib.optional (lib.hasPrefix logPath cfg.appsDir) (lib.removePrefix logPath (dirOf cfg.logFile));
+          {
+            after = [ "network.target" ];
+            # wantedBy = [ "multi-user.target" ];
+            unitConfig.StopWhenUnneeded = true;
+            serviceConfig = {
+              User = user;
+              Group = group;
+              Environment = [
+                "ICU_DATA=${cfg.package}/share/arangodb3"
+                "TZ_DATA=${cfg.package}/share/arangodb3/tzdata"
+              ];
+              EnvironmentFile = cfg.environmentFiles;
+              ExecStart =
+                let
+                  format = pkgs.formats.ini { listsAsDuplicateKeys = true; };
+                  arangd-conf = format.generate "arangod.conf" {
+                    database = {
+                      directory = cfg.databaseDir;
+                      password = cfg.password;
+                    };
+
+                    server = {
+                      # endpoint = [
+                      #   "tcp://0.0.0.0:${toString cfg.port}"
+                      # ]
+                      # ++ lib.optional cfg.enableUnixSocket "unix:///run/arangodb/arangodb.sock";
+                      endpoint = "unix://${systemdSocket}";
+                      storage-engine = "auto";
+                    };
+
+                    javascript = {
+                      startup-directory = "${cfg.package}/share/arangodb3/js";
+                      app-path = cfg.appsDir;
+                    };
+
+                    log = {
+                      level = "info";
+                      file = cfg.logFile;
+                      foreground-tty = true;
+                    };
+                  };
+                in
+                "${cfg.package}/bin/arangod --configuration ${arangd-conf} --pid-file ${pidFile}";
+              StateDirectory =
+                let
+                  statePath = "/var/lib/";
+                in
+                lib.optional (lib.hasPrefix statePath cfg.databaseDir) (lib.removePrefix statePath cfg.databaseDir)
+                ++ lib.optional (lib.hasPrefix statePath cfg.appsDir) (lib.removePrefix statePath cfg.appsDir);
+              LogsDirectory =
+                let
+                  logPath = "/var/log";
+                in
+                lib.optional (lib.hasPrefix logPath cfg.appsDir) (lib.removePrefix logPath (dirOf cfg.logFile));
+              RuntimeDirectory = lib.optional cfg.enableUnixSocket "arangodb";
+              PIDFile = pidFile;
+              Restart = "on-failure";
+              RestartSec = 5;
+            };
+          };
       };
-    };
 
     networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;
   };

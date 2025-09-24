@@ -8,5 +8,7 @@
     enable = true;
     password = "@ARANGODB_PASSWORD@";
     environmentFiles = [ config.sops.templates."arangodb.env".path ];
+    enableUnixSocket = true;
+    exitIdleTime = 300;
   };
 }
