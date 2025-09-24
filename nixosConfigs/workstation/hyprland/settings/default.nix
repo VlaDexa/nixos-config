@@ -25,10 +25,6 @@
     "$menu" = "${lib.getExe config.programs.wofi.package} --show drun";
     "$browser" = "${lib.getExe config.programs.chromium.package}";
 
-    env = [
-      "QT_QPA_PLATFORMTHEME,qt6ct"
-    ];
-
     exec = [
       (lib.getExe' pkgs.kdePackages.kwallet "kwalletd6")
       "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
@@ -54,6 +50,4 @@
       layout = "dwindle";
     };
   };
-
-  home.packages = with pkgs; [ kdePackages.qt6ct ];
 }

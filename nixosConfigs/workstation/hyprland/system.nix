@@ -5,6 +5,12 @@
     xwayland.enable = true;
   };
 
+  qt = {
+    enable = true;
+    style = "adwaita-dark";
+    platformTheme = "qt5ct";
+  };
+
   programs.hyprlock.enable = true;
 
   services.blueman.enable = true;
