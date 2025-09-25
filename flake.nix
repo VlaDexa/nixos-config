@@ -62,6 +62,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
       flake = false;
     };
+    dolphin-overlay = {
+      url = "github:rumboon/dolphin-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -79,6 +83,7 @@
       nixvim,
       nixvim-config,
       nixpkgs-patcher,
+      dolphin-overlay,
       ...
     }@inputs:
     let
@@ -120,6 +125,9 @@
             ./modules/services/arangodb.nix
             lanzaboote.nixosModules.lanzaboote
             ./secure-boot.nix
+            {
+              nixpkgs.overlays = [ dolphin-overlay.overlays.default ];
+            }
           ];
           vladexa = {
             home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
