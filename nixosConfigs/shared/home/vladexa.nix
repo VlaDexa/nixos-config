@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  osConfig,
   lib,
   ...
 }:
@@ -38,19 +39,20 @@ in
       fd
       ripgrep
 
+      # Spellcheck
+      hunspell
+      hunspellDicts.ru_RU
+      hunspellDicts.en_US
+    ]
+    ++ defaultMimePackages
+    ++ lib.optionals osConfig.services.desktopManager.plasma6.enable [
       # KDE Virtual Desktop
       kdePackages.krfb
       kdePackages.krdc
 
       #KDE Theme
       nur.repos.shadowrz.klassy-qt6
-
-      # Spellcheck
-      hunspell
-      hunspellDicts.ru_RU
-      hunspellDicts.en_US
-    ]
-    ++ defaultMimePackages;
+    ];
 
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
