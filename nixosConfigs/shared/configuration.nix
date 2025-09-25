@@ -80,7 +80,10 @@
   location.provider = "geoclue2";
   # List services that you want to enable:
   services = {
-    geoclue2.enable = true;
+    geoclue2 = {
+      enable = true;
+      enableWifi = true;
+    };
 
     # Enable sound.
     # hardware.pulseaudio.enable = true;

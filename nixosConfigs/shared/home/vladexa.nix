@@ -4,44 +4,53 @@
   lib,
   ...
 }:
-{
-  home.packages = with pkgs; [
-    hydra-check
-    cachix
-    nixfmt-rfc-style
-
-    gnupg
-    tree
-    file
-    jq
-    bat
-    killall
-
-    spotify
-
-    wl-clipboard
-
-    # Work
-    teams-for-linux
-    clickup
-    devenv
-
-    telegram-desktop
-    fd
-    ripgrep
-
-    # KDE Virtual Desktop
-    kdePackages.krfb
-    kdePackages.krdc
-
-    #KDE Theme
-    nur.repos.shadowrz.klassy-qt6
-
-    # Spellcheck
-    hunspell
-    hunspellDicts.ru_RU
-    hunspellDicts.en_US
+let
+  defaultMimePackages = with pkgs; [
+    kdePackages.gwenview
+    kdePackages.okular
   ];
+in
+{
+  home.packages =
+    with pkgs;
+    [
+      hydra-check
+      cachix
+      nixfmt-rfc-style
+
+      gnupg
+      tree
+      file
+      jq
+      bat
+      killall
+
+      spotify
+
+      wl-clipboard
+
+      # Work
+      teams-for-linux
+      clickup
+      devenv
+
+      telegram-desktop
+      fd
+      ripgrep
+
+      # KDE Virtual Desktop
+      kdePackages.krfb
+      kdePackages.krdc
+
+      #KDE Theme
+      nur.repos.shadowrz.klassy-qt6
+
+      # Spellcheck
+      hunspell
+      hunspellDicts.ru_RU
+      hunspellDicts.en_US
+    ]
+    ++ defaultMimePackages;
 
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
@@ -101,10 +110,13 @@
     enable = true;
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        "x-scheme-handler/http" = "chromium-browser.desktop";
-        "x-scheme-handler/https" = "chromium-browser.desktop";
-      };
+      defaultApplicationPackages =
+        lib.optional config.programs.nixvim.enable config.programs.nixvim.package
+        ++ lib.optional config.programs.mpv.enable config.programs.mpv.package
+        ++ [ pkgs.kdePackages.dolphin ]
+        ++ defaultMimePackages
+        ++ lib.optional config.programs.chromium.enable config.programs.chromium.package
+        ++ lib.optional config.programs.kitty.enable config.programs.kitty.package;
     };
   };
 
