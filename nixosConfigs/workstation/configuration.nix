@@ -36,7 +36,7 @@
   };
 
   boot.plymouth.enable = true; # Doesn't work with bcachefs encryption
-  boot.initrd.systemd.enable = true; # Systemd boot
+  # boot.initrd.systemd.enable = true; # Systemd boot
 
   # Define a user account.
   users.users.vladexa = {
