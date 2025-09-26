@@ -62,6 +62,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
       flake = false;
     };
+    nixpkgs-patch-444428 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/444428.patch";
+      flake = false;
+    };
     dolphin-overlay = {
       url = "github:rumboon/dolphin-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
