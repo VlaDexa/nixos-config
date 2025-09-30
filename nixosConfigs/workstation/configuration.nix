@@ -91,6 +91,8 @@
     };
 
     displayManager.sddm.enable = false;
+
+    lact.enable = true;
   };
 
   hardware.amdgpu.overdrive.enable = true;
