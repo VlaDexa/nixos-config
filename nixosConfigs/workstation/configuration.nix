@@ -67,6 +67,8 @@
   # For easyeffects
   programs.dconf.enable = true;
 
+  programs.adb.enable = true;
+
   services.mullvad-vpn = {
     enable = true;
     enableExcludeWrapper = false;
