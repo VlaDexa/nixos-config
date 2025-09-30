@@ -93,5 +93,7 @@
     displayManager.sddm.enable = false;
   };
 
+  hardware.amdgpu.overdrive.enable = true;
+
   nixpkgs.config.chromium.enableWideVine = true;
 }
