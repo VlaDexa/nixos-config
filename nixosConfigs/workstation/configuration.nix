@@ -45,6 +45,7 @@
       "video"
       "docker"
       "wheel"
+      "adbusers"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.password.path;
