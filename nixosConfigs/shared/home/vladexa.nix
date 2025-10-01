@@ -250,6 +250,7 @@ in
           sponsorblock
           privacy-badger
           bitwarden
+          indie-wiki-buddy
         ];
       };
       languagePacks = [
@@ -268,6 +269,7 @@ in
         "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
         "kcpfnbjlimolkcjllfooaipdpdjmjigg" # Linkumori
         "kdbmhfkmnlmbkgbabkdealhhbfhlmmon" # SteamDB
+        "fkagelmloambgokoeokbpihmgpkbgbfm" # Indie Wiki Buddy
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
