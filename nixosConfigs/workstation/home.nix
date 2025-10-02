@@ -12,7 +12,11 @@
       home.packages = with pkgs; [
         mullvad-vpn
         qbittorrent
+
+        libreoffice-fresh
       ];
+
+      xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
 
       programs = {
         yt-dlp.enable = true;
