@@ -66,6 +66,7 @@
       url = "github:rumboon/dolphin-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs =
     {
