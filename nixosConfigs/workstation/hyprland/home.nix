@@ -8,6 +8,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = null; # NixOS
+    portalPackage = null;
     # plugins = with pkgs.hyprlandPlugins; [
     #   hyprlock
     # ];
