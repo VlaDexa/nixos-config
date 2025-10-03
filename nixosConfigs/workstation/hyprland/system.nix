@@ -11,6 +11,8 @@
     platformTheme = "qt5ct";
   };
 
+  xdg.portal.config.common.default = "hyprland";
+
   programs.hyprlock.enable = true;
 
   services.blueman.enable = true;
