@@ -18,7 +18,7 @@ jobs:
     outputs:
       hosts: ${{ steps.set-matrix.outputs.hosts }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -76,7 +76,7 @@ jobs:
       matrix:
         host: ${{ fromJSON(needs.prepare-matrix.outputs.hosts) }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -100,11 +100,13 @@ jobs:
           purge-primary-key: never
 
       - name: Use and push to Cachix cache (if token available)
+        if: ${{ env.CACHIX_AUTH_TOKEN != '' }}
         uses: cachix/cachix-action@v14
         with:
           name: vladexa
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        if: ${{ secrets.CACHIX_AUTH_TOKEN != '' }}
+          authToken: ${{ env.CACHIX_AUTH_TOKEN }}
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build NixOS system toplevel
         run: |
