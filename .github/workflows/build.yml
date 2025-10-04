@@ -46,7 +46,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          hosts_json=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake (toString ./.)).outputs.nixosConfigurations')
+          hosts_json=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake "path:." ).outputs.nixosConfigurations')
           echo "Discovered nixosConfigurations: ${hosts_json}"
           {
             echo "hosts<<EOF"
