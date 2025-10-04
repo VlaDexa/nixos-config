@@ -143,7 +143,7 @@
         enable = lib.mkDefault true;
         wayland.enable = lib.mkDefault true;
         autoNumlock = lib.mkDefault true;
-        theme = lib.mkDefault "sddm-astronaut-theme";
+        theme = lib.mkForce "sddm-astronaut-theme";
       };
       enable = lib.mkDefault true;
       defaultSession = lib.mkDefault "plasma";
