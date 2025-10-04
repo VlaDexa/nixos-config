@@ -16,6 +16,16 @@ permissions:
   actions: write
 
 jobs:
+  sanity:
+    name: Sanity check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print context
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "sha=${{ github.sha }}"
+
   prepare-matrix:
     name: Discover nixosConfigurations
     runs-on: ubuntu-latest
