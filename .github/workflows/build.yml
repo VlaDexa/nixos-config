@@ -92,7 +92,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: ${{ fromJSON(needs.prepare-matrix.outputs.hosts) }}
+        host: [nixos, workstation]
     steps:
       - uses: actions/checkout@v4
 
