@@ -2,9 +2,10 @@ name: Build NixOS configs and push to Cachix
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, ci/** ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
