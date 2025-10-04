@@ -80,7 +80,7 @@ in
           );
 
         mpv = pkgs.mpv-unwrapped.override {
-          ffmpeg = pkgs.ffmpeg.override { withJxl = config.programs.mpv.config.screnshot-format == "jxl"; };
+          ffmpeg = pkgs.ffmpeg.override { withJxl = config.programs.mpv.config.screenshot-format == "jxl"; };
         };
 
         youtubeSupport = hasYtdlp;
