@@ -11,21 +11,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-permissions:
-  contents: read
-  actions: write
-
 jobs:
-  sanity:
-    name: Sanity check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print context
-        run: |
-          echo "event=${{ github.event_name }}"
-          echo "ref=${{ github.ref }}"
-          echo "sha=${{ github.sha }}"
-
   prepare-matrix:
     name: Discover nixosConfigurations
     runs-on: ubuntu-latest
@@ -106,7 +92,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [nixos, workstation]
+        host: ${{ fromJSON(needs.prepare-matrix.outputs.hosts) }}
     steps:
       - uses: actions/checkout@v4
 
