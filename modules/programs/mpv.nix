@@ -79,7 +79,9 @@ in
             ++ lib.optionals hasYtdlp [ sponsorblock ]
           );
 
-        mpv = pkgs.mpv-unwrapped;
+        mpv = pkgs.mpv-unwrapped.override {
+          ffmpeg = pkgs.ffmpeg.override { withJxl = config.programs.mpv.config.screnshot-format == "jxl"; };
+        };
 
         youtubeSupport = hasYtdlp;
       };
