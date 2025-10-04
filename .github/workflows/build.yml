@@ -46,9 +46,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          hosts=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake (toString ./.)).outputs.nixosConfigurations')
-          echo "Discovered nixosConfigurations: ${hosts}"
-          echo "hosts=${hosts}" >> "$GITHUB_OUTPUT"
+          hosts_json=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake (toString ./.)).outputs.nixosConfigurations')
+          echo "Discovered nixosConfigurations: ${hosts_json}"
+          {
+            echo "hosts<<EOF"
+            echo "${hosts_json}"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
 
   build:
     name: Build ${{ matrix.host }}
