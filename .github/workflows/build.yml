@@ -20,6 +20,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Free disk space on runner
+        shell: bash
+        run: |
+          set -euxo pipefail
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /usr/local/lib/android || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /opt/hostedtoolcache || true
+          sudo docker system prune --all --volumes --force || true
+          sudo apt-get clean || true
+          sudo rm -rf /var/lib/apt/lists/* || true
+          echo "Disk space after cleanup:"
+          df -h
+
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -78,6 +96,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Free disk space on runner
+        shell: bash
+        run: |
+          set -euxo pipefail
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /usr/local/lib/android || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /opt/hostedtoolcache || true
+          sudo docker system prune --all --volumes --force || true
+          sudo apt-get clean || true
+          sudo rm -rf /var/lib/apt/lists/* || true
+          echo "Disk space after cleanup:"
+          df -h
+
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -92,7 +128,7 @@ jobs:
         with:
           primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: nix-${{ runner.os }}-
-          gc-max-store-size-linux: 6G
+           gc-max-store-size-linux: 20G
           purge: true
           purge-prefixes: nix-${{ runner.os }}-
           purge-created: 0
@@ -108,8 +144,13 @@ jobs:
         env:
           CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build NixOS system toplevel
+       - name: Build NixOS system toplevel
+        env:
+          NIX_CONFIG: |
+            max-jobs = 1
+            experimental-features = nix-command flakes
         run: |
           set -euo pipefail
           nix build --print-build-logs --accept-flake-config \
             ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
+
