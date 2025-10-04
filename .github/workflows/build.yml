@@ -46,7 +46,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          hosts=$(nix eval --json .#nixosConfigurations | jq -cr 'keys')
+          hosts=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake (toString ./.)).outputs.nixosConfigurations')
           echo "Discovered nixosConfigurations: ${hosts}"
           echo "hosts=${hosts}" >> "$GITHUB_OUTPUT"
 
