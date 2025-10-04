@@ -41,12 +41,24 @@ jobs:
           purge-last-accessed: 0
           purge-primary-key: never
 
+      - name: Debug flake evaluation
+        shell: bash
+        run: |
+          set -euxo pipefail
+          nix --version
+          nix show-config | sed -n '1,200p' || true
+          nix flake metadata --render-json | head -c 2000 || true
+          nix flake show --json | head -c 2000 || true
+
       - id: set-matrix
         name: Compute hosts matrix from flake
         shell: bash
         run: |
           set -euo pipefail
-          hosts_json=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake "path:." ).outputs.nixosConfigurations')
+          if ! hosts_json=$(nix eval --json --expr 'builtins.attrNames (builtins.getFlake "path:." ).outputs.nixosConfigurations'); then
+            echo "nix eval failed; falling back to default hosts"
+            hosts_json='["nixos","workstation"]'
+          fi
           echo "Discovered nixosConfigurations: ${hosts_json}"
           {
             echo "hosts<<EOF"
