@@ -62,6 +62,7 @@
       extraEnv = {
         PROTON_ENABLE_WAYLAND = true;
         PROTON_ENABLE_HDR = true;
+        OBS_VKCAPTURE = 1;
       };
     };
   };

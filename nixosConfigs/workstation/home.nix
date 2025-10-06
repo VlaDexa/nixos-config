@@ -33,6 +33,14 @@
           };
         };
 
+        obs-studio = {
+          enable = true;
+          plugins = with pkgs.obs-studio-plugins; [
+            wlrobs
+            obs-vkcapture
+          ];
+        };
+
         chromium.extensions = [
           "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
         ];
