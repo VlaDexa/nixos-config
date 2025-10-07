@@ -6,7 +6,10 @@
   ...
 }:
 {
-  imports = [ ./arangodb.nix ];
+  imports = [
+    ./arangodb.nix
+    ./nixbuild.nix
+  ];
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     # Use the systemd-boot EFI boot loader.
