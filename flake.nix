@@ -129,9 +129,14 @@
             ./modules/services/arangodb.nix
             lanzaboote.nixosModules.lanzaboote
             ./secure-boot.nix
-            {
-              nixpkgs.overlays = [ dolphin-overlay.overlays.default ];
-            }
+            (
+              { config, lib, ... }:
+              {
+                nixpkgs.overlays = lib.optional (
+                  !config.services.desktopManager.plasma6.enable
+                ) dolphin-overlay.overlays.default;
+              }
+            )
           ];
           vladexa = {
             home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
