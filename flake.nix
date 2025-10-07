@@ -46,7 +46,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        # nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
@@ -60,11 +60,6 @@
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     nixpkgs-patch-414391 = {
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
-      flake = false;
-    };
-    # Atopile patch to fix newer nixvim
-    nixpkgs-patch-448280 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/448280.patch";
       flake = false;
     };
     dolphin-overlay = {
