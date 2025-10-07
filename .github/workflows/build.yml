@@ -20,24 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Free disk space on runner
-        shell: bash
-        run: |
-          set -euxo pipefail
-          echo "Disk space before cleanup:"
-          df -h
-          sudo rm -rf /usr/share/dotnet || true
-          sudo rm -rf /usr/local/lib/android || true
-          sudo rm -rf /opt/ghc || true
-          sudo rm -rf /usr/local/.ghcup || true
-          sudo rm -rf /opt/hostedtoolcache || true
-          sudo docker system prune --all --volumes --force || true
-          sudo apt-get clean || true
-          sudo rm -rf /var/lib/apt/lists/* || true
-          echo "Disk space after cleanup:"
-          df -h
-
-
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -59,15 +41,6 @@ jobs:
           purge-created: 0
           purge-last-accessed: 0
           purge-primary-key: never
-
-      - name: Debug flake evaluation
-        shell: bash
-        run: |
-          set -euxo pipefail
-          nix --version
-          nix show-config | sed -n '1,200p' || true
-          nix flake metadata --render-json | head -c 2000 || true
-          nix flake show --json | head -c 2000 || true
 
       - id: set-matrix
         name: Compute hosts matrix from flake
@@ -136,13 +109,11 @@ jobs:
           purge-primary-key: never
 
       - name: Use and push to Cachix cache (if token available)
-        env:
-          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        if: ${{ env.CACHIX_AUTH_TOKEN != '' }}
-        uses: cachix/cachix-action@v14
+        uses: cachix/cachix-action@v16
         with:
           name: vladexa
-          authToken: ${{ env.CACHIX_AUTH_TOKEN }}
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build NixOS system toplevel
         env:
