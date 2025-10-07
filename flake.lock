@@ -655,6 +655,18 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/414391.patch"
       }
     },
+    "nixpkgs-patch-448280": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-szK8Uf9Pm392FBpN8rV7lFkDR9vP64/ygKS0De0xc+Y=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/448280.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/448280.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1759655918,
@@ -874,6 +886,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-patch-414391": "nixpkgs-patch-414391",
+        "nixpkgs-patch-448280": "nixpkgs-patch-448280",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
