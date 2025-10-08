@@ -30,6 +30,7 @@
         transparency = 10;
         frame_color = "#eceff1";
         font = "Droid Sans 9";
+        follow = "mouse";
       };
 
       urgency_normal = {
