@@ -107,7 +107,16 @@
     power-profiles-daemon.enable = true;
 
     # Enable the OpenSSH daemon.
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      ports = [ 5566 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+        AllowUsers = [ "vladexa" ];
+      };
+    };
 
     # DoH
     dnscrypt-proxy = {
