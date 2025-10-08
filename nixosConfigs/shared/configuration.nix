@@ -180,7 +180,7 @@
   environment.systemPackages =
     with pkgs;
     [
-      curlHTTP3
+      curl
       git
       (lib.hiPrio uutils-coreutils-noprefix)
     ]
