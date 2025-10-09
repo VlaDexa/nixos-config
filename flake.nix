@@ -62,11 +62,6 @@
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
       flake = false;
     };
-    # Atopile patch to fix newer nixvim
-    nixpkgs-patch-448280 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/448280.patch";
-      flake = false;
-    };
     dolphin-overlay = {
       url = "github:rumboon/dolphin-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
