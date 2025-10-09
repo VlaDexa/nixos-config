@@ -31,6 +31,7 @@
         frame_color = "#eceff1";
         font = "Droid Sans 9";
         follow = "mouse";
+        corner_radius = 10;
       };
 
       urgency_normal = {
