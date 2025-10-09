@@ -325,21 +325,23 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1759988134,
-        "narHash": "sha256-uVaAXjJgo2/uGJz6lD+Bn5nBBmW5AAr2n8lW7v7h0PI=",
-        "owner": "hyprwm",
+        "lastModified": 1759999627,
+        "narHash": "sha256-rJTACLMB9a6+ffhutJy8PezTyaH1FiaOIDjGrCTwJG4=",
+        "owner": "VlaDexa",
         "repo": "Hyprland",
-        "rev": "b965fb2a40b132209b58f511e2604a2939461818",
+        "rev": "d2bf8306e482ab97412722d9ab680f489401ef46",
         "type": "github"
       },
       "original": {
-        "owner": "hyprwm",
+        "owner": "VlaDexa",
         "repo": "Hyprland",
         "type": "github"
       }
@@ -612,11 +614,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759381078,
-        "narHash": "sha256-gTrEEp5gEspIcCOx9PD8kMaF1iEmfBcTbO0Jag2QhQs=",
+        "lastModified": 1759831965,
+        "narHash": "sha256-vgPm2xjOmKdZ0xKA6yLXPJpjOtQPHfaZDRtH+47XEBo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+        "rev": "c9b6fb798541223bbb396d287d16f43520250518",
         "type": "github"
       },
       "original": {
@@ -670,22 +672,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1759831965,
-        "narHash": "sha256-vgPm2xjOmKdZ0xKA6yLXPJpjOtQPHfaZDRtH+47XEBo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c9b6fb798541223bbb396d287d16f43520250518",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1759632233,
         "narHash": "sha256-krgZxGAIIIKFJS+UB0l8do3sYUDWJc75M72tepmVMzE=",
         "owner": "NixOS",
@@ -705,7 +691,7 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nuschtosSearch": "nuschtosSearch",
         "systems": "systems_3"
       },
@@ -900,7 +886,7 @@
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-patch-414391": "nixpkgs-patch-414391",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
