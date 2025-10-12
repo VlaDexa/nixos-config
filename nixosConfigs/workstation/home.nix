@@ -35,6 +35,7 @@
 
         obs-studio = {
           enable = true;
+          package = pkgs.obs-studio.override { ffmpeg = pkgs.ffmpeg.override { withAmf = true; }; };
           plugins = with pkgs.obs-studio-plugins; [
             wlrobs
             obs-vkcapture
@@ -55,6 +56,9 @@
 
       home.sessionVariables = {
         TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
+        PROTON_ENABLE_WAYLAND = 1;
+        PROTON_ENABLE_HDR = 1;
+        OBS_VKCAPTURE = 1;
       };
     };
 }

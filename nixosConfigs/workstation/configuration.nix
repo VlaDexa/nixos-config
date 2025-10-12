@@ -63,13 +63,6 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
-    package = pkgs.steam.override {
-      extraEnv = {
-        PROTON_ENABLE_WAYLAND = true;
-        PROTON_ENABLE_HDR = true;
-        OBS_VKCAPTURE = 1;
-      };
-    };
   };
   # For easyeffects
   programs.dconf.enable = true;
