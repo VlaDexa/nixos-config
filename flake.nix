@@ -55,6 +55,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixvim.follows = "nixvim";
+      # Only for dev
+      inputs.pre-commit-hooks.follows = "";
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
