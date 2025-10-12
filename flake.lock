@@ -723,11 +723,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1757354814,
-        "narHash": "sha256-MYfzBUgU8uRP3RTislfdQjb3v4VcREg7ojDGtrOIv4o=",
+        "lastModified": 1760268406,
+        "narHash": "sha256-TgSKMkSs7XSVoaAP0/RxPP5TrAJCpzkHwY9qQOkJD8A=",
         "owner": "VlaDexa",
         "repo": "nixvim-config",
-        "rev": "0e34cbc2b73f350032912f5e7c6cc7f0ee1e4711",
+        "rev": "7fabbc25245d409801bb4dc113384b1f8c39bf6a",
         "type": "github"
       },
       "original": {
@@ -838,11 +838,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754416808,
-        "narHash": "sha256-c6yg0EQ9xVESx6HGDOCMcyRSjaTpNJP10ef+6fRcofA=",
+        "lastModified": 1759523803,
+        "narHash": "sha256-PTod9NG+i3XbbnBKMl/e5uHDBYpwIWivQ3gOWSEuIEM=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "9c52372878df6911f9afc1e2a1391f55e4dfc864",
+        "rev": "cfc9f7bb163ad8542029d303e599c0f7eee09835",
         "type": "github"
       },
       "original": {
