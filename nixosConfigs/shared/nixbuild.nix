@@ -19,6 +19,7 @@
 
   nix = {
     distributedBuilds = true;
+    settings.builders-use-substitutes = true;
     buildMachines = [
       {
         hostName = "eu.nixbuild.net";
