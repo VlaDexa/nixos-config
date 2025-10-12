@@ -109,6 +109,9 @@
             {
               programs.nixvim = nixvim-config.modules.config;
             }
+            {
+              programs.nixvim.nixpkgs.useGlobalPackages = true;
+            }
             ./modules/programs
           ];
           shared_modules = [
