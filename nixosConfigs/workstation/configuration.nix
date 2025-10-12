@@ -35,6 +35,11 @@
     ];
   };
 
+  networking = {
+    networkmanager.enable = false;
+    useNetworkd = true;
+  };
+
   boot.plymouth.enable = true; # Doesn't work with bcachefs encryption
   # boot.initrd.systemd.enable = true; # Systemd boot
 

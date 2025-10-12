@@ -34,7 +34,7 @@
   };
 
   networking = {
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager.enable = lib.mkDefault true; # Easiest to use and most distros use this by default.
     timeServers = options.networking.timeServers.default ++ [ "time.cloudflare.com" ];
 
     # DoH
