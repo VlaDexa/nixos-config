@@ -48,7 +48,7 @@
       "$mainMod SHIFT, 9, movetoworkspace, 9"
       "$mainMod SHIFT, 0, movetoworkspace, 10"
       # Screenshots
-      "SUPER SHIFT, s, exec, ${lib.getExe pkgs.grimblast} copy area"
+      "SUPER SHIFT, s, exec, ${lib.getExe pkgs.grimblast} -f copy area"
     ];
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = [
