@@ -101,7 +101,10 @@
     lact.enable = true;
   };
 
-  hardware.amdgpu.overdrive.enable = true;
+  hardware = {
+    amdgpu.overdrive.enable = true;
+    graphics.extraPackages = [ pkgs.amf ];
+  };
 
   nixpkgs.config.chromium.enableWideVine = true;
 }
