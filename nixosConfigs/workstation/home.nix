@@ -19,9 +19,9 @@
       xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
 
       programs = {
-        yt-dlp.enable = true;
-
-        vesktop.enable = true;
+        chromium.extensions = [
+          "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+        ];
 
         distrobox = {
           enable = true;
@@ -37,15 +37,15 @@
           enable = true;
           package = pkgs.obs-studio.override { ffmpeg = pkgs.ffmpeg.override { withAmf = true; }; };
           plugins = with pkgs.obs-studio-plugins; [
-            wlrobs
-            obs-vkcapture
             obs-pipewire-audio-capture
+            obs-vkcapture
+            wlrobs
           ];
         };
 
-        chromium.extensions = [
-          "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
-        ];
+        vesktop.enable = true;
+
+        yt-dlp.enable = true;
       };
 
       services = {
@@ -55,10 +55,11 @@
       };
 
       home.sessionVariables = {
-        TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
-        PROTON_ENABLE_WAYLAND = 1;
-        PROTON_ENABLE_HDR = 1;
         OBS_VKCAPTURE = 1;
+        PROTON_ENABLE_HDR = 1;
+        PROTON_ENABLE_WAYLAND = 1;
+
+        TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
       };
     };
 }
