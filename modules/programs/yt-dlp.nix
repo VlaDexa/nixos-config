@@ -27,6 +27,24 @@
         ExecStart = lib.getExe (
           pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.server.override { withBun = true; }
         );
+        NoNewPrivileges = true;
+        NonBlocking = true;
+        PrivateDevices = true;
+        ProtectClock = true;
+        ProtectControlGroups = true;
+        ProtectHome = true;
+        ProtectHostname = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectSystem = "strict";
+        Restart = "always";
+        RestrictAddressFamilies = [
+          "AF_INET"
+          "AF_INET6"
+        ];
+        RestrictNamespaces = true;
+        RestrictRealtime = true;
         PartOf = [ "graphical-session.target" ];
       };
       Install.WantedBy = [ "graphical-session.target" ];
