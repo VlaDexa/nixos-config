@@ -33,6 +33,18 @@
         "type": "github"
       }
     },
+    "bcachefs-nixpkgs-patch-429126": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-tnslYdYwB7TIOUNCj5slxJerboao1mFUsk5R2hvYMX4=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/429126.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/429126.patch"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1731098351,
@@ -816,6 +828,7 @@
     },
     "root": {
       "inputs": {
+        "bcachefs-nixpkgs-patch-429126": "bcachefs-nixpkgs-patch-429126",
         "disko": "disko",
         "dolphin-overlay": "dolphin-overlay",
         "flake-compat": "flake-compat",

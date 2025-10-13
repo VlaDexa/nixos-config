@@ -64,6 +64,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/414391.patch";
       flake = false;
     };
+    bcachefs-nixpkgs-patch-429126 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
+      flake = false;
+    };
     dolphin-overlay = {
       url = "github:rumboon/dolphin-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -89,6 +93,7 @@
       nixvim,
       nixvim-config,
       nixpkgs-patcher,
+      bcachefs-nixpkgs-patch-429126,
       dolphin-overlay,
       ...
     }@inputs:
@@ -150,6 +155,7 @@
         {
           nixos = nixpkgs-patcher.lib.nixosSystem {
             specialArgs = inputs;
+            nixpkgsPatcher.patches = pkgs: [ bcachefs-nixpkgs-patch-429126 ];
             modules = shared_modules ++ [
               ./nixosConfigs/laptop
               nixos-hardware.nixosModules.common-cpu-amd
