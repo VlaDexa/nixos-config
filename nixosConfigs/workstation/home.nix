@@ -14,6 +14,8 @@
         qbittorrent
 
         libreoffice-fresh
+
+        kdePackages.kimageformats # For jxl support in Gwenview
       ];
 
       xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
