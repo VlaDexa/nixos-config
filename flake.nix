@@ -73,7 +73,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:VlaDexa/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -305,15 +305,15 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1760485027,
-        "narHash": "sha256-1VtVAyvi8wKZSCW+gmzkq6zb3rHlWndHDAPwqolL5+E=",
-        "owner": "hyprwm",
+        "lastModified": 1760519152,
+        "narHash": "sha256-MSt7b6TBxzUvQSjrcX6+K5cDjLfsaG3Ouva2l2m+8Dk=",
+        "owner": "VlaDexa",
         "repo": "Hyprland",
-        "rev": "60529e810d100231d17abab438f94460d4b9fc7e",
+        "rev": "cc2da35f8ea7001921d0d5f69deb4aece9ef004f",
         "type": "github"
       },
       "original": {
-        "owner": "hyprwm",
+        "owner": "VlaDexa",
         "repo": "Hyprland",
         "type": "github"
       }
