@@ -245,12 +245,12 @@ in
         };
         settings."extensions.autoDisableScopes" = 0;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          react-devtools
-          sponsorblock
-          privacy-badger
           bitwarden
           indie-wiki-buddy
+          privacy-badger
+          react-devtools
+          sponsorblock
+          ublock-origin
         ];
       };
       languagePacks = [
@@ -263,13 +263,14 @@ in
     chromium = {
       enable = true;
       extensions = [
-        "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
-        "fmkadmapgofadopljbjfkapdkoienihi" # React DevTools
-        "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
-        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
-        "kcpfnbjlimolkcjllfooaipdpdjmjigg" # Linkumori
-        "kdbmhfkmnlmbkgbabkdealhhbfhlmmon" # SteamDB
         "fkagelmloambgokoeokbpihmgpkbgbfm" # Indie Wiki Buddy
+        "kcpfnbjlimolkcjllfooaipdpdjmjigg" # Linkumori
+        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
+        "fmkadmapgofadopljbjfkapdkoienihi" # React DevTools
+        "anmmhkomejbdklkhoiloeaehppaffmdf" # React Scan
+        "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
+        "kdbmhfkmnlmbkgbabkdealhhbfhlmmon" # SteamDB
+        "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
       ];
       dictionaries = with pkgs; [
         hunspellDictsChromium.en_US
