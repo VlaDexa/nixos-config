@@ -6,18 +6,32 @@ This repository contains my personal NixOS configuration using Flakes, Home Mana
 
 This flake defines two NixOS system configurations:
 
-- **nixos** - Laptop configuration (AMD CPU/GPU with optimizations)
-- **workstation** - Desktop workstation configuration (AMD CPU/GPU with optimizations)
+- **nixos** - Laptop configuration with KDE Plasma 6 desktop (AMD CPU/GPU with optimizations)
+- **workstation** - Gaming/streaming desktop with Hyprland compositor (AMD CPU/GPU with optimizations)
 
 Both systems share a common configuration base with user-specific customizations.
 
 ## ✨ Key Features
 
 ### Desktop Environment
+
+#### Laptop (KDE Plasma 6)
 - **KDE Plasma 6** with custom theming (Klassy theme)
-- Hardware acceleration for Chromium using Vulkan/ANGLE
+- SDDM display manager
 - KDE Connect for mobile device integration
 - Custom keyboard layouts (US/RU) with Alt+Shift switching
+
+#### Workstation (Hyprland)
+- **Hyprland** tiling Wayland compositor
+- Ly display manager with animations
+- Waybar for status bar
+- Wofi application launcher
+- Dunst notification daemon
+- Hyprlock screen locker
+- Qt5ct theming with Adwaita Dark
+
+### Both Systems
+- Hardware acceleration for Chromium using Vulkan/ANGLE
 
 ### Development Tools
 - **Neovim** (via nixvim) as the default editor
@@ -35,6 +49,14 @@ Both systems share a common configuration base with user-specific customizations
 - **Password Manager**: Bitwarden (self-hosted)
 - **Music**: Spotify
 
+#### Workstation-Specific
+- **Gaming**: Steam with Proton-GE, HDR support, remote play
+- **Streaming**: OBS Studio with pipewire, vkcapture, and wlrobs plugins
+- **Office**: LibreOffice Fresh
+- **File Sharing**: qBittorrent
+- **Containers**: Distrobox with Arch Linux container
+- **VPN**: Mullvad VPN and WireGuard
+
 ### Security & Secrets
 - **SOPS** (Secrets OPerationS) for managing encrypted secrets
 - **Lanzaboote** for Secure Boot support
@@ -47,6 +69,13 @@ Both systems share a common configuration base with user-specific customizations
 - **Nix-index** for command-not-found functionality
 - Hardware-specific optimizations via nixos-hardware modules
 - Pre-commit hooks for code quality
+
+#### Workstation-Specific
+- **AMD GPU Control**: LACT for overclocking and fan management
+- **Audio**: EasyEffects for audio processing
+- **ADB**: Android Debug Bridge support
+- **Zram**: On laptop for swap optimization
+- **Network**: systemd-networkd (workstation), NetworkManager (laptop)
 
 ## 📁 Repository Structure
 
