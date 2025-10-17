@@ -9,6 +9,7 @@ let
   defaultMimePackages = with pkgs; [
     kdePackages.gwenview
     kdePackages.okular
+    zoom-us
   ];
 in
 {
