@@ -310,9 +310,11 @@ in
 
     git = {
       enable = true;
-      userName = "Vladislav Grechannik";
-      userEmail = "vgrechannik@gmail.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Vladislav Grechannik";
+          email = "vgrechannik@gmail.com";
+        };
         rerere.enabled = true;
       };
       signing = {
