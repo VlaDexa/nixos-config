@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
-      url = "github:nix-community/disko/pull/1058/head";
+      url = "github:nix-community/disko/pull/1058/merge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
