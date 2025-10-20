@@ -4,6 +4,7 @@
       config,
       lib,
       pkgs,
+      osConfig,
       ...
     }:
     {
@@ -47,6 +48,12 @@
         vesktop.enable = true;
 
         yt-dlp.enable = true;
+
+        lutris = {
+          enable = true;
+          steamPackage = osConfig.programs.steam.package;
+          protonPackages = [ pkgs.proton-ge-bin ];
+        };
       };
 
       services = {
