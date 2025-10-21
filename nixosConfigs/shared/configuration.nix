@@ -57,6 +57,12 @@
         allowedUDPPortRanges = [ kdeconnectPortRange ];
       };
   };
+  systemd.network.networks."99-ethernet-default-dhcp" = {
+    dhcpV4Config.UseDNS = false;
+    dhcpV6Config.UseDNS = false;
+    ipv6AcceptRAConfig.UseDNS = false;
+    networkConfig.DNS = config.networking.nameservers;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Ljubljana";
@@ -126,6 +132,8 @@
       settings = {
         ipv6_servers = true;
         require_dnssec = true;
+        http3 = true;
+        listen_addresses = [ "[::1]:53" ];
         # Add this to test if dnscrypt-proxy is actually used to resolve DNS requests
         # query_log.file = "/var/log/dnscrypt-proxy/query.log";
         sources.public-resolvers = {
