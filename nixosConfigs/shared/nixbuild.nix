@@ -1,6 +1,9 @@
 { config, ... }:
 {
-  sops.secrets.nixpkgs_key = { };
+  sops.secrets.nixpkgs_key = {
+    group = "users";
+    mode = "0440";
+  };
 
   programs.ssh.extraConfig = ''
     Host eu.nixbuild.net
