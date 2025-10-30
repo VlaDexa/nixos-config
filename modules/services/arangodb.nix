@@ -63,6 +63,12 @@ in
       default = null;
       description = "Number of seconds the server will wait in idle state before shutting down.";
     };
+
+    extraConfig = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      description = "Extra ArangoDB configuration options.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -142,32 +148,35 @@ in
               ExecStart =
                 let
                   format = pkgs.formats.ini { listsAsDuplicateKeys = true; };
-                  arangd-conf = format.generate "arangod.conf" {
-                    database = {
-                      directory = cfg.databaseDir;
-                      password = cfg.password;
-                    };
+                  arangd-conf = format.generate "arangod.conf" (
+                    {
+                      database = {
+                        directory = cfg.databaseDir;
+                        password = cfg.password;
+                      };
 
-                    server = {
-                      # endpoint = [
-                      #   "tcp://0.0.0.0:${toString cfg.port}"
-                      # ]
-                      # ++ lib.optional cfg.enableUnixSocket "unix:///run/arangodb/arangodb.sock";
-                      endpoint = "unix://${systemdSocket}";
-                      storage-engine = "auto";
-                    };
+                      server = {
+                        # endpoint = [
+                        #   "tcp://0.0.0.0:${toString cfg.port}"
+                        # ]
+                        # ++ lib.optional cfg.enableUnixSocket "unix:///run/arangodb/arangodb.sock";
+                        endpoint = "unix://${systemdSocket}";
+                        storage-engine = "auto";
+                      };
 
-                    javascript = {
-                      startup-directory = "${cfg.package}/share/arangodb3/js";
-                      app-path = cfg.appsDir;
-                    };
+                      javascript = {
+                        startup-directory = "${cfg.package}/share/arangodb3/js";
+                        app-path = cfg.appsDir;
+                      };
 
-                    log = {
-                      level = "info";
-                      file = cfg.logFile;
-                      foreground-tty = true;
-                    };
-                  };
+                      log = {
+                        level = "info";
+                        file = cfg.logFile;
+                        foreground-tty = true;
+                      };
+                    }
+                    // cfg.extraConfig
+                  );
                 in
                 "${cfg.package}/bin/arangod --configuration ${arangd-conf} --pid-file ${pidFile}";
               StateDirectory =
