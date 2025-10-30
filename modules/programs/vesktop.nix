@@ -7,7 +7,7 @@
         hardwareAcceleration = true;
       };
       vencord = {
-        useSystem = true;
+        # useSystem = true;
         settings = {
           plugins = {
             FakeNitro.enabled = true;
