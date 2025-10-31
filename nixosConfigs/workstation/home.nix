@@ -53,6 +53,7 @@
           enable = true;
           steamPackage = osConfig.programs.steam.package;
           protonPackages = [ pkgs.proton-ge-bin ];
+          defaultWinePackage = pkgs.proton-ge-bin;
         };
       };
 
