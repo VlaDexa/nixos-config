@@ -11,10 +11,10 @@
   sops.secrets = {
     private-key = { };
     preshared-key = { };
-    peertube-runner-token = {
-      owner = config.services.peertube-runner.user;
-      group = config.services.peertube-runner.group;
-    };
+    # peertube-runner-token = {
+    #   owner = config.services.peertube-runner.user;
+    #   group = config.services.peertube-runner.group;
+    # };
   };
   networking.hostName = "workstation";
   networking.wg-quick.interfaces.wg0 = {
@@ -99,7 +99,7 @@
     lact.enable = true;
 
     peertube-runner = {
-      enable = true;
+      # enable = true;
       instancesToRegister.vladexa = {
         url = "https://peertube.vladexa.xyz";
         runnerName = "workstation";
