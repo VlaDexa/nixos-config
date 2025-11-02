@@ -8,6 +8,7 @@
       sdrsaturation = 1.1;
       bitdepth = 10;
       vrr = 2;
+      sdr_eotf = 1;
     }
     {
       output = "HDMI-A-1";
@@ -15,6 +16,7 @@
       position = "2560x0";
       bitdepth = 10;
       vrr = 2;
+      sdr_eotf = 1;
     }
   ];
 }

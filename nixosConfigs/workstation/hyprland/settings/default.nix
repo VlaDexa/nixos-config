@@ -49,5 +49,9 @@
 
       layout = "dwindle";
     };
+
+    render = {
+      cm_sdr_eotf = 2;
+    };
   };
 }
