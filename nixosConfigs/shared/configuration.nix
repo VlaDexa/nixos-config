@@ -225,6 +225,8 @@
 
   hardware.bluetooth.enable = true;
 
+  fonts.enableDefaultPackages = true;
+
   nix = {
     settings.experimental-features = [
       "nix-command"
