@@ -15,8 +15,8 @@
       concurrent-fragments = 4;
     };
 
-    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider".source =
-      pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.plugin;
+    xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins".source =
+      "${pkgs.python3Packages.bgutil-ytdlp-pot-provider}/lib/python3.13/site-packages/yt_dlp_plugins";
 
     systemd.user.services.bgutil-ytdlp-pot-provider-server = {
       Unit = {
