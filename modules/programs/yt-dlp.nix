@@ -13,7 +13,11 @@
       embed-metadata = true;
       embed-thumbnail = true;
       concurrent-fragments = 4;
+      remote-components = "ejs:github";
     };
+    programs.yt-dlp.package = pkgs.nur.repos.aciceri.yt-dlp-master.overrideAttrs (oldAttrs: {
+      propagatedBuildInputs = [ pkgs.deno ];
+    });
 
     xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins".source =
       "${pkgs.python3Packages.bgutil-ytdlp-pot-provider}/lib/python3.13/site-packages/yt_dlp_plugins";
