@@ -115,5 +115,4 @@
   };
 
   nixpkgs.config.chromium.enableWideVine = true;
-  nixpkgs.config.rocmSupport = true;
 }
