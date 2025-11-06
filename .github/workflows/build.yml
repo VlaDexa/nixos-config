@@ -69,16 +69,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Create nixbuild SSH key
-        env:
-          NIXBUILD_KEY: ${{ secrets.NIXBUILD_KEY }}
-        shell: bash
-        run: |
-          mkdir -p ~/.ssh
-          echo "$NIXBUILD_KEY" > ~/.ssh/github_nixbuild
-          chmod 600 ~/.ssh/github_nixbuild
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/github_nixbuild
+      - uses: nixbuild/nixbuild-action@v24
+        with:
+          nixbuild_token: ${{ secrets.NIXBUILD_TOKEN }}
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
