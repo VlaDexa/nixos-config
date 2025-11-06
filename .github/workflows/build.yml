@@ -72,24 +72,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.NIXBUILD_KEY }}
 
-      - name: Free disk space on runner
-        shell: bash
-        run: |
-          set -euxo pipefail
-          echo "Disk space before cleanup:"
-          df -h
-          sudo rm -rf /usr/share/dotnet || true
-          sudo rm -rf /usr/local/lib/android || true
-          sudo rm -rf /opt/ghc || true
-          sudo rm -rf /usr/local/.ghcup || true
-          sudo rm -rf /opt/hostedtoolcache || true
-          sudo docker system prune --all --volumes --force || true
-          sudo apt-get clean || true
-          sudo rm -rf /var/lib/apt/lists/* || true
-          echo "Disk space after cleanup:"
-          df -h
-
-
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -98,6 +80,7 @@ jobs:
             experimental-features = nix-command flakes
             accept-flake-config = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            max-jobs = 1
 
       - name: Restore and save Nix store
         uses: nix-community/cache-nix-action@v6
@@ -119,13 +102,14 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build NixOS system toplevel
-        env:
-          NIX_CONFIG: |
-            max-jobs = 1
-            experimental-features = nix-command flakes
         run: |
           set -euo pipefail
           nix build --print-build-logs --accept-flake-config \
             --eval-store auto --store ssh-ng://eu.nixbuild.net \
             ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
 
+      - name: Copy NixOS system toplevel from nixbuild
+        run: |
+          nix copy \
+            --from ssh-ng://eu.nixbuild.net \
+            ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
