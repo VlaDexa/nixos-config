@@ -68,6 +68,18 @@ jobs:
         host: ${{ fromJSON(needs.prepare-matrix.outputs.hosts) }}
     steps:
       - uses: actions/checkout@v5
+
+      - name: Create nixbuild SSH key
+        env:
+          NIXBUILD_KEY: ${{ secrets.NIXBUILD_KEY }}
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          echo "$NIXBUILD_KEY" > ~/.ssh/github_nixbuild
+          chmod 600 ~/.ssh/github_nixbuild
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/github_nixbuild
+
       - uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.NIXBUILD_KEY }}
