@@ -74,7 +74,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/pull/12052/merge";
+      url = "github:hyprwm/Hyprland?ref=refs/heads/main";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
