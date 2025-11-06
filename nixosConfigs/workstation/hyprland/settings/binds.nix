@@ -8,12 +8,12 @@
       "$mainMod, P, pseudo, # dwindle"
       "$mainMod, V, togglefloating,"
 
-      "$mainMod, B, exec, $browser"
-      "$mainMod, E, exec, $fileManager"
-      "$mainMod, Escape, exec, ${lib.getExe pkgs.mission-center}"
-      "$mainMod, Q, exec, $terminal"
-      "$mainMod, R, exec, $menu"
-      "$mainMod, S, exec, ${lib.getExe pkgs.pavucontrol}"
+      "$mainMod, B, exec, uwsm app -- $browser"
+      "$mainMod, E, exec, uwsm app -- $fileManager"
+      "$mainMod, Escape, exec, uwsm app -- ${lib.getExe pkgs.mission-center}"
+      "$mainMod, Q, exec, uwsm app -- $terminal"
+      "$mainMod, R, exec, uwsm app -- $menu"
+      "$mainMod, S, exec, uwsm app -- ${lib.getExe pkgs.pavucontrol}"
 
       # Move focus with mainMod + arrow keys
       "$mainMod, left, movefocus, l"
@@ -48,7 +48,7 @@
       "$mainMod SHIFT, 9, movetoworkspace, 9"
       "$mainMod SHIFT, 0, movetoworkspace, 10"
       # Screenshots
-      "SUPER SHIFT, s, exec, ${lib.getExe pkgs.grimblast} -f copy area"
+      "SUPER SHIFT, s, exec, uwsm app -- ${lib.getExe pkgs.grimblast} -f copy area"
     ];
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = [

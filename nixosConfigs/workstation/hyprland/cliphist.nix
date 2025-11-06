@@ -20,6 +20,6 @@
     in
     [
       "$mainMod, G, exec, ${cliphist} list | ${wofi} -d -k /dev/null | ${cliphist} decode | ${wl-copy}"
-      "$mainMod, Y, exec, ${mpv} $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)"
+      "$mainMod, Y, exec, uwsm app -- ${mpv} $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)"
     ];
 }

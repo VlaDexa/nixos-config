@@ -9,6 +9,7 @@
     enable = true;
     package = null; # NixOS
     portalPackage = null;
+    systemd.enable = false;
     # plugins = with pkgs.hyprlandPlugins; [
     #   hyprlock
     # ];
@@ -16,7 +17,7 @@
 
   services.blueman-applet = {
     enable = true;
-    systemdTargets = [ "hyprland-session.target" ];
+    systemdTargets = [ "hyprland-uwsm.target" ];
   };
 
   services.dunst = {
