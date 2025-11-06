@@ -68,6 +68,9 @@ jobs:
         host: ${{ fromJSON(needs.prepare-matrix.outputs.hosts) }}
     steps:
       - uses: actions/checkout@v5
+      - uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.NIXBUILD_KEY }}
 
       - name: Free disk space on runner
         shell: bash
@@ -112,7 +115,7 @@ jobs:
         uses: cachix/cachix-action@v16
         with:
           name: vladexa
-          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          # signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build NixOS system toplevel
@@ -123,5 +126,6 @@ jobs:
         run: |
           set -euo pipefail
           nix build --print-build-logs --accept-flake-config \
+            --eval-store auto --store ssh-ng://eu.nixbuild.net \
             ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
 
