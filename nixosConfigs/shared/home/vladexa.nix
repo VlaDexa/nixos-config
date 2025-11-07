@@ -252,7 +252,8 @@ in
           privacy-badger
           react-devtools
           sponsorblock
-          ublock-origin
+          # ublock-origin
+          adnauseam
         ];
       };
       languagePacks = [
