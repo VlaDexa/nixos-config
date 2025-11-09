@@ -168,6 +168,8 @@
       enable = lib.mkDefault true;
       defaultSession = lib.mkDefault "plasma";
     };
+
+    dbus.implementation = "broker";
   };
 
   # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
