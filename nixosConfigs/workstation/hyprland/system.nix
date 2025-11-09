@@ -1,5 +1,16 @@
-{ pkgs, hyprland, ... }:
 {
+  pkgs,
+  config,
+  hyprland,
+  ...
+}:
+{
+  nixpkgs.overlays = [
+    (final: prev: {
+      grimblast = prev.grimblast.override { hyprland = config.programs.hyprland.package; };
+    })
+  ];
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
