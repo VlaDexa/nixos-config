@@ -26,7 +26,7 @@
     "$browser" = "${lib.getExe config.programs.chromium.package}";
 
     exec = [
-      (lib.getExe' pkgs.kdePackages.kwallet "kwalletd6")
+      "${lib.getExe pkgs.runapp} ${lib.getExe' pkgs.kdePackages.kwallet "kwalletd6"})"
       "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
       "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme prefer-dark"
     ];
