@@ -170,6 +170,12 @@
     };
 
     dbus.implementation = "broker";
+
+    clamav = {
+      updater.enable = true;
+      daemon.enable = true;
+      scanner.enable = true;
+    };
   };
 
   # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
