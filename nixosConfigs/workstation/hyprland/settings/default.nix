@@ -23,7 +23,7 @@
     "$terminal" = lib.getExe pkgs.kitty;
     "$fileManager" = lib.getExe' pkgs.kdePackages.dolphin "dolphin";
     "$menu" = "${lib.getExe config.programs.wofi.package} --show drun";
-    "$browser" = "${lib.getExe config.programs.chromium.package}";
+    "$browser" = "chromium";
 
     exec = [
       "${lib.getExe pkgs.runapp} -i background.slice ${lib.getExe' pkgs.kdePackages.kwallet "kwalletd6"}"
