@@ -70,6 +70,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/447721.patch";
       flake = false;
     };
+    nixpkgs-patch-460892 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/460892.patch";
+      flake = false;
+    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
