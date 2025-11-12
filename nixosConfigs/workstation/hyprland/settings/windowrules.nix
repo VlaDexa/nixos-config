@@ -8,11 +8,10 @@
       "suppressevent maximize, class:.*"
       "immediate, class:^(mpv)$"
 
-      # Float Steam
-      "float, class:steam"
+      # Please Don't Float Steam
+      "float, class:steam, title: Friends List"
       "center, class:steam, title:Steam"
       "opacity 1 1, class:steam"
-      "size 1100 700, class:steam, title:Steam"
       "size 460 800, class:steam, title:Friends List"
       "idleinhibit fullscreen, class:steam"
 
