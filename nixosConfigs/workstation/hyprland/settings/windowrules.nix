@@ -1,22 +1,31 @@
 {
   wayland.windowManager.hyprland.settings = {
-    windowrulev2 = [
-      "immediate, fullscreen:1"
-      "immediate, fullscreen:2"
-    ];
     windowrule = [
-      "suppressevent maximize, class:.*"
-      "immediate, class:^(mpv)$"
+      {
+        name = "Terminal Rules";
+        tag = "+terminal";
+        "match:class" = "(Alacritty|kitty|com.mitchellh.ghostty)";
+      }
+      {
+        name = "Steam Friends List";
+        float = "true";
+        size = "460 800";
+        "match:class" = "steam";
+        "match:title" = "Friends List";
+      }
+      {
+        name = "Steam Rules";
+        "match:class" = "steam";
+        idle_inhibit = "fullscreen";
+      }
+      {
+        # Ignore maximize requests from all apps. You'll probably like this.
+        name = "suppress-maximize-events";
+        "match:class" = ".*";
 
-      # Please Don't Float Steam
-      "float, class:steam, title: Friends List"
-      "center, class:steam, title:Steam"
-      "opacity 1 1, class:steam"
-      "size 460 800, class:steam, title:Friends List"
-      "idleinhibit fullscreen, class:steam"
-
-      # Define terminal tag to style them uniformly
-      "tag +terminal, class:(Alacritty|kitty|com.mitchellh.ghostty)"
+        suppress_event = "maximize";
+      }
+      # "match:class mpv, immediate yes"
     ];
   };
 }
