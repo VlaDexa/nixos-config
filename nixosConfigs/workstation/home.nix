@@ -58,7 +58,7 @@
       };
 
       services = {
-        easyeffects.enable = true;
+        easyeffects.enable = false && osConfig.programs.dconf.enable;
 
         podman.enable = config.programs.distrobox.enable;
       };
