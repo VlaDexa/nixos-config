@@ -4,7 +4,7 @@
     flake-compat.url = "github:edolstra/flake-compat";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/pull/8192/merge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
