@@ -676,7 +676,7 @@
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1763966396,
-        "narHash": "sha256-Y7TDFPK4GlqrKrivOcsHG8xSGqQx3A6c+i7novT85Uk=",
+        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
