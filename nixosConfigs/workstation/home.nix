@@ -65,8 +65,12 @@
       };
 
       systemd.user.services.steam = {
-        Unit = {
-          After = [ "network-online.target" ];
+        Unit = rec {
+          After = [
+            "network-online.target"
+            "graphical-session.target"
+          ];
+          Wants = After;
           Description = "Open Steam in the background at boot";
         };
         Service = {
