@@ -63,6 +63,19 @@
         podman.enable = config.programs.distrobox.enable;
       };
 
+      systemd.user.services.steam = {
+        Unit = {
+          After = [ "network-online.target" ];
+          Description = "Open Steam in the background at boot";
+        };
+        Service = {
+          ExecStart = "${lib.getExe osConfig.programs.steam.package} -nochatui -nofriendsui -silent %U";
+          Restart = "on-failure";
+          RestartSec = "5s";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
+
       home.sessionVariables = {
         OBS_VKCAPTURE = 1;
         PROTON_ENABLE_HDR = 1;
