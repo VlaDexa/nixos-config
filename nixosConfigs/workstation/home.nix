@@ -17,6 +17,7 @@
         libreoffice-fresh
 
         kdePackages.kimageformats # For jxl support in Gwenview
+        runapp
       ];
 
       xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
