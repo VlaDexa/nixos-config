@@ -5,7 +5,7 @@
   '';
 
   services.arangodb = {
-    enable = true;
+    enable = false;
     password = "@ARANGODB_PASSWORD@";
     environmentFiles = [ config.sops.templates."arangodb.env".path ];
     enableUnixSocket = true;
