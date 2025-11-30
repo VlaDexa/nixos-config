@@ -7,7 +7,6 @@
 }:
 {
   imports = [
-    ./arangodb.nix
     ./nixbuild.nix
   ];
   boot = {
@@ -83,7 +82,6 @@
     age.keyFile = "/var/lib/sops-nix/key.txt";
 
     secrets.password.neededForUsers = true;
-    secrets.arangodb_password = { };
   };
 
   location.provider = "geoclue2";

@@ -141,7 +141,6 @@
             }
             ./nixosConfigs/shared/configuration.nix
             ./modules/plymouth.nix
-            ./modules/services/arangodb.nix
             lanzaboote.nixosModules.lanzaboote
             ./secure-boot.nix
             (

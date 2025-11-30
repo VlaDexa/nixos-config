@@ -60,7 +60,6 @@ in
     age.keyFile = "/var/lib/sops-nix/key.txt";
 
     secrets.ssh_key = { };
-    secrets.mssql_password = { };
   };
 
   accounts.email.accounts = {

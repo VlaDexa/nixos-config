@@ -6,7 +6,11 @@
 }:
 {
   imports = [ ./hyprland/system.nix ];
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
+
+  system.etc.overlay.enable = true;
+  services.userborn.enable = true;
+  system.nixos-init.enable = true; # Rust based init system or something
 
   sops.secrets = {
     private-key = { };
