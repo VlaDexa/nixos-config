@@ -75,7 +75,6 @@
   };
   # For easyeffects
   programs.dconf.enable = true;
-  programs.ccache.enable = true;
 
   programs.adb.enable = true;
 
