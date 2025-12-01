@@ -25,6 +25,7 @@
       programs = {
         chromium.extensions = [
           "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+          "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
         ];
 
         distrobox = {
