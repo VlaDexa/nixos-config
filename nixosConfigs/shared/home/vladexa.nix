@@ -32,9 +32,6 @@ in
 
       wl-clipboard
 
-      # Work
-      teams-for-linux
-      clickup
       devenv
 
       telegram-desktop
@@ -71,19 +68,6 @@ in
       thunderbird = {
         enable = true;
         profiles = [ "personal" ];
-      };
-    };
-    work = {
-      flavor = "outlook.office365.com";
-      address = "vladislav.grechannik@solved-hub.com";
-      realName = "Vladislav Grechannik";
-      thunderbird = {
-        enable = true;
-        profiles = [ "personal" ];
-        settings = id: {
-          "mail.server.server_${id}.authMethod" = 10;
-          "mail.smtpserver.smtp_${id}.authMethod" = 10;
-        };
       };
     };
     selfMail = {
