@@ -174,6 +174,11 @@
       daemon.enable = true;
       scanner.enable = true;
     };
+
+    kmscon = {
+      enable = true;
+      hwRender = true;
+    };
   };
 
   # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
