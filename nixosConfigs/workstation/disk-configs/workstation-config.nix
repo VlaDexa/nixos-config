@@ -107,6 +107,7 @@
           "--promote_target=ssd"
           "--metadata_target=nvme"
         ];
+        mountOptions = [ "version_upgrade=incompatible" ];
         subvolumes = {
           "subvolumes/root" = {
             mountpoint = "/";

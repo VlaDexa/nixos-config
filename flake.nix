@@ -65,6 +65,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/447721.patch";
       flake = false;
     };
+    nixpkgs-patch-bcachefs-tools-1_33 = {
+      url = "https://github.com/NixOS/nixpkgs/compare/33731f82a8f90cef2ecd680ae98826705e09b8fa...VlaDexa:nixpkgs:bcachefs-1.33.diff";
+      flake = false;
+    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
