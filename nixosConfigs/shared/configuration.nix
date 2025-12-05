@@ -169,11 +169,11 @@
 
     dbus.implementation = "broker";
 
-    clamav = {
-      updater.enable = true;
-      daemon.enable = true;
-      scanner.enable = true;
-    };
+    # clamav = {
+    #   updater.enable = true;
+    #   daemon.enable = true;
+    #   scanner.enable = true;
+    # };
 
     kmscon = {
       enable = true;
