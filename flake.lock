@@ -36,7 +36,7 @@
     "bcachefs-nixpkgs-patch-429126": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-R4YZGoz7UKz3JMCJ8rY+sV1ppuc3g0WBUYcVt1Umv1c=",
+        "narHash": "sha256-GWIMiSmo5RclXj4USVol8/8QPQxVJ8Q8du/zbBVcMoA=",
         "type": "file",
         "url": "https://github.com/NixOS/nixpkgs/pull/429126.patch"
       },
@@ -218,11 +218,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764839789,
-        "narHash": "sha256-QCgaXEj8036JlfyVM2e5fgKIxoF7IgGRcAi8LkehKvo=",
+        "lastModified": 1764912896,
+        "narHash": "sha256-ftxQocr098v5ngqB3SXa9tW6aqovBSBOEdIRcLEj44c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d441981b200305ebb8e2e2921395f51d207fded6",
+        "rev": "6bcb2395ab9ed05616052262da526cd7c5b4b123",
         "type": "github"
       },
       "original": {
@@ -299,17 +299,18 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
+        "hyprwire": "hyprwire",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1764801806,
-        "narHash": "sha256-AlEo8j1V9S20PJd23DXqR/tjwtUjxMcn87Euei9zFeA=",
+        "lastModified": 1764880933,
+        "narHash": "sha256-0EGExxEEIuDEcd+jM1hnvp69XW8bPQTKWLP7Nj/KSCU=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "9b1891e4765e2c5b84c8c61725e3973ca9940e05",
+        "rev": "52b3c8cbc699aa949f4f1887ca829898055ce4ad",
         "type": "github"
       },
       "original": {
@@ -521,6 +522,35 @@
         "type": "github"
       }
     },
+    "hyprwire": {
+      "inputs": {
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764773840,
+        "narHash": "sha256-9UcCdwe7vPgEcJJ64JseBQL0ZJZoxp/2iFuvfRI+9zk=",
+        "owner": "hyprwm",
+        "repo": "hyprwire",
+        "rev": "3f1997d6aeced318fb141810fded2255da811293",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprwire",
+        "type": "github"
+      }
+    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -658,6 +688,18 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/447721.patch"
       }
     },
+    "nixpkgs-patch-bcachefs-tools-1_33": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-n35wnyC9Nqkx8rJ+d9HHm8wXCLLyI+gk7TDyyBLfbDo=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/compare/33731f82a8f90cef2ecd680ae98826705e09b8fa...VlaDexa:nixpkgs:bcachefs-1.33.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/compare/33731f82a8f90cef2ecd680ae98826705e09b8fa...VlaDexa:nixpkgs:bcachefs-1.33.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1764189861,
@@ -701,11 +743,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1764803799,
-        "narHash": "sha256-94SMf4Uw5iSoX37ui6LAdcadCUHUDfrvggGay0uWkis=",
+        "lastModified": 1764892502,
+        "narHash": "sha256-xMDuLmD77k1ZoGjTPA/BELJEGNPDOR1ise6KltYOLtk=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "5d1c27e53c96e2c94e69f2e2d083ef147b3a3ccb",
+        "rev": "8e85c25143e5bc625197b96a0265cd6cec3634fc",
         "type": "github"
       },
       "original": {
@@ -751,11 +793,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764843772,
-        "narHash": "sha256-nNfyM9lp6kBpYO9bOMMFaJkTbMdLCJY/+WD534BKe6w=",
+        "lastModified": 1764928225,
+        "narHash": "sha256-dDHd8fTy/WbPKeLPZ0XmN1yzc2ZmxTmhb2J7yh2XU9U=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "0bb9f616c6e7cedbf8fcaf85ad25f4f6ab765593",
+        "rev": "8be6e4a35340260c56f6715a322b682c30455e6e",
         "type": "github"
       },
       "original": {
@@ -871,6 +913,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-447721": "nixpkgs-patch-447721",
+        "nixpkgs-patch-bcachefs-tools-1_33": "nixpkgs-patch-bcachefs-tools-1_33",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
