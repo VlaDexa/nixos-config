@@ -81,25 +81,30 @@
       url = "github:hyprwm/Hyprland?ref=refs/heads/main";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprshutdown = {
+      url = "github:hyprwm/hyprshutdown";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
       self,
-      nixpkgs,
-      home-manager,
-      plasma-manager,
-      nixos-hardware,
+      bcachefs-nixpkgs-patch-429126,
       disko,
-      sops-nix,
-      nur,
+      dolphin-overlay,
+      home-manager,
+      hyprshutdown,
       lanzaboote,
-      pre-commit-hooks,
       nix-index-database,
+      nixos-hardware,
+      nixpkgs,
+      nixpkgs-patcher,
       nixvim,
       nixvim-config,
-      nixpkgs-patcher,
-      bcachefs-nixpkgs-patch-429126,
-      dolphin-overlay,
+      nur,
+      plasma-manager,
+      pre-commit-hooks,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -146,9 +151,9 @@
             (
               { config, lib, ... }:
               {
-                nixpkgs.overlays = lib.optional (
-                  !config.services.desktopManager.plasma6.enable
-                ) dolphin-overlay.overlays.default;
+                nixpkgs.overlays =
+                  lib.optional (!config.services.desktopManager.plasma6.enable) dolphin-overlay.overlays.default
+                  ++ [ hyprshutdown.overlays.default ];
               }
             )
           ];

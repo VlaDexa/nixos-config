@@ -3,12 +3,13 @@
   wayland.windowManager.hyprland.settings =
     let
       runapp = lib.getExe pkgs.runapp;
+      hyprshutdown = lib.getExe pkgs.hyprshutdown;
     in
     {
       bind = [
         "$mainMod, C, killactive,"
         "$mainMod, J, togglesplit, # dwindle"
-        "$mainMod, M, exit,"
+        "$mainMod, M, exec, ${hyprshutdown}"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, V, togglefloating,"
 
