@@ -88,6 +88,12 @@
       inputs.hyprgraphics.follows = "hyprland/hyprgraphics";
       inputs.hyprutils.follows = "hyprland/hyprutils";
     };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.hyprgraphics.follows = "hyprland/hyprgraphics";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      inputs.hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+    };
   };
   outputs =
     {
@@ -97,6 +103,7 @@
       dolphin-overlay,
       home-manager,
       hyprland,
+      hyprlock,
       hyprshutdown,
       lanzaboote,
       nix-index-database,
@@ -158,8 +165,9 @@
                 nixpkgs.overlays =
                   lib.optional (!config.services.desktopManager.plasma6.enable) dolphin-overlay.overlays.default
                   ++ [
-                    hyprshutdown.overlays.default
                     hyprland.overlays.default
+                    hyprlock.overlays.default
+                    hyprshutdown.overlays.default
                   ];
               }
             )
