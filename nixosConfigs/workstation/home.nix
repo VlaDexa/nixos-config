@@ -8,7 +8,10 @@
       ...
     }:
     {
-      imports = [ ./hyprland/home.nix ];
+      imports = [
+        ./hyprland/home.nix
+        ./twitch.nix
+      ];
 
       home.packages = with pkgs; [
         mullvad-vpn
