@@ -928,11 +928,11 @@
         "pre-commit-hooks": []
       },
       "locked": {
-        "lastModified": 1764846989,
-        "narHash": "sha256-yk4CWosTml7hsTn01Spa5RtQTD1ChPeIoHgtnC0YSQo=",
+        "lastModified": 1765213656,
+        "narHash": "sha256-JWU7kS6NGQ5cReEAk53cOcfMwi/HnGdVegv0x8owoxY=",
         "owner": "VlaDexa",
         "repo": "nixvim-config",
-        "rev": "0a9f9a5d767574622f8383e806acb15a5ffa8a21",
+        "rev": "bd34fb3b8797f95f2d84fe53e28f5e6a33dc02be",
         "type": "github"
       },
       "original": {
