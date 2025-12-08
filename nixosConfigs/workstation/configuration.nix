@@ -75,6 +75,7 @@
   };
   # For easyeffects
   programs.dconf.enable = true;
+  programs.nix-ld.enable = true;
 
   programs.adb.enable = true;
 
