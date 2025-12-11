@@ -66,6 +66,7 @@
         easyeffects.enable = true && osConfig.programs.dconf.enable;
 
         podman.enable = config.programs.distrobox.enable;
+        jellyfin-mpv-shim.enable = true;
       };
 
       systemd.user.services.steam = {

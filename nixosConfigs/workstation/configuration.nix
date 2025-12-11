@@ -111,6 +111,8 @@
         registrationTokenFile = config.sops.secrets.peertube-runner-token.path;
       };
     };
+
+    jellyfin.enable = true;
   };
 
   hardware = {
