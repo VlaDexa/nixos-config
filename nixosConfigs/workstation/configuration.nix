@@ -112,7 +112,10 @@
       };
     };
 
-    jellyfin.enable = true;
+    jellyfin = {
+      enable = true;
+      user = "vladexa";
+    };
   };
 
   hardware = {
