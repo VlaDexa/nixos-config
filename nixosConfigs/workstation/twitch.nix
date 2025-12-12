@@ -9,7 +9,7 @@
     enable = true;
     settings = {
       player = lib.getExe config.programs.mpv.package;
-      player-args = "--profile stream";
+      player-args = "--profile=stream";
       player-no-close = true;
     };
   };
