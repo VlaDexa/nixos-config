@@ -86,8 +86,15 @@
     };
     hyprlock = {
       url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprgraphics.follows = "hyprland/hyprgraphics";
       inputs.hyprlang.follows = "hyprland/hyprlang";
+      inputs.hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprutils.follows = "hyprland/hyprutils";
       inputs.hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
     };
   };
@@ -100,6 +107,7 @@
       home-manager,
       hyprland,
       hyprlock,
+      hyprpicker,
       hyprshutdown,
       lanzaboote,
       nix-index-database,
@@ -163,6 +171,7 @@
                   ++ [
                     hyprland.overlays.default
                     hyprlock.overlays.default
+                    hyprpicker.overlays.default
                     hyprshutdown.overlays.default
                   ];
               }
