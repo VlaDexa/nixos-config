@@ -75,27 +75,16 @@
     };
     hyprland = {
       url = "github:hyprwm/Hyprland?ref=refs/heads/main";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprshutdown = {
       url = "github:hyprwm/hyprshutdown";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.aquamarine.follows = "hyprland/aquamarine";
-      inputs.hyprgraphics.follows = "hyprland/hyprgraphics";
-      inputs.hyprutils.follows = "hyprland/hyprutils";
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hyprgraphics.follows = "hyprland/hyprgraphics";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-      inputs.hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-    };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hyprutils.follows = "hyprland/hyprutils";
-      inputs.hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+      inputs = {
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+        aquamarine.follows = "hyprland/aquamarine";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprutils.follows = "hyprland/hyprutils";
+      };
     };
   };
   outputs =
@@ -105,9 +94,6 @@
       disko,
       dolphin-overlay,
       home-manager,
-      hyprland,
-      hyprlock,
-      hyprpicker,
       hyprshutdown,
       lanzaboote,
       nix-index-database,
@@ -169,10 +155,9 @@
                 nixpkgs.overlays =
                   lib.optional (!config.services.desktopManager.plasma6.enable) dolphin-overlay.overlays.default
                   ++ [
-                    hyprland.overlays.default
-                    hyprlock.overlays.default
-                    hyprpicker.overlays.default
-                    hyprshutdown.overlays.default
+                    (final: prev: {
+                      hyprshutdown = hyprshutdown.packages.${final.stdenv.hostPlatform.system}.hyprshutdown;
+                    })
                   ];
               }
             )
