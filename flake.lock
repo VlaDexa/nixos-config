@@ -67,16 +67,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1765379422,
+        "lastModified": 1765688338,
         "narHash": "sha256-MjrytR2kiHYUnzX11cXaD31tS7kKdhM1KFaac0+KAig=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "e366db8282aa17dbd75bb7b465d0223af331a9cd",
+        "rev": "be1a6b8a05afdd5d5fa69fcaf3c4ead7014c9fd8",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "pull/1058/merge",
         "repo": "disko",
         "type": "github"
       }
