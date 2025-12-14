@@ -18,7 +18,7 @@
         "$mainMod, Escape, exec, ${runapp} ${lib.getExe pkgs.mission-center}"
         "$mainMod, Q, exec, ${runapp} $terminal"
         "$mainMod, R, exec, $menu"
-        "$mainMod, S, exec, ${runapp} ${lib.getExe pkgs.pavucontrol}"
+        "$mainMod, S, exec, ${runapp} ${lib.getExe pkgs.pwvucontrol}"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
