@@ -15,7 +15,6 @@ in
       };
       settings = {
         mpv_ext = true;
-        mpv_ext_path = "${lib.getBin config.programs.mpv.package}/bin";
       };
     };
 
