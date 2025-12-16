@@ -9,6 +9,16 @@ let
 in
 {
   config = {
+    services.jellyfin-mpv-shim = {
+      mpvConfig = {
+        include = "~/.config/mpv/mpv.conf";
+      };
+      settings = {
+        mpv_ext = true;
+        mpv_ext_path = "${lib.getBin config.programs.mpv.package}/bin";
+      };
+    };
+
     programs.mpv = {
       defaultProfiles = [ "gpu-hq" ];
       config = {
