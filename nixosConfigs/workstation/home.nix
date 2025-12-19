@@ -60,6 +60,8 @@
           protonPackages = [ pkgs.proton-ge-bin ];
           defaultWinePackage = pkgs.proton-ge-bin;
         };
+
+        element-desktop.enable = true;
       };
 
       services = {
