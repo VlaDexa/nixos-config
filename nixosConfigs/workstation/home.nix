@@ -61,7 +61,10 @@
           defaultWinePackage = pkgs.proton-ge-bin;
         };
 
-        element-desktop.enable = true;
+        element-desktop = {
+          enable = true;
+          settings.element_call.use_exclusively = true;
+        };
       };
 
       services = {
