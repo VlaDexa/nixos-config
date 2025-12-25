@@ -11,6 +11,7 @@
       imports = [
         ./hyprland/home.nix
         ./twitch.nix
+        (import ./gaming.nix).flake.modules.homeManager.gaming
       ];
 
       home.packages = with pkgs; [
@@ -53,13 +54,6 @@
         vesktop.enable = true;
 
         yt-dlp.enable = true;
-
-        lutris = {
-          enable = true;
-          steamPackage = osConfig.programs.steam.package;
-          protonPackages = [ pkgs.proton-ge-bin ];
-          defaultWinePackage = pkgs.proton-ge-bin;
-        };
 
         element-desktop = {
           enable = true;

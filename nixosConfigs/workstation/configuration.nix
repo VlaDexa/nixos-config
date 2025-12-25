@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ ./hyprland/system.nix ];
+  imports = [
+    ./hyprland/system.nix
+    (import ./gaming.nix).flake.modules.nixos.gaming
+  ];
   system.stateVersion = "26.05";
 
   system.etc.overlay.enable = true;
@@ -65,14 +68,6 @@
   };
   users.users.root.initialHashedPassword = "";
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-    protontricks.enable = true;
-  };
   # For easyeffects
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
