@@ -238,6 +238,10 @@
   hardware.bluetooth.enable = true;
 
   fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+  ];
 
   nix = {
     settings.experimental-features = [
