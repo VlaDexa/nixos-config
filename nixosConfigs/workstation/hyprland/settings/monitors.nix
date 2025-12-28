@@ -17,6 +17,7 @@
       bitdepth = 10;
       vrr = 2;
       sdr_eotf = 1;
+      supports_hdr = -1;
     }
   ];
 }
