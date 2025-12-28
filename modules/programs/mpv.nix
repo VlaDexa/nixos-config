@@ -34,6 +34,7 @@
             vo = "gpu-next";
             # HDR videos
             target-colorspace-hint = true;
+            target-colorspace-hint-mode = "source";
             # target-peak="300";
             # target-contrast="3000";
             save-position-on-quit = true;
