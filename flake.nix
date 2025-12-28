@@ -113,10 +113,7 @@
           flake-parts.flakeModules.modules
           pre-commit-hooks.flakeModule
           home-manager.flakeModules.home-manager
-          ./modules/programs/dolphin.nix
-          ./modules/programs/yt-dlp.nix
-          ./modules/gaming.nix
-          ./modules/plymouth.nix
+          ./modules
           ./nixosConfigs/workstation
         ];
         flake = {
@@ -136,8 +133,10 @@
                 {
                   programs.nixvim.nixpkgs.useGlobalPackages = true;
                 }
+                config.flake.homeModules.mpv
+                config.flake.homeModules.vaultwarden
+                config.flake.homeModules.vesktop
                 config.flake.homeModules.yt-dlp
-                ./modules/programs
               ];
               shared_modules = [
                 config.flake.modules.nixos.plymouth

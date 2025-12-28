@@ -1,5 +1,5 @@
 {
-  config = {
+  flake.homeModules.vesktop.config = {
     programs.vesktop = {
       settings = {
         arRPC = true;
