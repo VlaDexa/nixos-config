@@ -1,5 +1,9 @@
+{ config, ... }:
+let
+  flakeConfig = config;
+in
 {
-  home-manager.users.vladexa =
+  flake.modules.nixos.workstation-hm.home-manager.users.vladexa =
     {
       config,
       lib,
@@ -8,10 +12,10 @@
       ...
     }:
     {
-      imports = [
+      imports = with flakeConfig.flake.modules; [
         ./hyprland/home.nix
-        ./twitch.nix
-        (import ./gaming.nix).flake.modules.homeManager.gaming
+        homeManager.gaming
+        homeManager.twitch
       ];
 
       home.packages = with pkgs; [

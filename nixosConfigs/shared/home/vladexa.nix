@@ -7,6 +7,7 @@
 }:
 let
   defaultMimePackages = with pkgs; [
+    kdePackages.dolphin
     kdePackages.gwenview
     kdePackages.okular
     kdePackages.ark

@@ -7,7 +7,6 @@
 {
   imports = [
     ./hyprland/system.nix
-    (import ./gaming.nix).flake.modules.nixos.gaming
   ];
   system.stateVersion = "26.05";
 

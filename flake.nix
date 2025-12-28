@@ -69,10 +69,6 @@
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
     };
-    dolphin-overlay = {
-      url = "github:rumboon/dolphin-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland?ref=refs/heads/main";
     };
@@ -89,16 +85,13 @@
   };
   outputs =
     {
-      self,
       bcachefs-nixpkgs-patch-429126,
       disko,
-      dolphin-overlay,
       home-manager,
       hyprshutdown,
       lanzaboote,
       nix-index-database,
       nixos-hardware,
-      nixpkgs,
       nixpkgs-patcher,
       nixvim,
       nixvim-config,
@@ -106,129 +99,130 @@
       plasma-manager,
       pre-commit-hooks,
       sops-nix,
+      flake-parts,
       ...
     }@inputs:
-    let
-      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-    in
-    {
-      nixosConfigurations =
-        let
-          shared_home_modules = [
-            plasma-manager.homeModules.plasma-manager
-            sops-nix.homeManagerModules.sops
-            {
-              sops.defaultSopsFile = ./secrets.yaml;
-            }
-            nix-index-database.homeModules.nix-index
-            nixvim.homeModules.nixvim
-            {
-              programs.nixvim = nixvim-config.modules.config;
-            }
-            {
-              programs.nixvim.nixpkgs.useGlobalPackages = true;
-            }
-            ./modules/programs
-          ];
-          shared_modules = [
-            nur.modules.nixos.default
-            home-manager.nixosModules.home-manager
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            {
-              sops.defaultSopsFile = ./secrets.yaml;
-            }
-            ./cachix.nix
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = shared_home_modules;
-              home-manager.backupFileExtension = "backup";
-            }
-            ./nixosConfigs/shared/configuration.nix
-            ./modules/plymouth.nix
-            lanzaboote.nixosModules.lanzaboote
-            ./secure-boot.nix
-            (
-              { config, lib, ... }:
-              {
-                nixpkgs.overlays =
-                  lib.optional (!config.services.desktopManager.plasma6.enable) dolphin-overlay.overlays.default
-                  ++ [
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { config, ... }:
+      {
+        systems = [
+          "x86_64-linux"
+          # "aarch64-linux"
+        ];
+        imports = [
+          flake-parts.flakeModules.modules
+          pre-commit-hooks.flakeModule
+          ./modules/programs/dolphin.nix
+          ./modules/gaming.nix
+          ./nixosConfigs/workstation
+        ];
+        flake = {
+          nixosConfigurations =
+            let
+              shared_home_modules = [
+                plasma-manager.homeModules.plasma-manager
+                sops-nix.homeManagerModules.sops
+                {
+                  sops.defaultSopsFile = ./secrets.yaml;
+                }
+                nix-index-database.homeModules.nix-index
+                nixvim.homeModules.nixvim
+                {
+                  programs.nixvim = nixvim-config.modules.config;
+                }
+                {
+                  programs.nixvim.nixpkgs.useGlobalPackages = true;
+                }
+                ./modules/programs
+              ];
+              shared_modules = [
+                nur.modules.nixos.default
+                home-manager.nixosModules.home-manager
+                disko.nixosModules.disko
+                sops-nix.nixosModules.sops
+                {
+                  sops.defaultSopsFile = ./secrets.yaml;
+                }
+                ./cachix.nix
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.sharedModules = shared_home_modules;
+                  home-manager.backupFileExtension = "backup";
+                }
+                ./nixosConfigs/shared/configuration.nix
+                ./modules/plymouth.nix
+                lanzaboote.nixosModules.lanzaboote
+                ./secure-boot.nix
+                {
+                  nixpkgs.overlays = [
                     (final: prev: {
                       hyprshutdown = hyprshutdown.packages.${final.stdenv.hostPlatform.system}.hyprshutdown;
                     })
                   ];
-              }
-            )
-          ];
-          vladexa = {
-            home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
-          };
-        in
-        {
-          nixos = nixpkgs-patcher.lib.nixosSystem {
-            specialArgs = inputs;
-            nixpkgsPatcher.patches = pkgs: [ bcachefs-nixpkgs-patch-429126 ];
-            modules = shared_modules ++ [
-              ./nixosConfigs/laptop
-              nixos-hardware.nixosModules.common-cpu-amd
-              nixos-hardware.nixosModules.common-cpu-amd-pstate
-              nixos-hardware.nixosModules.common-cpu-amd-zenpower
-              nixos-hardware.nixosModules.common-gpu-amd
-              nixos-hardware.nixosModules.common-hidpi
-              nixos-hardware.nixosModules.common-pc-laptop
-              nixos-hardware.nixosModules.common-pc-ssd
-              vladexa
-            ];
-          };
+                }
+              ];
+              vladexa = {
+                home-manager.users.vladexa = ./nixosConfigs/shared/home/vladexa.nix;
+              };
+            in
+            {
+              nixos = nixpkgs-patcher.lib.nixosSystem {
+                specialArgs = inputs;
+                nixpkgsPatcher.patches = pkgs: [ bcachefs-nixpkgs-patch-429126 ];
+                modules = shared_modules ++ [
+                  ./nixosConfigs/laptop
+                  nixos-hardware.nixosModules.common-cpu-amd
+                  nixos-hardware.nixosModules.common-cpu-amd-pstate
+                  nixos-hardware.nixosModules.common-cpu-amd-zenpower
+                  nixos-hardware.nixosModules.common-gpu-amd
+                  nixos-hardware.nixosModules.common-hidpi
+                  nixos-hardware.nixosModules.common-pc-laptop
+                  nixos-hardware.nixosModules.common-pc-ssd
+                  vladexa
+                ];
+              };
 
-          workstation = nixpkgs-patcher.lib.nixosSystem {
-            specialArgs = inputs;
-            modules = shared_modules ++ [
-              ./nixosConfigs/workstation
-              nixos-hardware.nixosModules.common-cpu-amd
-              nixos-hardware.nixosModules.common-cpu-amd-pstate
-              nixos-hardware.nixosModules.common-cpu-amd-zenpower
-              nixos-hardware.nixosModules.common-gpu-amd
-              nixos-hardware.nixosModules.common-hidpi
-              nixos-hardware.nixosModules.common-pc-ssd
-              vladexa
-            ];
-          };
+              workstation = nixpkgs-patcher.lib.nixosSystem {
+                specialArgs = inputs;
+                modules = shared_modules ++ [
+                  config.flake.modules.nixos.dolphin-overlay
+                  config.flake.modules.nixos.gaming
+                  config.flake.modules.nixos.workstation
+                  config.flake.modules.nixos.workstation-hm
+                  nixos-hardware.nixosModules.common-cpu-amd
+                  nixos-hardware.nixosModules.common-cpu-amd-pstate
+                  nixos-hardware.nixosModules.common-cpu-amd-zenpower
+                  nixos-hardware.nixosModules.common-gpu-amd
+                  nixos-hardware.nixosModules.common-hidpi
+                  nixos-hardware.nixosModules.common-pc-ssd
+                  vladexa
+                ];
+              };
+            };
         };
 
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+        perSystem =
+          { pkgs, config, ... }:
+          {
+            formatter = pkgs.nixfmt-tree;
 
-      checks = forAllSystems (system: {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixfmt-rfc-style.enable = true;
+            pre-commit.check.enable = true;
+            pre-commit.settings =
+              { pkgs, ... }:
+              {
+                hooks.nixfmt-rfc-style.enable = true;
+                enabledPackages = with pkgs; [ sops ];
+              };
+
+            devShells.default = config.pre-commit.devShell;
+
+            packages.nixos-options-doc =
+              (pkgs.nixosOptionsDoc { inherit (config.flake.nixosConfigurations.workstation) options; })
+              .optionsCommonMark;
           };
-        };
-      });
-
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            inherit (self.checks.${system}.pre-commit-check) shellHook;
-            buildInputs = with pkgs; [ sops ] ++ self.checks.${system}.pre-commit-check.enabledPackages;
-          };
-        }
-      );
-
-      packages = forAllSystems (system: {
-        nixos-options-doc =
-          (nixpkgs.legacyPackages.${system}.nixosOptionsDoc {
-            inherit (self.nixosConfigurations.workstation) options;
-          }).optionsCommonMark;
-      });
-    };
+      }
+    );
 }
 
 # vim: ts=2 sw=2 et:
