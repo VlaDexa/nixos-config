@@ -22,7 +22,6 @@ in
       cachix
       nixfmt-rfc-style
 
-      gnupg
       tree
       file
       jq
@@ -353,6 +352,8 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
+
+    gpg.enable = true;
   };
 
   fonts.fontconfig.enable = true;
