@@ -25,6 +25,7 @@ in
         libreoffice-fresh
 
         kdePackages.kimageformats # For jxl support in Gwenview
+        imagemagick # For kitty image preview
         runapp
       ];
 
