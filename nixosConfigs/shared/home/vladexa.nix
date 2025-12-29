@@ -22,11 +22,12 @@ in
       cachix
       nixfmt-rfc-style
 
-      tree
-      file
-      jq
       bat
+      file
+      imagemagick # For kitty image preview
+      jq
       killall
+      tree
 
       spotify
 
