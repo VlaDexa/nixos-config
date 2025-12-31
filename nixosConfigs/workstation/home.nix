@@ -34,6 +34,11 @@ in
       programs = {
         chromium.extensions = [
           "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
+          "ijcpiojgefnkmcadacmacogglhjdjphj" # Shinigami Eyes
+        ];
+
+        firefox.profiles.vladexa.extensions.packages = [
+          pkgs.nur.repos.rycee.firefox-addons.shinigami-eyes
         ];
 
         distrobox = {
