@@ -65,6 +65,11 @@
       url = "https://github.com/NixOS/nixpkgs/pull/447721.patch";
       flake = false;
     };
+    # fish 4.3.2
+    nixpkgs-patch-475369 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/475369.patch";
+      flake = false;
+    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
