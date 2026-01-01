@@ -386,6 +386,8 @@
         background: @background;
         border: 3px solid @caution;
         border-radius: 8px;
+        color: white;
+        padding: 2px 2px;
       } /* }}} */
 
       /* Indicator bar keyframes */ /* {{{ */
