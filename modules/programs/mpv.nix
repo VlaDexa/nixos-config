@@ -17,6 +17,8 @@
           };
           settings = {
             mpv_ext = true;
+            mpv_ext_path = lib.getExe config.programs.mpv.package;
+            direct_paths = true;
           };
         };
 
@@ -40,7 +42,7 @@
             save-position-on-quit = true;
             # By default mpv tries to use youtube-dl and then chooses yt-dlp
             # Saves some time by saying that it needs only yt-dlp
-            script-opts = lib.mkIf hasYtdlp "ytdl_hook-ytdl_path=${config.programs.yt-dlp.package}/bin/yt-dlp";
+            script-opts = lib.mkIf hasYtdlp "ytdl_hook-ytdl_path=${lib.getExe config.programs.yt-dlp.package}";
             # Use better scaling algorithm by default
             scale = "ewa_lanczos4sharpest";
             scale-blur = "0.981251";
