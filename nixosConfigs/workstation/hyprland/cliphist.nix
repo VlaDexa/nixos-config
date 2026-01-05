@@ -21,6 +21,6 @@
     in
     [
       "$mainMod, G, exec, ${cliphist} list | ${wofi} -d -k /dev/null | ${cliphist} decode | ${wl-copy}"
-      "$mainMod, Y, exec, ${runapp} ${mpv} $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)"
+      "$mainMod, Y, exec, ${runapp} ${mpv} --no-terminal $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)"
     ];
 }
