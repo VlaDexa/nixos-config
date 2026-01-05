@@ -60,14 +60,9 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    # runapp 0.4.1
-    nixpkgs-patch-447721 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/447721.patch";
-      flake = false;
-    };
-    # fish 4.3.2
-    nixpkgs-patch-475369 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/475369.patch";
+    # vesktop build fix
+    nixpkgs-patch-476347 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/476347.patch";
       flake = false;
     };
     bcachefs-nixpkgs-patch-429126 = {

@@ -81,7 +81,7 @@
             };
           };
 
-          package = pkgs.mpv-unwrapped.wrapper {
+          package = pkgs.mpv.override {
             scripts =
               with pkgs.mpvScripts;
               (
@@ -92,10 +92,6 @@
                 ]
                 ++ lib.optionals hasYtdlp [ sponsorblock ]
               );
-
-            mpv = pkgs.mpv-unwrapped.override {
-              ffmpeg = pkgs.ffmpeg-full;
-            };
 
             youtubeSupport = hasYtdlp;
           };

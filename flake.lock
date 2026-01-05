@@ -745,28 +745,16 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-447721": {
+    "nixpkgs-patch-476347": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-88GQJqV0IAdkr0sVMT1sYmeOTL4/U1Cm6hjOi8u3eGs=",
+        "narHash": "sha256-ObBx1X9cbOeVDrdUtgqtQgRUlVK1C1DmqBGpXKD9F0Q=",
         "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/447721.patch"
+        "url": "https://github.com/NixOS/nixpkgs/pull/476347.patch"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/447721.patch"
-      }
-    },
-    "nixpkgs-patch-475369": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-92XhfQlXIq4Qd4vkZNLezo3blGSyMfoOutRtXcHT8ew=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/475369.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/475369.patch"
+        "url": "https://github.com/NixOS/nixpkgs/pull/476347.patch"
       }
     },
     "nixpkgs-patcher": {
@@ -786,11 +774,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1767116409,
-        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
+        "lastModified": 1767379071,
+        "narHash": "sha256-EgE0pxsrW9jp9YFMkHL9JMXxcqi/OoumPJYwf+Okucw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
+        "rev": "fb7944c166a3b630f177938e478f0378e64ce108",
         "type": "github"
       },
       "original": {
@@ -957,8 +945,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-patch-447721": "nixpkgs-patch-447721",
-        "nixpkgs-patch-475369": "nixpkgs-patch-475369",
+        "nixpkgs-patch-476347": "nixpkgs-patch-476347",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
