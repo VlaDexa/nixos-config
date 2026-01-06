@@ -82,6 +82,10 @@
         hyprutils.follows = "hyprland/hyprutils";
       };
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -100,6 +104,7 @@
       pre-commit-hooks,
       sops-nix,
       flake-parts,
+      dms,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -137,6 +142,7 @@
                 config.flake.homeModules.vaultwarden
                 config.flake.homeModules.vesktop
                 config.flake.homeModules.yt-dlp
+                dms.homeModules.dankMaterialShell.default
               ];
               shared_modules = [
                 config.flake.modules.nixos.plymouth

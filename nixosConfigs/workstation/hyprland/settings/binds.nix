@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 {
   wayland.windowManager.hyprland.settings =
     let
@@ -17,7 +21,6 @@
         "$mainMod, E, exec, ${runapp} $fileManager"
         "$mainMod, Escape, exec, ${runapp} ${lib.getExe pkgs.mission-center}"
         "$mainMod, Q, exec, ${runapp} $terminal"
-        "$mainMod, R, exec, $menu"
         "$mainMod, S, exec, ${runapp} ${lib.getExe pkgs.pwvucontrol}"
 
         # Move focus with mainMod + arrow keys
@@ -64,15 +67,14 @@
       bindel =
         let
           wpctl = lib.getExe' pkgs.wireplumber "wpctl";
-          brightnessctl = lib.getExe pkgs.brightnessctl;
         in
         [
-          ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          # ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+          # ",XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          # ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ",XF86MonBrightnessUp, exec, ${brightnessctl} -e4 -n2 set 5%+"
-          ",XF86MonBrightnessDown, exec, ${brightnessctl} -e4 -n2 set 5%-"
+          # ",XF86MonBrightnessUp, exec, ${brightnessctl} -e4 -n2 set 5%+"
+          # ",XF86MonBrightnessDown, exec, ${brightnessctl} -e4 -n2 set 5%-"
         ];
       bindl =
         let
