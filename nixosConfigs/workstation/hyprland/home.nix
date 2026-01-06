@@ -2,7 +2,6 @@
   imports = [
     ./settings
     ./cliphist.nix
-    ./waybar.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -13,35 +12,6 @@
     #   hyprlock
     # ];
   };
-
-  services.blueman-applet = {
-    enable = true;
-    systemdTargets = [ "hyprland-session.target" ];
-  };
-
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        width = 300;
-        height = "(0, 300)";
-        offset = "(30, 50)";
-        origin = "top-right";
-        transparency = 10;
-        frame_color = "#eceff1";
-        font = "Droid Sans 9";
-        follow = "mouse";
-        corner_radius = 10;
-      };
-
-      urgency_normal = {
-        background = "#37474f";
-        foreground = "#eceff1";
-        timeout = 10;
-      };
-    };
-  };
-  systemd.user.services.dunst.Unit.ConditionEnvironment = "XDG_CURRENT_DESKTOP=Hyprland";
 
   programs.wofi.enable = true;
 }

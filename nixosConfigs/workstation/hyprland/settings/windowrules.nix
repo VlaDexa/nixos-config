@@ -4,7 +4,7 @@
       {
         name = "Terminal Rules";
         tag = "+terminal";
-        "match:class" = "(Alacritty|kitty|com.mitchellh.ghostty)";
+        "match:class" = "(Alacritty|kitty|com\\.mitchellh\\.ghostty)";
       }
       {
         name = "Steam Friends List";
@@ -24,6 +24,11 @@
         "match:class" = ".*";
 
         suppress_event = "maximize";
+      }
+      {
+        name = "DMS floating default";
+        float = "true";
+        "match:class" = "^(org.quickshell)$";
       }
       # "match:class mpv, immediate yes"
     ];

@@ -1,8 +1,8 @@
 {
   # https://wiki.hypr.land/Configuring/Variables/#decoration
   wayland.windowManager.hyprland.settings.decoration = {
-    rounding = 10;
-    rounding_power = 2;
+    rounding = 12;
+    # rounding_power = 2;
 
     # Change transparency of focused and unfocused windows
     active_opacity = 1.0;
@@ -10,9 +10,10 @@
 
     shadow = {
       enabled = true;
-      range = 4;
-      render_power = 3;
-      color = "rgba(1a1a1aee)";
+      range = 30;
+      render_power = 5;
+      offset = "0 5";
+      color = "rgba(00000070)";
     };
 
     # https://wiki.hypr.land/Configuring/Variables/#blur
