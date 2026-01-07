@@ -100,6 +100,7 @@
       sops-nix,
       flake-parts,
       dms,
+      self,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -222,7 +223,7 @@
             devShells.default = config.pre-commit.devShell;
 
             packages.nixos-options-doc =
-              (pkgs.nixosOptionsDoc { inherit (config.flake.nixosConfigurations.workstation) options; })
+              (pkgs.nixosOptionsDoc { inherit (self.nixosConfigurations.workstation) options; })
               .optionsCommonMark;
           };
       }
