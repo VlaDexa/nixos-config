@@ -22,6 +22,7 @@ in
       home.packages = with pkgs; [
         mullvad-vpn
         qbittorrent
+        android-tools
 
         libreoffice-fresh
 

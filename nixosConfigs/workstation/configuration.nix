@@ -45,8 +45,6 @@
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
 
-  programs.adb.enable = true;
-
   services.mullvad-vpn = {
     enable = true;
     enableExcludeWrapper = false;
