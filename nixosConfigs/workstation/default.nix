@@ -2,6 +2,7 @@
   imports = [
     ./home.nix
     ./twitch.nix
+    ./hyprland/dms.nix
   ];
 
   flake.modules.nixos.workstation.imports = [

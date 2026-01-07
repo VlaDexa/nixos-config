@@ -16,6 +16,7 @@ in
         ./hyprland/home.nix
         homeManager.gaming
         homeManager.twitch
+        homeManager.dankMaterialShell
       ];
 
       home.packages = with pkgs; [
