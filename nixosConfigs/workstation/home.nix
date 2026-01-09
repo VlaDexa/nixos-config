@@ -94,6 +94,7 @@ in
           Description = "Open Steam in the background at boot";
         };
         Service = {
+          Type = "exec";
           ExecStart = "${lib.getExe osConfig.programs.steam.package} -nochatui -nofriendsui -silent %U";
           Restart = "on-failure";
           RestartSec = "5s";
