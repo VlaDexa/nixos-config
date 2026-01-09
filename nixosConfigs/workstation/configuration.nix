@@ -35,6 +35,7 @@
       "docker"
       "wheel"
       "adbusers"
+      config.security.tpm2.tssGroup
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.password.path;
@@ -87,6 +88,12 @@
   hardware = {
     amdgpu.overdrive.enable = true;
     graphics.extraPackages = [ pkgs.amf ];
+  };
+
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    abrmd.enable = true;
   };
 
   nixpkgs.config.chromium.enableWideVine = true;
