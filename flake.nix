@@ -134,11 +134,11 @@
                 {
                   programs.nixvim.nixpkgs.useGlobalPackages = true;
                 }
+                dms.homeModules.dank-material-shell
                 config.flake.homeModules.mpv
                 config.flake.homeModules.vaultwarden
                 config.flake.homeModules.vesktop
                 config.flake.homeModules.yt-dlp
-                dms.homeModules.dankMaterialShell.default
               ];
               shared_modules = [
                 config.flake.modules.nixos.plymouth

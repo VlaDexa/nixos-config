@@ -15,7 +15,7 @@
       mkIfHyprland = lib.mkIf hyprlandEnabled;
     in
     {
-      programs.dankMaterialShell =
+      programs.dank-material-shell =
         let
           hyprshutdown = lib.getExe pkgs.hyprshutdown;
         in
@@ -24,14 +24,14 @@
           systemd.enable = true;
           systemd.restartIfChanged = true;
           enableVPN = false; # Fuck Network Manager
-          default.settings = {
+          settings = {
             showWorkspaceIndex = true;
             showWorkspaceApps = true;
             # Disable builtin wallpapers
             screenPreferences.wallpaper = [ ];
 
             customPowerActionReboot = "${hyprshutdown} -p reboot";
-            customPowerActionPowerOff = "${hyprshutdown} -p \"shutdown now\"";
+            customPowerActionPowerOff = "${hyprshutdown} -p 'shutdown now'";
             customPowerActionLogout = "${hyprshutdown}";
 
             weatherLocation = "Maribor";
