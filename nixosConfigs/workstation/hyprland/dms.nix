@@ -25,6 +25,8 @@
           systemd.restartIfChanged = true;
           enableVPN = false; # Fuck Network Manager
           settings = {
+            currentThemeName = "blue";
+            currentThemeCategory = "generic";
             showWorkspaceIndex = true;
             showWorkspaceApps = true;
             # Disable builtin wallpapers
