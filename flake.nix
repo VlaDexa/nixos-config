@@ -99,7 +99,6 @@
       pre-commit-hooks,
       sops-nix,
       flake-parts,
-      dms,
       self,
       ...
     }@inputs:
@@ -134,7 +133,6 @@
                 {
                   programs.nixvim.nixpkgs.useGlobalPackages = true;
                 }
-                dms.homeModules.dank-material-shell
                 config.flake.homeModules.mpv
                 config.flake.homeModules.vaultwarden
                 config.flake.homeModules.vesktop

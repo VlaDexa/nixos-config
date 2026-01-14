@@ -1,4 +1,4 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, inputs, ... }:
 {
   flake.modules.homeManager.dankMaterialShell = moduleWithSystem (
     { inputs', ... }:
@@ -15,6 +15,11 @@
       mkIfHyprland = lib.mkIf hyprlandEnabled;
     in
     {
+      imports = [
+        inputs.dms.homeModules.dank-material-shell
+      ];
+
+      systemd.user.services.dms.Unit.After = lib.optional hyprlandEnabled "hyprland-session.target";
       programs.dank-material-shell =
         let
           hyprshutdown = lib.getExe pkgs.hyprshutdown;
