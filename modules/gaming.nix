@@ -13,13 +13,37 @@
     };
 
   flake.modules.homeManager.gaming =
-    { osConfig, pkgs, ... }:
+    {
+      osConfig,
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     {
       programs.lutris = {
         enable = true;
         steamPackage = osConfig.programs.steam.package;
         protonPackages = [ pkgs.proton-ge-bin ];
         defaultWinePackage = pkgs.proton-ge-bin;
+      };
+
+      systemd.user.services.steam = {
+        Unit = rec {
+          After = [
+            "network-online.target"
+            config.wayland.systemd.target
+          ];
+          Wants = After;
+          Description = "Open Steam in the background at boot";
+        };
+        Service = {
+          Type = "exec";
+          ExecStart = "${lib.getExe osConfig.programs.steam.package} -nochatui -nofriendsui -silent %U";
+          Restart = "on-failure";
+          RestartSec = "5s";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
 
       home.packages = with pkgs; [ heroic ];

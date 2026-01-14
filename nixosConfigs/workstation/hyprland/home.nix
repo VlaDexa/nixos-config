@@ -12,6 +12,7 @@
     #   hyprlock
     # ];
   };
+  wayland.systemd.target = "hyprland-session.target";
 
   programs.wofi.enable = true;
 }
