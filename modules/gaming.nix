@@ -43,7 +43,7 @@
           Restart = "on-failure";
           RestartSec = "5s";
         };
-        Install.WantedBy = [ "graphical-session.target" ];
+        Install.WantedBy = [ config.wayland.systemd.target ];
       };
 
       home.packages = with pkgs; [ heroic ];
