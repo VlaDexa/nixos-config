@@ -22,10 +22,7 @@
           };
         };
 
-        systemd.user.services.jellyfin-mpv-shim.Unit = {
-          After = lib.optional config.programs.waybar.enable "waybar.service";
-          ConditionEnvironment = "DISPLAY";
-        };
+        systemd.user.services.jellyfin-mpv-shim.Unit.After = [ config.wayland.systemd.target ];
 
         programs.mpv = {
           defaultProfiles = [ "gpu-hq" ];
