@@ -98,6 +98,10 @@
           hevcRExt12bit = true;
           av1 = true;
         };
+        hardwareEncodingCodecs = {
+          hevc = true;
+          av1 = true;
+        };
       };
     };
   };
