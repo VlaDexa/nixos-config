@@ -82,6 +82,23 @@
     jellyfin = {
       enable = true;
       user = "vladexa";
+      hardwareAcceleration = {
+        enable = true;
+        device = "/dev/dri/renderD128";
+        type = "vaapi";
+      };
+      transcoding = {
+        enableHardwareEncoding = true;
+        hardwareDecodingCodecs = {
+          h264 = true;
+          vp9 = true;
+          hevc = true;
+          hevc10bit = true;
+          hevcRExt10bit = true;
+          hevcRExt12bit = true;
+          av1 = true;
+        };
+      };
     };
   };
 
