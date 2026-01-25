@@ -1,9 +1,10 @@
 {
   flake.homeModules.mpv =
     {
-      lib,
-      pkgs,
       config,
+      lib,
+      osConfig,
+      pkgs,
       ...
     }:
     let
@@ -22,7 +23,13 @@
           };
         };
 
-        systemd.user.services.jellyfin-mpv-shim.Unit.After = [ config.wayland.systemd.target ];
+        systemd.user.services.jellyfin-mpv-shim.Unit = {
+          After = [
+            config.wayland.systemd.target
+          ]
+          ++ lib.optional osConfig.services.jellyfin.enable "jellyfin.service";
+          Wants = lib.optional osConfig.services.jellyfin.enable "jellyfin.service";
+        };
 
         programs.mpv = {
           defaultProfiles = [ "gpu-hq" ];
