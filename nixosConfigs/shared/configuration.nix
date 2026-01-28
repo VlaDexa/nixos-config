@@ -63,7 +63,12 @@
     ipv6AcceptRAConfig.UseDNS = false;
     networkConfig.DNS = config.networking.nameservers;
   };
-  systemd.oomd.enable = true;
+
+  systemd.oomd = {
+    enable = true;
+    enableRootSlice = true;
+    enableUserSlices = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Ljubljana";
