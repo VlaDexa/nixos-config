@@ -46,6 +46,10 @@
         Install.WantedBy = [ config.wayland.systemd.target ];
       };
 
-      home.packages = with pkgs; [ heroic ];
+      home.packages = with pkgs; [
+        heroic
+        gamescope
+        gamemode
+      ];
     };
 }
