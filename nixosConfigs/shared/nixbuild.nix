@@ -2,7 +2,7 @@
 {
   sops.secrets.nixpkgs_key = {
     group = "users";
-    mode = "0440";
+    mode = "0400";
   };
 
   programs.ssh.extraConfig = ''
