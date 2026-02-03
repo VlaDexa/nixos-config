@@ -17,6 +17,7 @@ in
         homeManager.gaming
         homeManager.twitch
         homeManager.dankMaterialShell
+        homeManager.matrix-client
       ];
 
       home.packages = with pkgs; [
@@ -65,16 +66,6 @@ in
         vesktop.enable = true;
 
         yt-dlp.enable = true;
-
-        element-desktop = {
-          enable = true;
-          settings.features = {
-            feature_use_device_session_member_events = true;
-            feature_video_rooms = true;
-            feature_group_calls = true;
-            feature_element_call_video_rooms = true;
-          };
-        };
       };
 
       services = {
