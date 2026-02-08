@@ -73,7 +73,6 @@ in
 
         podman.enable = config.programs.distrobox.enable;
         jellyfin-mpv-shim.enable = true;
-        freenet.enable = true;
       };
 
       home.sessionVariables = {
