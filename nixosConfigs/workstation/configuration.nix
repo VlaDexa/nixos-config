@@ -104,8 +104,6 @@
         };
       };
     };
-
-    freenet.enable = true;
   };
 
   hardware = {
