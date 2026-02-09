@@ -60,8 +60,12 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-486805 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/486805.patch";
+    nixpkgs-patch-zig = {
+      url = "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch";
+      flake = false;
+    };
+    nixpkgs-patch-487644 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/487644.patch";
       flake = false;
     };
     bcachefs-nixpkgs-patch-429126 = {

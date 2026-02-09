@@ -767,16 +767,28 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-486805": {
+    "nixpkgs-patch-487644": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-LKV9QNUN60pc//DWdeps+x8t1lHqYD71YRTsQCX8RT4=",
+        "narHash": "sha256-ZZTSURqmSzG7YUtJ9ZzyBkbSToBucoAeaZUR9Yv8krg=",
         "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/486805.patch"
+        "url": "https://github.com/NixOS/nixpkgs/pull/487644.patch"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/486805.patch"
+        "url": "https://github.com/NixOS/nixpkgs/pull/487644.patch"
+      }
+    },
+    "nixpkgs-patch-zig": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-jRnZ0hU2LM7ToI7N4beGHkvENxV8iZNhInrAeStdXfA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch"
       }
     },
     "nixpkgs-patcher": {
@@ -796,11 +808,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770197578,
-        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "lastModified": 1770562336,
+        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
         "type": "github"
       },
       "original": {
@@ -871,11 +883,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770587760,
-        "narHash": "sha256-dUSR4n8h5JvUBDZdPJpsL0z7dbvm2jGUvQaN1MAF6MQ=",
+        "lastModified": 1770607770,
+        "narHash": "sha256-CLxyZlq/tIBF2KeikEzm3ba/BYMObJwebB/s+scORkk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "1dc2b180e5f3c9a204738c5362c55d1f28d12e7e",
+        "rev": "9cf2a1d648f4445af609a399da18173aa7961632",
         "type": "github"
       },
       "original": {
@@ -990,7 +1002,8 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-patch-486805": "nixpkgs-patch-486805",
+        "nixpkgs-patch-487644": "nixpkgs-patch-487644",
+        "nixpkgs-patch-zig": "nixpkgs-patch-zig",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
