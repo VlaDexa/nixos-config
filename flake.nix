@@ -60,6 +60,10 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+    nixpkgs-patch-linux-6-19 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/488627.patch";
+      flake = false;
+    };
     nixpkgs-patch-zig = {
       url = "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch";
       flake = false;
