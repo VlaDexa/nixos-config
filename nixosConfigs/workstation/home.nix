@@ -3,84 +3,78 @@ let
   flakeConfig = config;
 in
 {
-  flake.modules.nixos.workstation-hm.home-manager.users.vladexa =
-    {
-      config,
-      lib,
-      pkgs,
-      osConfig,
-      ...
-    }:
-    {
-      imports = with flakeConfig.flake.modules; [
-        ./hyprland/home.nix
-        homeManager.gaming
-        homeManager.twitch
-        homeManager.dankMaterialShell
-        homeManager.matrix-client
-      ];
+  flake.modules.nixos.workstation-hm = {
+    imports = with flakeConfig.flake.modules; [ nixos.distrobox ];
 
-      home.packages = with pkgs; [
-        mullvad-vpn
-        qbittorrent
-        android-tools
-
-        libreoffice-fresh
-
-        kdePackages.kimageformats # For jxl support in Gwenview
-        ffmpeg-full
-        runapp
-      ];
-
-      xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
-
-      programs = {
-        chromium.extensions = [
-          "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
-          "ijcpiojgefnkmcadacmacogglhjdjphj" # Shinigami Eyes
+    home-manager.users.vladexa =
+      {
+        config,
+        lib,
+        pkgs,
+        osConfig,
+        ...
+      }:
+      {
+        imports = with flakeConfig.flake.modules; [
+          ./hyprland/home.nix
+          homeManager.dankMaterialShell
+          homeManager.distrobox
+          homeManager.gaming
+          homeManager.matrix-client
+          homeManager.twitch
         ];
 
-        firefox.profiles.vladexa.extensions.packages = [
-          pkgs.nur.repos.rycee.firefox-addons.shinigami-eyes
+        home.packages = with pkgs; [
+          mullvad-vpn
+          qbittorrent
+          android-tools
+
+          libreoffice-fresh
+
+          kdePackages.kimageformats # For jxl support in Gwenview
+          ffmpeg-full
+          runapp
         ];
 
-        distrobox = {
-          enable = true;
-          containers = {
-            aur-archlinux = {
-              image = "archlinux:latest";
-              additional_packages = "git pacman-contrib base-devel";
-            };
-          };
-        };
+        xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
 
-        obs-studio = {
-          enable = true;
-          plugins = with pkgs.obs-studio-plugins; [
-            obs-pipewire-audio-capture
-            obs-vkcapture
-            wlrobs
+        programs = {
+          chromium.extensions = [
+            "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
+            "ijcpiojgefnkmcadacmacogglhjdjphj" # Shinigami Eyes
           ];
+
+          firefox.profiles.vladexa.extensions.packages = [
+            pkgs.nur.repos.rycee.firefox-addons.shinigami-eyes
+          ];
+
+          obs-studio = {
+            enable = true;
+            plugins = with pkgs.obs-studio-plugins; [
+              obs-pipewire-audio-capture
+              obs-vkcapture
+              wlrobs
+            ];
+          };
+
+          vesktop.enable = true;
+
+          yt-dlp.enable = true;
         };
 
-        vesktop.enable = true;
+        services = {
+          easyeffects.enable = true && osConfig.programs.dconf.enable;
 
-        yt-dlp.enable = true;
+          jellyfin-mpv-shim.enable = true;
+        };
+
+        home.sessionVariables = {
+          OBS_VKCAPTURE = 1;
+          PROTON_ENABLE_HDR = 1;
+          PROTON_ENABLE_WAYLAND = 1;
+
+          TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
+        };
       };
-
-      services = {
-        easyeffects.enable = true && osConfig.programs.dconf.enable;
-
-        podman.enable = config.programs.distrobox.enable;
-        jellyfin-mpv-shim.enable = true;
-      };
-
-      home.sessionVariables = {
-        OBS_VKCAPTURE = 1;
-        PROTON_ENABLE_HDR = 1;
-        PROTON_ENABLE_WAYLAND = 1;
-
-        TERMINAL = lib.optionalString config.programs.kitty.enable "kitty";
-      };
-    };
+  };
 }
