@@ -201,11 +201,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770910055,
-        "narHash": "sha256-6HJVLBtbf2ub4a3P9YG+a3CTzzUcy4HpLz4IQdiyVxY=",
+        "lastModified": 1770936159,
+        "narHash": "sha256-INksKY2oo1hDNrDYh0r+uK0Fd4hBxkQwD4qQAl8lYyg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0825a0922a5d677f5f984bb79524569bbd1f9954",
+        "rev": "9bdb6938109884cb8b6a79ab79ba18e7b585a881",
         "type": "github"
       },
       "original": {
@@ -779,30 +779,6 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/487644.patch"
       }
     },
-    "nixpkgs-patch-linux-6-19": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-11WOpkawDzrIpFh3fRnmKbBheIeKqv+jx6mfaThjGFg=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/488627.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/488627.patch"
-      }
-    },
-    "nixpkgs-patch-zig": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-jRnZ0hU2LM7ToI7N4beGHkvENxV8iZNhInrAeStdXfA=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/commit/68b5fdce2dfce2dc676a13ed7a0bfb483bfda3ee.patch"
-      }
-    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1769207991,
@@ -820,11 +796,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770562336,
-        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "lastModified": 1770841267,
+        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
         "type": "github"
       },
       "original": {
@@ -895,11 +871,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770907928,
-        "narHash": "sha256-13ZJzcEc+KyafQLvHgyIiV1To54ePQ9q4ffG2v5O4Ho=",
+        "lastModified": 1770947753,
+        "narHash": "sha256-4GE0kwYxTT2vdPudZKprWxOvh3jknGA3Si/yeAWK0/U=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "4d3d853dbe785378f159f5fbd88dbfbd9f60c9b0",
+        "rev": "b239ae927af78159c829d2aab355e66192af636a",
         "type": "github"
       },
       "original": {
@@ -1015,8 +991,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-487644": "nixpkgs-patch-487644",
-        "nixpkgs-patch-linux-6-19": "nixpkgs-patch-linux-6-19",
-        "nixpkgs-patch-zig": "nixpkgs-patch-zig",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
