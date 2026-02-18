@@ -49,5 +49,7 @@
 
       layout = "dwindle";
     };
+
+    render.direct_scanout = 1;
   };
 }
