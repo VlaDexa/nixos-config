@@ -20,7 +20,7 @@ in
     [
       hydra-check
       cachix
-      nixfmt-rfc-style
+      nixfmt
 
       bat
       file
