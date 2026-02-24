@@ -1,7 +1,8 @@
 {
-  pkgs,
   config,
   hyprland,
+  lib,
+  pkgs,
   ...
 }:
 {
@@ -26,6 +27,9 @@
     style = "adwaita-dark";
     platformTheme = "qt5ct";
   };
+
+  systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP =
+    lib.mkIf config.services.displayManager.ly.enable "X-NIXOS-SYSTEMD-AWARE";
 
   xdg.portal.config.common.default = "hyprland";
 
