@@ -210,6 +210,8 @@
             ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
       '';
     };
+
+    gnupg.agent.enable = true;
   };
 
   environment.systemPackages =
