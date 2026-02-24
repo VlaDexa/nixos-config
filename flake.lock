@@ -791,6 +791,18 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/493590.patch"
       }
     },
+    "nixpkgs-patch-hyprland-systemd-aware": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ZWBuLLEJI00/MI6WD9Ah3FTN3XWkzcTs+5QIMA0jTTI=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/493701.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/493701.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1769207991,
@@ -1004,6 +1016,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-487644": "nixpkgs-patch-487644",
         "nixpkgs-patch-493590": "nixpkgs-patch-493590",
+        "nixpkgs-patch-hyprland-systemd-aware": "nixpkgs-patch-hyprland-systemd-aware",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
