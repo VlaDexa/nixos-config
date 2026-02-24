@@ -13,9 +13,7 @@
     {
       config = {
         services.jellyfin-mpv-shim = {
-          mpvConfig = {
-            include = "~/.config/mpv/mpv.conf";
-          };
+          mpvConfig.include = "${config.xdg.configHome}/mpv/mpv.conf";
           settings = {
             mpv_ext = true;
             mpv_ext_path = lib.getExe config.programs.mpv.package;
@@ -23,12 +21,11 @@
           };
         };
 
-        systemd.user.services.jellyfin-mpv-shim.Unit = {
-          After = [
+        systemd.user.services.jellyfin-mpv-shim = {
+          Service.ExecStartPre = lib.mkIf osConfig.services.jellyfin.enable "${lib.getExe pkgs.bash} -c 'until systemctl is-active --quiet jellyfin.service; do sleep 1; done'";
+          Unit.After = [
             config.wayland.systemd.target
-          ]
-          ++ lib.optional osConfig.services.jellyfin.enable "jellyfin.service";
-          Wants = lib.optional osConfig.services.jellyfin.enable "jellyfin.service";
+          ];
         };
 
         programs.mpv = {
