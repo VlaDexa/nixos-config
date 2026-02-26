@@ -8,7 +8,7 @@
       sdrsaturation = 1.1;
       bitdepth = 10;
       vrr = 2;
-      sdr_eotf = 1;
+      sdr_eotf = "gamma22force";
       max_luminance = 1000;
       sdr_max_luminance = 203;
     }
@@ -18,7 +18,7 @@
       position = "auto-right";
       bitdepth = 10;
       vrr = 2;
-      sdr_eotf = 1;
+      sdr_eotf = "gamma22force";
     }
   ];
 }
