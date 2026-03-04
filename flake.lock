@@ -785,6 +785,18 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/493701.patch"
       }
     },
+    "nixpkgs-patch-yt-dlp-26-03-03": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-YhYrqM+5FLFlplwSC0Xkzt8nS8mg3FPcp7PZihmmNeA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/496342.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/496342.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1772571520,
@@ -998,6 +1010,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-bgutil-1-3-0": "nixpkgs-patch-bgutil-1-3-0",
         "nixpkgs-patch-hyprland-systemd-aware": "nixpkgs-patch-hyprland-systemd-aware",
+        "nixpkgs-patch-yt-dlp-26-03-03": "nixpkgs-patch-yt-dlp-26-03-03",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
