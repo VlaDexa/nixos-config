@@ -26,12 +26,10 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-parts.follows = "flake-parts";
       # Only used during lanzaboote development
-      inputs.pre-commit-hooks-nix.follows = "";
+      inputs.pre-commit.follows = "";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     pre-commit-hooks = {
