@@ -58,10 +58,6 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-hyprland-systemd-aware = {
-      url = "https://github.com/NixOS/nixpkgs/pull/493701.patch";
-      flake = false;
-    };
     nixpkgs-patch-bgutil-1-3-0 = {
       url = "https://github.com/NixOS/nixpkgs/pull/496700.patch";
       flake = false;
