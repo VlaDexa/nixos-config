@@ -12,7 +12,7 @@
     {
       bind = [
         "$mainMod, C, killactive,"
-        "$mainMod, J, togglesplit, # dwindle"
+        "$mainMod, J, layoutmsg, togglesplit, # dwindle"
         "$mainMod, M, exec, ${hyprshutdown}"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, V, togglefloating,"
