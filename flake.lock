@@ -201,11 +201,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773422513,
-        "narHash": "sha256-MPjR48roW7CUMU6lu0+qQGqj92Kuh3paIulMWFZy+NQ=",
+        "lastModified": 1773666768,
+        "narHash": "sha256-7XvLaFMQOsfWrK+msO0Oqe5CeNYsAlSGjrl5y14gA6w=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ef12a9a2b0f77c8fa3dda1e7e494fca668909056",
+        "rev": "ca53f083dbd4c83dd5dca8a3099374708e155c32",
         "type": "github"
       },
       "original": {
@@ -289,11 +289,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1773587277,
-        "narHash": "sha256-rcj+60Sunb5gFRiTmYvdBBVaQgiZ5Jkaj5vMQdPB8IA=",
+        "lastModified": 1773615208,
+        "narHash": "sha256-a8So/3JL/1P+QZjqp1tBW7tkXyBX+WkbRyBNkds59aY=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "3fd2a95475d9a954305eeede59fe2b345a4d8098",
+        "rev": "30c498acf4173930dfd8afd6279ebceacb1941e9",
         "type": "github"
       },
       "original": {
@@ -761,6 +761,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-elecrton-build": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-RsnRgkUJ50Sm2wItSyobrfLEnSUmrAfXMErit+AM6q4=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500223.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500223.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1772817589,
@@ -778,11 +790,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1773389992,
-        "narHash": "sha256-wvfdLLWJ2I9oEpDd9PfMA8osfIZicoQ5MT1jIwNs9Tk=",
+        "lastModified": 1773646010,
+        "narHash": "sha256-iYrs97hS7p5u4lQzuNWzuALGIOdkPXvjz7bviiBjUu8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c06b4ae3d6599a672a6210b7021d699c351eebda",
+        "rev": "5b2c2d84341b2afb5647081c1386a80d7a8d8605",
         "type": "github"
       },
       "original": {
@@ -853,11 +865,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773585225,
-        "narHash": "sha256-DqNLrCrIAblgN6buGlxED1XQm9AfG2dOPG2nmRed3ys=",
+        "lastModified": 1773675226,
+        "narHash": "sha256-hIKUuhrcnnwflj4djOIFa7MGIqd7HA3M4wJk4Nhl+qk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3cd64eb34756cc370c98da2434cbc5be28bd3760",
+        "rev": "ec89f34a750f8275c6098204fdc2572f708bdb5f",
         "type": "github"
       },
       "original": {
@@ -972,6 +984,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-elecrton-build": "nixpkgs-patch-elecrton-build",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
