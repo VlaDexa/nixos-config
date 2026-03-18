@@ -761,6 +761,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-ytdlp-2026-03-17": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-OK499+D33WeLYx5gZqoR0JQc7Kqq287EJW7p1bYsGAA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500930.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500930.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1772817589,
@@ -972,6 +984,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-ytdlp-2026-03-17": "nixpkgs-patch-ytdlp-2026-03-17",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
