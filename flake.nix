@@ -62,6 +62,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/500930.patch";
       flake = false;
     };
+    nixpkgs-patch-proton-ge-33 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/500967.patch";
+      flake = false;
+    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;

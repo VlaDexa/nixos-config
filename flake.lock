@@ -761,6 +761,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-proton-ge-33": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-rJTfH7Uw8NBeUKzndmbRtvqhNy2N9hA47rVYQTLQL7E=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500967.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/500967.patch"
+      }
+    },
     "nixpkgs-patch-ytdlp-2026-03-17": {
       "flake": false,
       "locked": {
@@ -984,6 +996,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-proton-ge-33": "nixpkgs-patch-proton-ge-33",
         "nixpkgs-patch-ytdlp-2026-03-17": "nixpkgs-patch-ytdlp-2026-03-17",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
