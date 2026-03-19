@@ -2,12 +2,18 @@
   flake.modules.nixos.gaming =
     { pkgs, ... }:
     {
+      programs.gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
+
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
         extraCompatPackages = with pkgs; [
           proton-ge-bin
         ];
+        gamescopeSession.enable = true;
         protontricks.enable = true;
       };
     };
