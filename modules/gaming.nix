@@ -13,7 +13,13 @@
         extraCompatPackages = with pkgs; [
           proton-ge-bin
         ];
-        gamescopeSession.enable = true;
+        gamescopeSession = {
+          enable = true;
+          args = [
+            "--hdr-enabled"
+            "--adaptive-sync"
+          ];
+        };
         protontricks.enable = true;
       };
     };
