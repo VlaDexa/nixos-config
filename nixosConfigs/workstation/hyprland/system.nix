@@ -24,7 +24,7 @@
   qt = {
     enable = true;
     style = "adwaita-dark";
-    platformTheme = "qt5ct";
+    platformTheme = "gnome";
   };
 
   xdg.portal.config.common.default = "hyprland";
