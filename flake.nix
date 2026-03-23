@@ -58,14 +58,6 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-ytdlp-2026-03-17 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/500930.patch";
-      flake = false;
-    };
-    nixpkgs-patch-proton-ge-33 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/500967.patch";
-      flake = false;
-    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
