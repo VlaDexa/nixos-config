@@ -45,6 +45,7 @@
   # For easyeffects
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
+  programs.gpu-screen-recorder.enable = true;
 
   services.mullvad-vpn = {
     enable = true;
