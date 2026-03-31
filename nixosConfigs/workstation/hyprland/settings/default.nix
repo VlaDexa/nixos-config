@@ -50,6 +50,9 @@
       layout = "dwindle";
     };
 
-    render.direct_scanout = 1;
+    render = {
+      direct_scanout = 1;
+      non_shader_cm = 2;
+    };
   };
 }
