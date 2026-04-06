@@ -186,6 +186,8 @@
       enable = true;
       hwRender = true;
     };
+
+    gvfs.enable = true; # MTP (phone) files
   };
 
   # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
