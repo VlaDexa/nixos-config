@@ -35,8 +35,21 @@
       "docker"
       "wheel"
       "adbusers"
+      "podman"
       config.security.tpm2.tssGroup
     ]; # Enable ‘sudo’ for the user.
+    subUidRanges = [
+      {
+        count = 65534;
+        startUid = 100001;
+      }
+    ];
+    subGidRanges = [
+      {
+        count = 65534;
+        startGid = 100001;
+      }
+    ];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.password.path;
   };
