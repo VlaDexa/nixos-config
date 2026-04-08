@@ -10,8 +10,8 @@
   system.stateVersion = "26.05";
 
   system.etc.overlay.enable = true;
-  services.userborn.enable = true;
-  system.nixos-init.enable = true; # Rust based init system or something
+  # services.userborn.enable = true;
+  # system.nixos-init.enable = true; # Rust based init system or something
 
   networking.hostName = "workstation";
 
