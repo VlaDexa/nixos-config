@@ -95,6 +95,7 @@
                   mpris
                   thumbfast
                   modernz
+                  memo
                 ]
                 ++ lib.optionals hasYtdlp [ sponsorblock ]
               );
