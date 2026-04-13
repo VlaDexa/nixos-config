@@ -58,6 +58,9 @@
   # For easyeffects
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    icu # For Kitten Space Agency
+  ];
   programs.gpu-screen-recorder.enable = true;
 
   services.mullvad-vpn = {
