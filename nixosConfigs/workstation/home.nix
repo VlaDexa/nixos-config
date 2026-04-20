@@ -42,6 +42,7 @@ in
           chromium.extensions = [
             "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
             "ijcpiojgefnkmcadacmacogglhjdjphj" # Shinigami Eyes
+            "mcmmldkegalnagpcokhkppcpjecfcfje" # Ukranian gamedev indicator
           ];
 
           firefox.profiles.vladexa.extensions.packages = [
