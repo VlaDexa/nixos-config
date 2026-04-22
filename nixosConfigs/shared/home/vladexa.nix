@@ -72,7 +72,12 @@ in
       flavor = "gmail.com";
       address = "vgrechannik@gmail.com";
       realName = "Vladislav Grechannik";
+      aliases = [ "vladexa@vladexa.xyz" ];
       primary = true;
+      gpg = {
+        signByDefault = true;
+        key = "C7104CF2BCD8C411";
+      };
       thunderbird = {
         enable = true;
         profiles = [ "personal" ];
@@ -90,6 +95,10 @@ in
       flavor = "outlook.office365.com";
       address = "vladislav.grechannik@almamater.si";
       realName = "Vladislav Grechannik";
+      gpg = {
+        signByDefault = true;
+        key = "8EDD71529DD30D79";
+      };
       thunderbird = {
         enable = true;
         profiles = [ "personal" ];
