@@ -67,48 +67,55 @@ in
     secrets.ssh_key = { };
   };
 
-  accounts.email.accounts = {
-    selfGmail = {
-      flavor = "gmail.com";
-      address = "vgrechannik@gmail.com";
+  accounts.email.accounts =
+    let
       realName = "Vladislav Grechannik";
-      aliases = [ "vladexa@vladexa.xyz" ];
-      primary = true;
-      gpg = {
-        signByDefault = true;
-        key = "C7104CF2BCD8C411";
+      signature.text = ''
+        Vladislav Grechannik
+      '';
+    in
+    {
+      selfGmail = {
+        inherit realName signature;
+        flavor = "gmail.com";
+        address = "vgrechannik@gmail.com";
+        aliases = [ "vladexa@vladexa.xyz" ];
+        primary = true;
+        gpg = {
+          signByDefault = true;
+          key = "C7104CF2BCD8C411";
+        };
+        thunderbird = {
+          enable = true;
+          profiles = [ "personal" ];
+        };
       };
-      thunderbird = {
-        enable = true;
-        profiles = [ "personal" ];
+      selfMail = {
+        inherit realName signature;
+        address = "vgrechannik@mail.ru";
+        thunderbird = {
+          enable = true;
+          profiles = [ "personal" ];
+        };
       };
-    };
-    selfMail = {
-      address = "vgrechannik@mail.ru";
-      realName = "Vladislav Grechannik";
-      thunderbird = {
-        enable = true;
-        profiles = [ "personal" ];
-      };
-    };
-    edu = {
-      flavor = "outlook.office365.com";
-      address = "vladislav.grechannik@almamater.si";
-      realName = "Vladislav Grechannik";
-      gpg = {
-        signByDefault = true;
-        key = "8EDD71529DD30D79";
-      };
-      thunderbird = {
-        enable = true;
-        profiles = [ "personal" ];
-        settings = id: {
-          "mail.server.server_${id}.authMethod" = 10;
-          "mail.smtpserver.smtp_${id}.authMethod" = 10;
+      edu = {
+        inherit realName signature;
+        flavor = "outlook.office365.com";
+        address = "vladislav.grechannik@almamater.si";
+        gpg = {
+          signByDefault = true;
+          key = "8EDD71529DD30D79";
+        };
+        thunderbird = {
+          enable = true;
+          profiles = [ "personal" ];
+          settings = id: {
+            "mail.server.server_${id}.authMethod" = 10;
+            "mail.smtpserver.smtp_${id}.authMethod" = 10;
+          };
         };
       };
     };
-  };
 
   xdg = {
     enable = true;
