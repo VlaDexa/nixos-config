@@ -2,6 +2,8 @@
   flake.modules.nixos.gaming =
     { pkgs, ... }:
     {
+      boot.kernelModules = [ "ntsync" ];
+
       programs.gamescope = {
         enable = true;
         capSysNice = true;
