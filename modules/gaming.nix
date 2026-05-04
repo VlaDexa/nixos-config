@@ -14,7 +14,7 @@
         remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
         extraCompatPackages = with pkgs; [
           proton-ge-bin
-          nur.repos.vladexa.proton-cachyos-v4
+          nur.repos.vladexa.proton-cachyos-v3
         ];
         gamescopeSession = {
           enable = true;
