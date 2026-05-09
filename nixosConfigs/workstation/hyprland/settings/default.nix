@@ -53,6 +53,7 @@
     render = {
       direct_scanout = 1;
       non_shader_cm = 2;
+      cm_auto_hdr = 0;
     };
   };
 }
