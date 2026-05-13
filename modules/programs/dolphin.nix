@@ -26,7 +26,7 @@
         nativeBuildInputs = [ pkgs.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/dolphin \
-            --set XDG_CONFIG_DIRS "${pkgs.libsForQt5.kservice}/etc/xdg:$XDG_CONFIG_DIRS"
+            --set XDG_CONFIG_DIRS "${pkgs.libsForQt5.__internalKF5.kservice}/etc/xdg:$XDG_CONFIG_DIRS"
         '';
       };
     };
