@@ -1,6 +1,6 @@
 {
   # https://wiki.hypr.land/Configuring/Variables/#decoration
-  wayland.windowManager.hyprland.settings.decoration = {
+  wayland.windowManager.hyprland.settings.config.decoration = {
     rounding = 12;
     # rounding_power = 2;
 

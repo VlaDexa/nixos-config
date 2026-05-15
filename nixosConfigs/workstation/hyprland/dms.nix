@@ -11,7 +11,7 @@
     let
       hyprland = config.wayland.windowManager.hyprland;
       hyprlandEnabled = hyprland.enable;
-      hyprlandConf = hyprland.settings;
+      hyprlandConf = hyprland.settings.config;
       mkIfHyprland = lib.mkIf hyprlandEnabled;
     in
     {
@@ -110,22 +110,65 @@
       wayland.windowManager.hyprland.settings =
         let
           dmsexe = lib.getExe (inputs'.dms.packages.default);
+
+          # Cancer
+          mainMod = "SUPER";
+          mkRaw = lib.generators.mkLuaInline;
+          keys = keys: lib.concatStringsSep " + " keys;
+          key = key: keys [ key ];
+          mkeys = akeys: keys ([ mainMod ] ++ akeys);
+          mkey = key: mkeys [ key ];
+
+          exec = cmd: mkRaw "hl.dsp.exec_cmd(\"${cmd}\")";
+          dmsexec = args: exec "${dmsexe} ${args}";
+          bind = args: { _args = args; };
+          bindl = args: bind (args ++ [ { locked = true; } ]);
+          bindel =
+            args:
+            bind (
+              args
+              ++ [
+                {
+                  locked = true;
+                  repeat = true;
+                }
+              ]
+            );
         in
         {
           bind = [
-            "$mainMod, G, exec, ${dmsexe} ipc call clipboard toggle"
-            "$mainMod, R, exec, ${dmsexe} ipc call spotlight toggle"
-          ];
-          bindl = [
+            (bind [
+              (mkey "G")
+              (dmsexec "ipc call clipboard toggle")
+            ])
+            (bind [
+              (mkey "R")
+              (dmsexec "ipc call spotlight toggle")
+            ])
+
             # Audio Controls
-            ", XF86AudioMute, exec, ${dmsexe} ipc call audio mute"
-          ];
-          bindel = [
-            ", XF86AudioRaiseVolume, exec, ${dmsexe} ipc call audio increment 3"
-            ", XF86AudioLowerVolume, exec, ${dmsexe} ipc call audio decrement 3"
+            (bindl [
+              (key "XF86AudioMute")
+              (dmsexec "ipc call audio mute")
+            ])
+            (bindel [
+              (key "XF86AudioRaiseVolume")
+              (dmsexec "ipc call audio increment 3")
+            ])
+            (bindel [
+              (key "XF86AudioLowerVolume")
+              (dmsexec "ipc call audio decrement 3")
+            ])
+
             # Brightness Controls
-            ", XF86MonBrightnessUp, exec, ${dmsexe} ipc call brightness increment 5"
-            ", XF86MonBrightnessDown, exec, ${dmsexe} ipc call brightness decrement 5"
+            (bindel [
+              (key "XF86MonBrightnessUp")
+              (dmsexec "ipc call brightness increment 5")
+            ])
+            (bindel [
+              (key "XF86MonBrightnessDown")
+              (dmsexec "ipc call brightness decrement 5")
+            ])
           ];
         };
     }

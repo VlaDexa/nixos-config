@@ -17,9 +17,25 @@
       rg = lib.getExe pkgs.ripgrep;
       wofi = lib.getExe config.programs.wofi.package;
       runapp = lib.getExe pkgs.runapp;
+
+      mainMod = "SUPER";
+
+      mkRaw = lib.generators.mkLuaInline;
+
+      keys = keys: lib.concatStringsSep " + " keys;
+      mkeys = akeys: keys ([ mainMod ] ++ akeys);
+      mkey = key: mkeys [ key ];
+
+      bind = args: { _args = args; };
+
+      exec = cmd: mkRaw "hl.dsp.exec_cmd(\"${cmd}\")";
+      rexec = cmd: exec "${runapp} ${cmd}";
     in
     [
       # "$mainMod, G, exec, ${cliphist} list | ${wofi} -d -k /dev/null | ${cliphist} decode | ${wl-copy}"
-      "$mainMod, Y, exec, ${runapp} ${mpv} --no-terminal $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)"
+      (bind [
+        (mkey "Y")
+        (rexec "${mpv} --no-terminal $(${cliphist} list | ${rg} --text 'http.+(youtu|twitch)' | ${wofi} -d -k /dev/null | ${cliphist} decode)")
+      ])
     ];
 }
