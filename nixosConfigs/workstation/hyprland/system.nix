@@ -33,6 +33,6 @@
 
   services.blueman.enable = true;
 
-  security.pam.services."vladexa".kwallet.enable = true;
+  security.pam.services.ly.kwallet.enable = true;
   services.dbus.packages = [ pkgs.kdePackages.kwallet ];
 }

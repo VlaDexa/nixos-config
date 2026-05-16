@@ -1,6 +1,7 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -17,12 +18,22 @@
     ./windowrules.nix
   ];
 
+  systemd.user.services.kwalletd = {
+    Unit.Description = "KDE Wallet Daemon";
+    Service = {
+      Type = "exec";
+      ExecStart = lib.getExe' pkgs.kdePackages.kwallet "kwalletd6";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+    Install.WantedBy = [ config.wayland.systemd.target ];
+  };
+
   wayland.windowManager.hyprland.configType = "lua";
   wayland.windowManager.hyprland.settings = {
     on._args =
       let
         execs = [
-          "${lib.getExe pkgs.runapp} -i background.slice ${lib.getExe' pkgs.kdePackages.kwallet "kwalletd6"}"
           "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
           "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme prefer-dark"
         ];
