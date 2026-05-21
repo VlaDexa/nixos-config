@@ -17,7 +17,7 @@
       };
 
       programs.chromium.extensions = [
-        "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+        "lppmekppnliemjclknbagdhoocikieoi" # 7TV
       ];
 
       programs.firefox.profiles.vladexa.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
