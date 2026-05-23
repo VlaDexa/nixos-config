@@ -6,7 +6,8 @@
 
       programs.gamescope = {
         enable = true;
-        capSysNice = true;
+        # Broken https://github.com/NixOS/nixpkgs/issues/523200
+        # capSysNice = true;
       };
 
       programs.steam = {
