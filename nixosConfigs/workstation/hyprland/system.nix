@@ -31,8 +31,6 @@
 
   programs.hyprlock.enable = true;
 
-  services.blueman.enable = true;
-
   security.pam.services.ly.kwallet.enable = true;
   services.dbus.packages = [ pkgs.kdePackages.kwallet ];
 }
