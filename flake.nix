@@ -140,6 +140,7 @@
                 config.flake.homeModules.yt-dlp
               ];
               shared_modules = [
+                config.flake.modules.nixos.vaultwarden
                 config.flake.modules.nixos.plymouth
                 nur.modules.nixos.default
                 home-manager.nixosModules.home-manager
