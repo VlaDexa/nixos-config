@@ -184,7 +184,7 @@
 
     kmscon = {
       enable = true;
-      hwRender = true;
+      config.hwaccel = true;
     };
 
     gvfs.enable = true; # MTP (phone) files
