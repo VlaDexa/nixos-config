@@ -82,6 +82,10 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bore-scheduler = {
+      url = "github:firelzrd/bore-scheduler";
+      flake = false;
+    };
   };
   outputs =
     {
@@ -191,6 +195,7 @@
               workstation = nixpkgs-patcher.lib.nixosSystem {
                 specialArgs = inputs;
                 modules = shared_modules ++ [
+                  config.flake.modules.nixos.bore
                   config.flake.modules.nixos.dolphin-overlay
                   config.flake.modules.nixos.gaming
                   config.flake.modules.nixos.workstation

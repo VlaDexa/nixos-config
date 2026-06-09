@@ -5,5 +5,6 @@
     ./gaming.nix
     ./matrix-client.nix
     ./plymouth.nix
+    ./bore.nix
   ];
 }

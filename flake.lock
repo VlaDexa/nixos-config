@@ -45,6 +45,22 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/429126.patch"
       }
     },
+    "bore-scheduler": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777633487,
+        "narHash": "sha256-KdeMUJ0Sp0PgS/ZA2q3VK2Nf0mTtcncEwZr4meepOwI=",
+        "owner": "firelzrd",
+        "repo": "bore-scheduler",
+        "rev": "b3d32d475646ab95d7c1e59f210117d71ed5046d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "firelzrd",
+        "repo": "bore-scheduler",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1765145449,
@@ -966,6 +982,7 @@
     "root": {
       "inputs": {
         "bcachefs-nixpkgs-patch-429126": "bcachefs-nixpkgs-patch-429126",
+        "bore-scheduler": "bore-scheduler",
         "disko": "disko",
         "dms": "dms",
         "flake-compat": "flake-compat",
