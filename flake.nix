@@ -26,7 +26,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.0.0";
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
       # Only used during lanzaboote development
       inputs.pre-commit.follows = "";
