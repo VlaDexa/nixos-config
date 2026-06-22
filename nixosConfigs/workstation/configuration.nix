@@ -127,7 +127,6 @@
     amdgpu.overdrive.enable = true;
     graphics.extraPackages = with pkgs; [
       amf
-      mesa.opencl # Enables Rusticl (OpenCL) support
     ];
   };
 
