@@ -1,11 +1,4 @@
 {
-  flake.modules.nixos.vaultwarden = {
-    # FUCK BITWARDEN DESKTOP
-    nixpkgs.config.permittedInsecurePackages = [
-      "electron-39.8.10"
-    ];
-  };
-
   flake.homeModules.vaultwarden =
     {
       lib,

@@ -781,6 +781,42 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-bitwarden-26-6": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-yZsz+sPNfKVr0B75LfUNRJdPFNo4jjdr+LUWmues/Ws=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/535399.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/535399.patch"
+      }
+    },
+    "nixpkgs-patch-bitwarden-26-6-electron": {
+      "flake": false,
+      "locked": {
+        "path": "./0001-bitwarden-dekstop-add-patch-that-switches-to-electro.patch",
+        "type": "path"
+      },
+      "original": {
+        "path": "./0001-bitwarden-dekstop-add-patch-that-switches-to-electro.patch",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "nixpkgs-patch-proton-ge-11": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-/XZ1XPdKYw1ZlGeGDAU8iwYL3rpfWpWKIrK7b1Vy6c8=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/535693.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/535693.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1781789965,
@@ -993,6 +1029,9 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-bitwarden-26-6": "nixpkgs-patch-bitwarden-26-6",
+        "nixpkgs-patch-bitwarden-26-6-electron": "nixpkgs-patch-bitwarden-26-6-electron",
+        "nixpkgs-patch-proton-ge-11": "nixpkgs-patch-proton-ge-11",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
