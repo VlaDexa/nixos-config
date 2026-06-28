@@ -34,6 +34,8 @@ in
           kdePackages.kimageformats # For jxl support in Gwenview
           ffmpeg-full
           runapp
+
+          josm
         ];
 
         xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
