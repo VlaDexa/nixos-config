@@ -3,7 +3,6 @@
     {
       config,
       lib,
-      osConfig,
       pkgs,
       ...
     }:
@@ -22,7 +21,7 @@
         };
 
         systemd.user.services.jellyfin-mpv-shim = {
-          Service.ExecStartPre = lib.mkIf osConfig.services.jellyfin.enable "${lib.getExe pkgs.bash} -c 'until systemctl is-active --quiet jellyfin.service; do sleep 1; done'";
+          Service.ExecStartPre = "${pkgs.coreutils}/bin/sleep 5s";
           Unit.After = [
             config.wayland.systemd.target
           ];
