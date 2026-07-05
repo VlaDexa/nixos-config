@@ -1,4 +1,4 @@
-From 35d11a41137ffd99437e3b7ddcabc844341c5642 Mon Sep 17 00:00:00 2001
+From 06f70e3800ab16fda5bb7ea329ec0e64810a166c Mon Sep 17 00:00:00 2001
 From: Vladislav Grechannik <vgrechannik@gmail.com>
 Date: Fri, 26 Jun 2026 18:39:35 +0200
 Subject: [PATCH] bitwarden-dekstop: add patch that switches to electron 41
@@ -1046,7 +1046,7 @@ index 000000000000..92cd9eb0cac5
 +     "eslint-config-prettier": "10.1.8",
 +     "eslint-import-resolver-typescript": "4.4.4",
 diff --git a/pkgs/by-name/bi/bitwarden-desktop/package.nix b/pkgs/by-name/bi/bitwarden-desktop/package.nix
-index a53954076a30..8e47d4171314 100644
+index 305fcc575591..0607b2ef34c3 100644
 --- a/pkgs/by-name/bi/bitwarden-desktop/package.nix
 +++ b/pkgs/by-name/bi/bitwarden-desktop/package.nix
 @@ -5,7 +5,7 @@
@@ -1079,8 +1079,8 @@ index a53954076a30..8e47d4171314 100644
  
    npmWorkspace = "apps/desktop";
    npmDepsFetcherVersion = 3;
--  npmDepsHash = "sha256-mvFLZwWwIv4PbUwfTWvwZ9JyRoHJSwAA0cT4RXD0/YU=";
-+  npmDepsHash = "sha256-VdFZRbVDBcuyQKRqKG98F5pQkjz7Q3xjKC3NG7J2lJw=";
+-  npmDepsHash = "sha256-C5GLei/WWetd4qLv7obBJWbQR9LBy+Sqdbjko3/W7VY=";
++  npmDepsHash = "sha256-G1hGFjvPS8LPOchcfpo/bseRToHYtVXXBsVJWUhRNoo=";
  
    cargoDeps = rustPlatform.fetchCargoVendor {
      inherit (finalAttrs)
