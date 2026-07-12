@@ -65,14 +65,6 @@
       url = "path:./0001-bitwarden-dekstop-add-patch-that-switches-to-electro.patch";
       flake = false;
     };
-    nixpkgs-patch-vdirsyncer = {
-      url = "https://github.com/NixOS/nixpkgs/pull/539799.patch";
-      flake = false;
-    };
-    nixpkgs-patch-streamlink = {
-      url = "https://github.com/NixOS/nixpkgs/pull/540418.patch";
-      flake = false;
-    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
