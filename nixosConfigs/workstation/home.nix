@@ -22,6 +22,7 @@ in
           homeManager.gaming
           homeManager.matrix-client
           homeManager.twitch
+          homeManager.images
         ];
 
         home.packages = with pkgs; [

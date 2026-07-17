@@ -8,5 +8,6 @@
     ./matrix-client.nix
     ./plymouth.nix
     ./rusticl.nix
+    ./images.nix
   ];
 }
