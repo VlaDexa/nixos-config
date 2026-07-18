@@ -65,6 +65,10 @@
       url = "path:./0001-bitwarden-dekstop-add-patch-that-switches-to-electro.patch";
       flake = false;
     };
+    nixpkgs-patch-vesktop-electron-42 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/542528.patch";
+      flake = false;
+    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
