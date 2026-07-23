@@ -125,6 +125,7 @@
 
   hardware = {
     amdgpu.overdrive.enable = true;
+    amdgpu.zluda.enable = true;
     graphics.extraPackages = with pkgs; [
       amf
     ];
