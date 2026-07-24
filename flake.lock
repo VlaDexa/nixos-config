@@ -766,6 +766,18 @@
       },
       "parent": []
     },
+    "nixpkgs-patch-zluda-6": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-mcanf+d8bz1vx9y2OKfpXOpjmI6Etb2C1m5sBUdY7WQ=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/545108.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/545108.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1781789965,
@@ -955,6 +967,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-bitwarden-26-6-electron": "nixpkgs-patch-bitwarden-26-6-electron",
+        "nixpkgs-patch-zluda-6": "nixpkgs-patch-zluda-6",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
