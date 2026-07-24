@@ -40,8 +40,11 @@
       programs.lutris = {
         enable = true;
         steamPackage = osConfig.programs.steam.package;
-        protonPackages = [ pkgs.proton-ge-bin ];
-        defaultWinePackage = pkgs.proton-ge-bin;
+        protonPackages = [
+          pkgs.proton-ge-bin
+          pkgs.nur.repos.vladexa.proton-cachyos-v3
+        ];
+        defaultWinePackage = pkgs.nur.repos.vladexa.proton-cachyos-v3;
       };
 
       systemd.user.services.steam = {
