@@ -25,7 +25,13 @@
 
   # THP always is faster
   # https://www.phoronix.com/review/thp-madvise-always
-  boot.kernelParams = [ "transparent_hugepage=always" ];
+  boot.kernel.sysfs = {
+    kernel.mm.transparent_hugepage = {
+      enabled = "always";
+      defrag = "defer";
+      shmem_enabled = "within_size";
+    };
+  };
 
   # Define a user account.
   users.users.vladexa = {
