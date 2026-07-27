@@ -61,12 +61,12 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-bitwarden-26-6-electron = {
-      url = "path:./0001-bitwarden-dekstop-add-patch-that-switches-to-electro.patch";
+    nixpkgs-patch-lact-fix-1 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/546004.patch";
       flake = false;
     };
-    nixpkgs-patch-zluda-6 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/545108.patch";
+    nixpkgs-patch-lact-fix-2 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/546155.patch";
       flake = false;
     };
     bcachefs-nixpkgs-patch-429126 = {
