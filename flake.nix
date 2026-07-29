@@ -61,14 +61,6 @@
     };
     # Temporary patcher until https://github.com/NixOS/nix/issues/3920 is resolved
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-lact-fix-1 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/546004.patch";
-      flake = false;
-    };
-    nixpkgs-patch-lact-fix-2 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/546155.patch";
-      flake = false;
-    };
     bcachefs-nixpkgs-patch-429126 = {
       url = "https://github.com/NixOS/nixpkgs/pull/429126.patch";
       flake = false;
