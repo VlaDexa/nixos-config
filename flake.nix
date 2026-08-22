@@ -198,6 +198,7 @@
                   config.flake.modules.nixos.davinci
                   config.flake.modules.nixos.dolphin-overlay
                   config.flake.modules.nixos.gaming
+                  config.flake.modules.nixos.jellyfin
                   config.flake.modules.nixos.rusticl
                   config.flake.modules.nixos.workstation
                   config.flake.modules.nixos.workstation-hm
