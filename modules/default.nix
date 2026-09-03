@@ -10,5 +10,6 @@
     ./matrix-client.nix
     ./plymouth.nix
     ./rusticl.nix
+    ./signal.nix
   ];
 }

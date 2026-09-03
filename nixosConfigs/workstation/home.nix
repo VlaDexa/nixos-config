@@ -20,9 +20,10 @@ in
           homeManager.dankMaterialShell
           homeManager.distrobox
           homeManager.gaming
-          homeManager.matrix-client
-          homeManager.twitch
           homeManager.images
+          homeManager.matrix-client
+          homeManager.signal
+          homeManager.twitch
         ];
 
         home.packages = with pkgs; [
