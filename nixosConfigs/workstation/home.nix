@@ -30,7 +30,7 @@ in
           qbittorrent
           android-tools
 
-          libreoffice-fresh
+          libreoffice-stable
 
           kdePackages.kimageformats # For jxl support in Gwenview
           ffmpeg-full
@@ -39,7 +39,7 @@ in
           josm
         ];
 
-        xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-fresh ];
+        xdg.mimeApps.defaultApplicationPackages = [ pkgs.libreoffice-stable ];
 
         programs = {
           chromium.extensions = [
