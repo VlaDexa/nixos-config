@@ -8,14 +8,14 @@
     }:
     {
       config = lib.mkIf config.programs.yt-dlp.enable {
-        assertions = [
-          {
-            assertion =
-              pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.server.version
-              == pkgs.python313Packages.bgutil-ytdlp-pot-provider.version;
-            message = "bgutil-ytdlp-pot-provider server and python package versions must match.";
-          }
-        ];
+        # assertions = [
+        #   {
+        #     assertion =
+        #       pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.server.version
+        #       == pkgs.python313Packages.bgutil-ytdlp-pot-provider.version;
+        #     message = "bgutil-ytdlp-pot-provider server and python package versions must match.";
+        #   }
+        # ];
 
         programs.yt-dlp.settings = {
           sponsorblock-remove = "sponsor";
@@ -27,7 +27,7 @@
         };
 
         xdg.configFile."yt-dlp/plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins".source =
-          "${pkgs.python313Packages.bgutil-ytdlp-pot-provider}/lib/python3.13/site-packages/yt_dlp_plugins";
+          "${pkgs.nur.repos.vladexa.bgutil-ytdlp-pot-provider.plugin}/lib/python3.13/site-packages/yt_dlp_plugins";
 
         systemd.user.services.bgutil-ytdlp-pot-provider-server = {
           Unit = {
