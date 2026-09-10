@@ -65,7 +65,10 @@
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    icu # For Kitten Space Agency
+    # For josm's urban3d plugin
+    stdenv.cc.cc
+    pkgs.libGL
+    pkgs.jogl
   ];
   programs.gpu-screen-recorder.enable = true;
 
