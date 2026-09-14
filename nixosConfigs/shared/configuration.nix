@@ -188,6 +188,12 @@
     };
 
     gvfs.enable = true; # MTP (phone) files
+    # Printing stuff
+    printing = {
+      enable = true;
+      drivers = [ pkgs.brlaser ];
+    };
+    samba.enable = true;
   };
 
   # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
