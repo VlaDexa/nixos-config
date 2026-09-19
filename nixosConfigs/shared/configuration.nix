@@ -96,7 +96,7 @@
   services = {
     geoclue2 = {
       enable = true;
-      enableWifi = true;
+      enableWifi = lib.mkDefault true;
     };
 
     # Enable sound.

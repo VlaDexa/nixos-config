@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -75,6 +76,32 @@
   services.mullvad-vpn = {
     enable = true;
     enableExcludeWrapper = false;
+  };
+
+  # Add static location
+  sops.secrets.workstation-location = {
+    path = "/etc/geolocation";
+    mode = "600";
+    group = config.users.users.geoclue.group;
+    owner = config.users.users.geoclue.name;
+    restartUnits = [ "geoclue.service" ];
+  };
+  environment.etc."geoclue/conf.d/10-workstation-location.conf".text = lib.generators.toINI { } {
+    static-source.enable = true;
+  };
+  systemd.services.geoclue.restartTriggers = [
+    config.environment.etc."geoclue/conf.d/10-workstation-location.conf".source
+  ];
+  systemd.services.geoclue.after = [ "sops-nix.service" ];
+  services.geoclue2 = {
+    enable = true;
+    enable3G = false;
+    enableCDMA = false;
+    enableModemGPS = false;
+    enableNmea = false;
+    enableWifi = false;
+    # Can't enable because it requires to add location to store
+    # enableStaticSource = true;
   };
 
   # Disable all the plasma stuff
