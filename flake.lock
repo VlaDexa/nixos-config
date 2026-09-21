@@ -771,18 +771,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-davinci-hash": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-FxjMe4I30ANvDSHopS77oSohVw4GNsFf/7+4ZNXMd18=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/562336.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/562336.patch"
-      }
-    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1789143781,
@@ -971,7 +959,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-patch-davinci-hash": "nixpkgs-patch-davinci-hash",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
