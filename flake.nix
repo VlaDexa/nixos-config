@@ -223,7 +223,7 @@
             pre-commit.settings =
               { pkgs, ... }:
               {
-                hooks.nixfmt-rfc-style.enable = true;
+                hooks.nixfmt.enable = true;
                 enabledPackages = with pkgs; [ sops ];
               };
 
