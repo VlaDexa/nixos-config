@@ -71,6 +71,10 @@
           (rexec browser)
         ])
         (bind [
+          (mkey "F")
+          (rexec (lib.getExe config.programs.firefox.package))
+        ])
+        (bind [
           (mkey "E")
           (rexec fileManager)
         ])
