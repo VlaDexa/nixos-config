@@ -259,6 +259,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     vista-fonts
+    liberation_ttf
   ];
 
   nix = {
