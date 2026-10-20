@@ -769,6 +769,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-zenpower-fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-45CTHO0w0Hz6PcoY2gVMJdtS6QczDrhxHuy3tkFaFwI=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/576565.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/576565.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1789143781,
@@ -957,6 +969,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-zenpower-fix": "nixpkgs-patch-zenpower-fix",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
