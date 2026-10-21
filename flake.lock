@@ -769,6 +769,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-khal-fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-TkoQFOoDy7zh0rbGNHtmF0CsYKK5YQ2hzvhS1oFox6w=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/576662.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/576662.patch"
+      }
+    },
     "nixpkgs-patch-zenpower-fix": {
       "flake": false,
       "locked": {
@@ -969,6 +981,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patch-khal-fix": "nixpkgs-patch-khal-fix",
         "nixpkgs-patch-zenpower-fix": "nixpkgs-patch-zenpower-fix",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
