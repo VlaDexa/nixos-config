@@ -29,6 +29,7 @@
           systemd.restartIfChanged = true;
           enableVPN = false; # Fuck Network Manager
           settings = {
+            fontScale = 0.96;
             currentThemeName = "blue";
             currentThemeCategory = "generic";
             showWorkspaceIndex = true;
