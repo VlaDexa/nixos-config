@@ -86,6 +86,10 @@
       url = "github:firelzrd/bore-scheduler";
       flake = false;
     };
+    nixpkgs-patch-chatterino7 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/578779.patch";
+      flake = false;
+    };
   };
   outputs =
     {
