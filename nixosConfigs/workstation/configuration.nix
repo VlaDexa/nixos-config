@@ -22,7 +22,6 @@
   };
 
   boot.plymouth.enable = true; # Doesn't work with bcachefs encryption
-  boot.initrd.systemd.enable = true; # Systemd boot
 
   # THP always is faster
   # https://www.phoronix.com/review/thp-madvise-always
