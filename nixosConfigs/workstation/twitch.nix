@@ -23,5 +23,7 @@
       programs.firefox.profiles.vladexa.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         seventv
       ];
+
+      home.packages = with pkgs; [ chatterino7 ];
     };
 }
