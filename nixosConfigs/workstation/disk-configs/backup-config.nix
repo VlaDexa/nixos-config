@@ -17,6 +17,10 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/mnt/Backup";
+                mountOptions = [
+                  "nofail"
+                  "x-systemd.device-timeout=10s"
+                ];
               };
             };
           };
