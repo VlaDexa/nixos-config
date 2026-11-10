@@ -90,6 +90,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/585670.patch";
       flake = false;
     };
+    nixpkgs-patch-zluda-fix = {
+      url = "https://github.com/NixOS/nixpkgs/pull/585234.patch";
+      flake = false;
+    };
   };
   outputs =
     {

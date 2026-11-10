@@ -780,6 +780,18 @@
         "url": "https://github.com/NixOS/nixpkgs/pull/585670.patch"
       }
     },
+    "nixpkgs-patch-zluda-fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-omXqR3Rc0WJJLslXoCPyHOEJJn0SlvHQ5ci1+oEfV/Y=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/585234.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/585234.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1793529490,
@@ -969,6 +981,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-patch-josm-update": "nixpkgs-patch-josm-update",
+        "nixpkgs-patch-zluda-fix": "nixpkgs-patch-zluda-fix",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
