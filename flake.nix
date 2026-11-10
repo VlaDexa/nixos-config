@@ -199,7 +199,7 @@
                 specialArgs = inputs;
                 modules = shared_modules ++ [
                   # config.flake.modules.nixos.bore
-                  config.flake.modules.nixos.davinci
+                  # config.flake.modules.nixos.davinci
                   config.flake.modules.nixos.dolphin-overlay
                   config.flake.modules.nixos.gaming
                   config.flake.modules.nixos.jackett
