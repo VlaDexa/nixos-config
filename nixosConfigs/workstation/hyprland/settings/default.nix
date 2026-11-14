@@ -31,19 +31,40 @@
 
   wayland.windowManager.hyprland.configType = "lua";
   wayland.windowManager.hyprland.settings = {
-    on._args =
-      let
-        execs = [
-          "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
-          "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme prefer-dark"
+    on = [
+      {
+        _args =
+          let
+            execs = [
+              "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface Adwaita-dark"
+              "${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme prefer-dark"
+            ];
+            tabbed = map (s: "\thl.dsp.exec_cmd(\"${s}\")") execs;
+            lines = lib.concatStringsSep "\n" tabbed;
+          in
+          [
+            "hyprland.start"
+            (lib.generators.mkLuaInline "function()\n${lines}\nend")
+          ];
+      }
+      {
+        _args = [
+          "window.open"
+          (lib.generators.mkLuaInline ''
+            function(w)
+              if w ~= nil and w.class == "com.chatterino.chatterino" then
+                hl.dispatch(hl.dsp.window.resize({
+                  x = 357,
+                  y = w.size and w.size.y or 600, -- keep current height
+                  relative = false,               -- absolute size, not a delta
+                  window = w,
+                }))
+              end
+            end
+          '')
         ];
-        tabbed = map (s: "\thl.dsp.exec_cmd(\"${s}\")") execs;
-        lines = lib.concatStringsSep "\n" tabbed;
-      in
-      [
-        "hyprland.start"
-        (lib.generators.mkLuaInline "function()\n${lines}\nend")
-      ];
+      }
+    ];
 
     config.general = {
       gaps_in = 5;
