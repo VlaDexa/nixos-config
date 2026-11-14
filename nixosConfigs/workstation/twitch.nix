@@ -18,6 +18,7 @@
 
       programs.chromium.extensions = [
         "lppmekppnliemjclknbagdhoocikieoi" # 7TV
+        "bpaoeijjlplfjbagceilcgbkcdjbomjd" # Ad blocker
       ];
 
       programs.firefox.profiles.vladexa.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
