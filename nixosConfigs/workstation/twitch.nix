@@ -17,12 +17,13 @@
       };
 
       programs.chromium.extensions = [
-        "lppmekppnliemjclknbagdhoocikieoi" # 7TV
         "bpaoeijjlplfjbagceilcgbkcdjbomjd" # Ad blocker
+        "lppmekppnliemjclknbagdhoocikieoi" # 7TV
       ];
 
       programs.firefox.profiles.vladexa.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         seventv
+        ttv-lol-pro
       ];
 
       home.packages = with pkgs; [ chatterino7 ];
