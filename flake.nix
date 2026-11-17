@@ -66,7 +66,7 @@
       flake = false;
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland?ref=refs/heads/main";
+      url = "github:VlaDexa/Hyprland/max-cll";
     };
     hyprshutdown = {
       url = "github:hyprwm/hyprshutdown";
