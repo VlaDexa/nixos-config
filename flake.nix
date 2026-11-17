@@ -66,7 +66,7 @@
       flake = false;
     };
     hyprland = {
-      url = "github:VlaDexa/Hyprland/max-cll";
+      url = "github:VlaDexa/Hyprland/tonemapping-fix";
     };
     hyprshutdown = {
       url = "github:hyprwm/hyprshutdown";

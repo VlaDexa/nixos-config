@@ -296,16 +296,16 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1794934129,
-        "narHash": "sha256-UhXa0I2hCSf2RK8+lBTHRtErk1jIWzUj7r4tCsaVPM8=",
+        "lastModified": 1794943828,
+        "narHash": "sha256-E25kXPiakPWzgTE2lg/owHRf/PSMPjDjUiYHJplSw20=",
         "owner": "VlaDexa",
         "repo": "Hyprland",
-        "rev": "0a0ea353da6573b36178f6250b4027e80965a60b",
+        "rev": "08d073bcca7ae4d99306c9c488f7c26dbcb49c4f",
         "type": "github"
       },
       "original": {
         "owner": "VlaDexa",
-        "ref": "max-cll",
+        "ref": "tonemapping-fix",
         "repo": "Hyprland",
         "type": "github"
       }
