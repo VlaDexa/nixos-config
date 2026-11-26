@@ -49,6 +49,7 @@ in
           ];
 
           firefox.profiles.vladexa.extensions.packages = [
+            pkgs.nur.repos.rycee.firefox-addons.augmented-steam
             pkgs.nur.repos.rycee.firefox-addons.shinigami-eyes
           ];
 
