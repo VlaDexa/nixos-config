@@ -46,6 +46,7 @@ in
             "dnhpnfgdlenaccegplpojghhmaamnnfp" # Augmented Steam
             "ijcpiojgefnkmcadacmacogglhjdjphj" # Shinigami Eyes
             "mcmmldkegalnagpcokhkppcpjecfcfje" # Ukranian gamedev indicator
+            "fcoeoabgfenejglbffodgkkbkcdhcgfn" # Claude
           ];
 
           firefox.profiles.vladexa.extensions.packages = [
